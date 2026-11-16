@@ -2,9 +2,11 @@
 
 - **Repository:** [market_workstation](https://github.com/mallorypierz/market_workstation) (public).
 - **Submitted code and evidence:** [72953e37d4ad8b4b15a835c285bdff38850b4c0e](https://github.com/mallorypierz/market_workstation/commit/72953e37d4ad8b4b15a835c285bdff38850b4c0e). This report is recorded in a subsequent documentation commit.
-- **Video (46.44 seconds):** [Watch or download the dashboard demonstration](https://raw.githubusercontent.com/mallorypierz/market_workstation/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/evidence/part-4.1-demo.webm). [GitHub video page](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/evidence/part-4.1-demo.webm).
+- **Selected video (1 minute52.08seconds):** [Watch or download my recording](https://raw.githubusercontent.com/mallorypierz/market_workstation/0b479854ef607d5611b9c9405548d2edc06fc7ab/docs/evidence/part-4.1-student-demo.mov). [GitHub video page](https://github.com/mallorypierz/market_workstation/blob/0b479854ef607d5611b9c9405548d2edc06fc7ab/docs/evidence/part-4.1-student-demo.mov).
 
-The video demonstrates the running application using a saved Yahoo session, with Yahoo disconnected and Replay explicitly labeled. It shows candle updates, an aligned estimated volume bar, replay and completion state. It is **not a new live-stream capture**. Historical live-stream evidence is linked below. Exact minute volume remains a limitation; I do not claim full verification of that requirement.
+**Video length requirement remains unmet:** this user-selected recording is112.08seconds; the assignment permits30–60seconds. Shorten it before submission.
+
+This recording replaces the earlier46.44second demonstration. Sampled frames show the AAPL dashboard, disconnected Yahoo with the browser still connected, SQLite record221/receipt223 matching price353.97, and Replay. That record's daily cumulative volume is unavailable. These observations do not establish exact minute volume or a completed replay; earlier live evidence remains linked below.
 
 ## Completed work
 
@@ -38,6 +40,6 @@ A revised approach addressed volume: the initial implementation withheld all liv
 
 [README](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/README.md) documents initialization (`python3 -m backend.recorder init`), configurable database paths, localhost start/stop commands and `python3 docs/smoke_test.py`. Credentials, environments and runtime databases are excluded from Git. Part 4.1 needs no model API key or Yahoo login. [AGENTS.md](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/AGENTS.md) records project conventions; [AI-USE.md](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/AI-USE.md) discloses the coding assistance and the limits of known model history.
 
-Sparse Yahoo quotes cannot guarantee exchange-complete OHLC or exact minute volume. Some volume remains Unknown. Same-time ordering is locally deterministic; late data can revise ended candles. This short capture is limited to AAPL. The new video shows replay, with separate historical live/disconnection evidence; a fresh regular-session live video would strengthen the submission. Later-part indicators, trading and AI/audio features are present but are outside this report's Part 4.1 claims.
+Sparse Yahoo quotes cannot guarantee exchange-complete OHLC or exact minute volume. Some volume remains Unknown. Same-time ordering is locally deterministic; late data can revise ended candles. This short capture is limited to AAPL. The selected recording is over the permitted duration and must be shortened. A fresh regular-session live demonstration would strengthen the live-volume evidence. Later-part indicators, trading and AI/audio features are present but are outside this report's Part 4.1 claims.
 
 **Canvas submission:** upload only this `report.md`. Source code and the video are linked in the public repository; do not upload a source ZIP.
