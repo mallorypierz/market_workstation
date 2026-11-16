@@ -9,3 +9,6 @@ Checks:90backend tests and frontend build passed. Full SmokeTest run20261116T232
 Current Yahoo probe opened socket but received no data in30seconds, so fresh verification remains open. Exact minute volume is not established; estimated deltas and Unknown are labeled. Historical live chart/disconnection evidence is retained. Runtime databases, keys and test caches stay ignored.
 
 Next: student reviews report/video and AI-USE disclosure, uploads only report.md. For stronger live-volume evidence capture during a regular trading session. On resume read AGENTS and verify Git state/checks.
+
+
+Student replaced selected video with unedited112.08second MOV. Report must identify overlength; shorten before submission. Earlier46.44second replay video retained only as historical evidence. No app changes or tests needed for this media/link replacement.
