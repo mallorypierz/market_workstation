@@ -28,11 +28,15 @@ def volume_total(value):
 
 def aggregate(db, ticker, *, as_of, source="yahoo", receipt_cutoff=None,
               cumulative_volume_field=None, session_field=None, knowledge_at=None, replay_receipt_ids=None):
-    """Return six-field candles plus separate status; volume semantics require opt-in.
+    """Return six-field candles plus separate status; Yahoo AAPL uses counter estimates.
 
     as_of controls elapsed time and rejects future source timestamps. receipt_cutoff
     controls what recorded knowledge is used, independently of the wall clock.
     """
+    # AAPL equity day_volume is interpreted as a daily cumulative share counter.
+    # This produces observed-delta estimates, never exact exchange minute totals.
+    if cumulative_volume_field is None and source == "yahoo" and ticker == "AAPL":
+        cumulative_volume_field = "day_volume"
     now = utc(as_of)
     now_ms = int(now.timestamp() * 1000)
     knowledge_time = utc(knowledge_at).isoformat() if knowledge_at is not None else None

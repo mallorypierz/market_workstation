@@ -365,3 +365,6 @@ Repository confirmed for submission: https://github.com/mallorypierz/market_work
 Publication update: code snapshot [370948b7366ba13d0023fe222f1c631dbc6d2e37](https://github.com/mallorypierz/market_workstation/commit/370948b7366ba13d0023fe222f1c631dbc6d2e37) was pushed to the confirmed public repository, preserving its existing history. Report links use this code version; video and verified live-volume evidence are still outstanding. Historical “no Git” or “CI not pushed” notes describe earlier states.
 
 November16 publication verification: [GitHub Actions run43795770082](https://github.com/mallorypierz/market_workstation/actions/runs/43795770082) completed successfully, including fresh dependency installation and two offline SmokeTest runs for code snapshot370948b. Repository/commit and reproducibility checks are now complete. The required video and numeric live-volume verification remain open; report.md is still a submission draft.
+
+
+Yahoo AAPL volume now uses observed differences of day_volume, labeled **estimated**. Missing baselines, resets and ambiguous updates remain Unknown. See [volume investigation](docs/feed-investigation.md) for the recorded 52,920-share comparison and limitations.

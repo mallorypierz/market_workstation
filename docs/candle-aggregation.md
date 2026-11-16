@@ -22,7 +22,7 @@ Malformed prices/missing source times are excluded with IDs reported in skipped_
 
 ## Cumulative volume
 
-Cumulative semantics must be explicitly supplied with cumulative_volume_field (e.g. day_volume for these constructed tests). The default leaves volume unknown because live Yahoo volume semantics have not yet been verified. Accept nonnegative integer totals, including integer strings; missing, invalid or fractional totals are unknown.
+Yahoo/AAPL now defaults to day_volume counter differencing, labeled observed_delta_estimate. Other sources still require explicit cumulative_volume_field. This is an interpretation of the daily equity counter, not a claim of exact exchange minute volume. Accept nonnegative integer totals, including integer strings; missing, invalid or fractional totals are unknown.
 
 For each source-ordered observation, subtract the immediately previous valid cumulative total from its total. Assign that increment to the later observation's minute. Sum increments only when every increment within that minute can be determined. Never sum cumulative totals themselves. This is an observed-delta estimate: sparse snapshots can straddle a minute boundary and omit trades after the final sample. Even ended candles are not certified full exchange-minute volume.
 

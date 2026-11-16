@@ -349,6 +349,7 @@ onBeforeUnmount(() => {
     </dl>
     <p v-if="feed.latest" class="hint">{{ mode === 'replay' ? 'Replaying source time' : 'Latest source' }}: {{ feed.latest.source_time || 'unknown' }} · Receipt: {{ feed.latest.receipt_time }} · Price: {{ feed.latest.price }} · Observation #{{ feed.latest.observation_id }} / receipt #{{ feed.latest.receipt_id }}</p>
     <button v-if="source === 'yahoo' && mode !== 'replay'" :disabled="controlling" @click="controlFeed">{{ feed.enabled ? 'Disconnect Yahoo feed' : 'Connect Yahoo feed' }}</button>
+    <p v-if="source === 'yahoo'">Volume is estimated from changes in Yahoo daily cumulative shares. Missing baselines, resets or ambiguous updates remain Unknown; estimates are not exact exchange minute totals.</p>
     <p role="status" :class="{ error: failed }">{{ status }}</p>
     <div ref="container" class="chart" aria-label="Backend candlesticks above aligned trading volume bars"></div>
     <div v-if="rows.length" class="inspection">
@@ -364,7 +365,7 @@ onBeforeUnmount(() => {
         <div><dt>Short SMA</dt><dd>{{ displaySma(selectedSma?.short) }}</dd></div>
         <div><dt>Long SMA</dt><dd>{{ displaySma(selectedSma?.long) }}</dd></div>
         <div><dt>Crossover</dt><dd>{{ selectedSma?.signal || 'None' }}</dd></div>
-        <div><dt>Volume</dt><dd>{{ selected.volume == null ? 'Unknown' : `${selected.volume} shares` }}</dd></div>
+        <div><dt>Volume</dt><dd>{{ selected.volume == null ? 'Unknown' : `${selected.volume} shares${selectedStatus?.underlying_volume_quality?.includes('observed_delta_estimate') ? ' (estimated)' : ''}` }}</dd></div>
         <div><dt>Candle state</dt><dd>{{ selectedStatus?.ended ? 'Ended' : 'Still forming' }}{{ selectedStatus?.coverage_complete ? '' : ' · partial coverage' }}</dd></div>
       </dl>
     </div>

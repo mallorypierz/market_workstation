@@ -837,3 +837,20 @@ GitHub Actions run https://github.com/mallorypierz/market_workstation/actions/ru
 ## Publication follow-through — 2026-11-16
 
 Confirmed GitHub Actions run43795770082 concluded success for370948b7366ba13d0023fe222f1c631dbc6d2e37: checkout, Python/Node setup, fresh dependency installation, both offline SmokeTest runs and artifact upload all passed. This closes the remote CI/fresh-runner verification gap; it does not establish live volume or provide the missing video. Updated report/checklist/README and handoff to record the actual outcome. Documentation-only follow-up is authorized by the student's commit/push request; code remains the previously tested snapshot.
+
+
+## 2026-11-16 — Yahoo volume estimate fix
+
+- Existing environment/dependencies reused; no installations or manifest changes.
+- `python3 -m unittest discover -s backend -q`: expected all pass; observed **90 passed**. New default-Yahoo test verifies 11-share delta, ignores last_size=999, duplicate does not add volume, and receipt cutoff cannot borrow a future baseline. Existing reset, revision and late-arrival tests pass.
+- `npm --prefix frontend run build`: expected build; observed pass,31modules.
+- Browser check: `python3 /private/tmp/check-volume.py` launched isolated FastAPI8022/Vue5182 and real Chromium against `/private/tmp/volume-check.sqlite3`, a SQLite backup of the actual capture. Yahoo disabled. Expected/observed November12 14:31 close356.24 and **52920 shares (estimated)**; browser connected to FastAPI while Yahoo disconnected. [Screenshot](evidence/volume-estimate.png). Processes/browser closed in finally; source database unchanged. This is stored actual Yahoo data, not a fresh live-stream receipt.
+- Hand comparison: 2011028−1958108=52920;14:30 remains unknown. Exact exchange minute totals and fresh live numeric-volume evidence remain unverified. See feed-investigation.md for source citations and limits.
+
+
+## Submission preparation — November 16, 2026
+
+- `python3 docs/smoke_test.py`: PASS, run20261116T232511-2688, real Chromium/isolated FastAPI/Vue/SQLite with offline market/provider boundaries. Cash1025, shares0, fills3, realized25, unrealized0. Owned processes stopped. [Result](evidence/submission-smoke.json).
+- `SSL_CERT_FILE="$(python3 -c 'import certifi; print(certifi.where())')" python3 -m backend.feed_probe --symbol AAPL --seconds 30`: exit2. Socket opened23:25:29UTC; subscribed; timeout23:25:59UTC with no observation. Fresh receipt remains unverified. [Probe output](evidence/submission-feed-probe.jsonl).
+- `python3 /private/tmp/record-submission.py`: real browser recording of isolated app using disposable backup of actual Yahoo capture, feed disabled. Selected Replay, played original receipt order, inspected14:31UTC and asserted52920shares(estimated). Browser/services closed. No simulated market events inserted. [Video](evidence/part-4.1-demo.webm). Chromium HTMLVideoElement metadata confirms46.44seconds,1280×1100. Video labels captured session and estimation; it is not a current live stream.
+- Earlier live source→SQLite→WebSocket→chart and disconnect evidence remains linked in report.md. No assertion of a new live capture or exact exchange-minute volume is made.

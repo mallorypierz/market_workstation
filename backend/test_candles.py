@@ -103,6 +103,20 @@ class CandleTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.result("2026-11-09T15:01:00")
 
+    def test_yahoo_default_counter_estimate_and_duplicate(self):
+        for time, price, total in SAMPLES:
+            stamp = datetime.fromisoformat("2026-11-09T" + time + "+00:00")
+            payload = {"id": "AAPL", "time": str(int(stamp.timestamp()*1000)),
+                       "price": price, "day_volume": str(total), "last_size": "999"}
+            record(self.db, payload, "2026-11-09T15:01:05Z")
+        record(self.db, payload, "2026-11-09T15:01:06Z")
+        view = aggregate(self.db, "AAPL", as_of="2026-11-09T15:01:10Z")
+        self.assertEqual(self.candle(view), EXPECTED)
+        self.assertEqual(view["status"][MINUTE]["volume_status"], "observed_delta_estimate")
+        self.assertIsNone(view["candles"][0]["volume"])
+        self.assertIsNone(aggregate(self.db, "AAPL", as_of="2026-11-09T15:01:10Z",
+                                   receipt_cutoff=1)["candles"][0]["volume"])
+
     def test_session_boundary_and_long_gap(self):
         self.add("14:57:59", 99, 1000)
         self.add("15:00:05", 100, 1004)

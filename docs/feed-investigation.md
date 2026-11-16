@@ -51,3 +51,12 @@ Installed client source and descriptor were also inspected; the links above trac
 ## Later live-dashboard observation (2026-11-12 regular session)
 
 The integrated receiver subsequently stored actual observation #197 / receipt #199: AAPL price 356.24, source 2026-11-12T14:31:03Z, receipt 14:31:10.259674Z. Unlike the earlier bounded probe, this payload included day_volume="2011028" and last_size="80". Both raw values are preserved in [live trace evidence](evidence/live-yahoo-candle-trace.json). Their presence does not establish per-minute volume; Yahoo aggregation still returns null and the chart displays Unknown. Source arrival order was not identical to source-time order; the candle calculation retains source ordering. See verification.md for the actual database-to-chart comparison and upstream-disconnection behavior.
+
+
+## Volume estimate enabled — 2026-11-16
+
+Yahoo/AAPL now uses `day_volume` as a daily cumulative equity-share counter by default in the shared aggregation function, including history, WebSocket views and replay. This is an explicitly labeled estimate, not verified exact minute volume. The [official protobuf schema](https://github.com/ranaroussi/yfinance/blob/main/yfinance/pricing.proto) defines separate day_volume and last_size integer fields; it does not promise complete trades, a boundary sample, or exact per-minute volume. The [client](https://github.com/ranaroussi/yfinance/blob/main/yfinance/live.py) decodes these fields without converting them to minute volume. Counter semantics are an interpretation supported by the recorded increasing totals, not a documented provider guarantee.
+
+Actual saved AAPL observations: 14:30:56Z day_volume=1958108; 14:31:03Z day_volume=2011028 on November12. Difference=52920 shares, assigned to the later sample's 14:31 minute. This spans seven seconds across a boundary, so cannot establish exact minute volume. No last_size summation, zero baseline, or future sample is substituted. The first captured regular minute remains Unknown (missing baseline and ambiguous equal-time messages). Resets, gaps, missing totals and ambiguous times remain unknown; duplicate deliveries reuse one observation, and identified revisions recompute from retained evidence. Ending a minute does not certify volume completeness.
+
+The dashboard labels numeric estimates and explains unknowns. Historical evidence showing Unknown describes the old code accurately; this new recorded-data check supersedes its implementation limitation, not its original observation. A new live end-to-end capture remains pending.

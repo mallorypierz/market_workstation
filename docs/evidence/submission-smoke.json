@@ -1,0 +1,13 @@
+{
+  "run": "20261116T232511-2688",
+  "status": "passed",
+  "provider": "controlled offline",
+  "market_data": "constructed",
+  "cash": 1025,
+  "shares": 0,
+  "fills": 3,
+  "realized": 25,
+  "unrealized": 0,
+  "provider_calls": 23,
+  "owned_processes_stopped": true
+}

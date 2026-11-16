@@ -1,0 +1,5 @@
+{"event": "start", "ticker": "AAPL", "receipt_time": "2026-11-16T23:25:29.677146Z", "timeout_seconds": 30, "python": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3", "yfinance": "1.8.0", "websockets": "17.4"}
+{"event": "socket_open", "receipt_time": "2026-11-16T23:25:29.950114Z"}
+{"event": "subscription_sent", "ticker": "AAPL", "receipt_time": "2026-11-16T23:25:29.950251Z"}
+{"event": "timeout", "receipt_time": "2026-11-16T23:25:59.678182Z"}
+{"event": "result", "socket_opened": true, "observation_received": false, "persisted": false, "receipt_verification": "unverified", "freshness": "inspect source time; socket connectivity is not freshness"}
