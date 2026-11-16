@@ -1,0 +1,24 @@
+{
+  "run": "20261116T030230-97781",
+  "status": "passed",
+  "provider": "controlled offline",
+  "market_data": "constructed",
+  "cash": 1025,
+  "shares": 0,
+  "fills": 3,
+  "realized": 25,
+  "unrealized": 0,
+  "provider_calls": 23,
+  "owned_processes_stopped": true,
+  "code_commit": "370948b7366ba13d0023fe222f1c631dbc6d2e37",
+  "clean_tracked_checkout": true,
+  "dependency_note": "Reused installed Python environment and temporary npm node_modules symlink; no fresh local dependency installation. Symlink removed after checks.",
+  "focused_tests": 32,
+  "build": "passed",
+  "github_actions": {
+    "url": "https://github.com/mallorypierz/market_workstation/actions/runs/43795770082",
+    "conclusion": "success",
+    "fresh_dependency_installation": "passed",
+    "offline_smoke_runs": 2
+  }
+}

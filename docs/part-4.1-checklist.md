@@ -14,17 +14,17 @@
 | Unavailable feed | failure/status UI and bounded reconnect; no stale data presented as fresh | disconnect screenshot and transport tests | Manual upstream disconnect verified; tests cover errors |
 | README/AGENTS/data flow/schema/startup/init | Existing maintained documents | build and relevant tests pass | Present; clean checkout still pending |
 | Report | report.md draft | honest feature/evidence summary | **Needs final links and commit** |
-| GitHub URL + submitted commit | No local .git or remote | git status reports not a repository | **Missing** |
+| GitHub URL + submitted commit | Public mallorypierz/market_workstation; code snapshot370948b7366ba13d0023fe222f1c631dbc6d2e37 | Pushed main preserving old history; report links pinned | Published |
 | One30–60second video with access | storyboard below | No video link supplied | **Missing** |
 | AI-use disclosure and curated evidence | AI-USE.md, part-4.1-evidence.md | grounded in observed session records | Student review of model/editor history needed |
-| Instructor access / clean checkout | Verify after publication | Cannot establish access or checkout without repository/version | **Pending** |
+| Instructor access / clean checkout | Repository public; video missing | Clean tracked checkout tests/build pass using existing installed dependencies; full browser SmokeTest passed | Fresh-runner CI passed; video access still pending |
 
 ## Before finalizing
 
 1. Resolve live-volume semantics and capture corresponding bars, or explicitly submit the limitation without claiming full compliance. Never substitute CSV/test volume for Yahoo volume.
 2. Review AI-USE.md and the report for personal accuracy; add any other tools/models actually used.
 3. Review the file set, initialize/connect the intended repository if authorized, commit/push the reviewed version, and record its actual SHA. Keep runtime DBs/keys/test caches ignored. Preserve the supplied starter collection locally.
-4. Verify initialization/startup/tests from a clean checkout of that SHA. Confirm the instructor can open the repository.
+4. Local clean tracked checkout tests/build/browser passed using existing installed dependencies. Fresh-runner CI passed both SmokeTest runs; confirm instructor access to the eventual video.
 5. Provide one30–60second accessible video; confirm duration/access. Update report.md with its link.
 6. Replace draft-relative report links with full repository URLs pinned to the submitted commit so links work when report.md is viewed from Canvas. Remove draft warnings only after outstanding items are resolved or explicitly disclosed. Upload only report.md.
 
