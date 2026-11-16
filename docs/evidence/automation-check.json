@@ -1,0 +1,45 @@
+{
+  "label": "CONSTRUCTED data and controlled provider; browser operated by agent",
+  "database": "/var/folders/3g/dkkb0s4s7ps9dx9cc7l51k600000gn/T/automation-smoke-001ey9ji/fixture.sqlite3",
+  "decision_id": "38c2a0ec-d3e0-40f4-9783-ed2a98a6fb3b",
+  "snapshot_id": "a97e3236-4042-440d-bbb5-37510bd8f063",
+  "png_sha256": "9d26f61b4e4b9aa645106bdc8480aad34cc4bf3967347e8b23f53c0bb8f834c2",
+  "png_dimensions": [
+    2000,
+    1120
+  ],
+  "provider_png_matches_saved": true,
+  "jobs": [
+    {
+      "id": "f431a53e-8140-4934-8820-264296cef60d",
+      "control_id": "7838e38a-a7a2-419f-94a0-833d3d43e8fb",
+      "generation": 1,
+      "account_id": "automation-test",
+      "strategy": "sma-cross-v1:2:3",
+      "symbol": "AAPL",
+      "interval": "1m",
+      "candle": "2026-11-09T14:34:00Z",
+      "snapshot_id": "a97e3236-4042-440d-bbb5-37510bd8f063",
+      "decision_id": "38c2a0ec-d3e0-40f4-9783-ed2a98a6fb3b",
+      "status": "filled",
+      "reason": null,
+      "order_id": 1,
+      "fill_id": 1,
+      "created_at": "2026-11-09T14:35:01Z",
+      "expires_at": "2026-11-09T14:37:00+00:00",
+      "result_json": "{\"cash_cents\": 98000, \"shares\": 1, \"fill_id\": 1, \"decision_id\": \"38c2a0ec-d3e0-40f4-9783-ed2a98a6fb3b\", \"reason\": null}"
+    }
+  ],
+  "cash_cents": 98000,
+  "shares": 1,
+  "fill_count_after_retry": 1,
+  "pnl_decision_id": "38c2a0ec-d3e0-40f4-9783-ed2a98a6fb3b",
+  "control_enabled": 0,
+  "separate_veto_fixture": {
+    "status": "skipped",
+    "reason": "Review veto or failed Python validation",
+    "cash_cents": 100000,
+    "shares": 0,
+    "fills": 0
+  }
+}

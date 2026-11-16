@@ -1,20 +1,19 @@
 {
-  "name": "frontend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "market-workstation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "vue": "^3.5.45"
+    "lightweight-charts": "5.3.0",
+    "vue": "3.5.45"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.10",
-    "vite": "^8.3.6"
+    "@playwright/test": "1.65.1",
+    "@vitejs/plugin-vue": "6.0.10",
+    "vite": "8.3.6"
   }
 }

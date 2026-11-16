@@ -1,0 +1,59 @@
+{
+  "database": "/private/tmp/market-decisions-live-check.sqlite3",
+  "snapshot_id": "927ee92d-817b-455c-a56e-1adcb5c6f950",
+  "snapshot_sha256": "3710bf6c7db6e491ea26244590334925b077abee90332f59ca9b40d2181d8144",
+  "market_data": "CONSTRUCTED / LABELED test observations; not live market evidence",
+  "facts": {
+    "candle": {
+      "timestamp": "2026-11-09T14:34:00Z",
+      "open": 19,
+      "high": 19,
+      "low": 19,
+      "close": 19,
+      "volume": null
+    },
+    "indicators": {
+      "short_window": 2,
+      "long_window": 3,
+      "at_candle": {
+        "timestamp": "2026-11-09T14:34:00Z",
+        "short": 16.0,
+        "long": 13.0,
+        "signal": "up"
+      }
+    },
+    "account": {
+      "account_id": "live",
+      "mode": "live",
+      "cash_cents": 100000,
+      "cash": 1000.0,
+      "shares": 0,
+      "fills": [],
+      "currency": "USD"
+    }
+  },
+  "result": {
+    "decision_id": "ca244875-ff0f-463a-8c0a-1743fdb24d9c",
+    "snapshot_id": "927ee92d-817b-455c-a56e-1adcb5c6f950",
+    "provider": "openai",
+    "model": "gpt-6-luna",
+    "model_call": "live_provider",
+    "status": "valid",
+    "proposal": {
+      "action": "buy",
+      "quantity": 1
+    },
+    "validation": {
+      "valid": true,
+      "reason": null
+    },
+    "explanation": "Recorded AAPL 1m close at 2026-11-09T14:35:00Z: price 19; SMA(2) 16.0, SMA(3) 13.0; crossover up. Simulated cash $1000.00; shares 0. These are backend facts, not model reasoning.",
+    "explanation_source": "backend recorded facts",
+    "order_eligible": false,
+    "order_created": false,
+    "market_data": "CONSTRUCTED / LABELED test observations; not live market evidence"
+  },
+  "controlled_failure": null,
+  "sqlite_matches_response": true,
+  "paper_ledger_unchanged": true
+}

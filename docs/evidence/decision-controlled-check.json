@@ -1,0 +1,76 @@
+{
+  "database": "/var/folders/3g/dkkb0s4s7ps9dx9cc7l51k600000gn/T/decision-check-bpyip094/fixture.sqlite3",
+  "snapshot_id": "48284b1d-b621-40e6-9033-f3eb1f877ffa",
+  "snapshot_sha256": "d59091ce77eb4b25801c593e32adfad35896a25afe2ba01de4ed51f36c9e2da1",
+  "market_data": "CONSTRUCTED / LABELED test observations; not live market evidence",
+  "facts": {
+    "candle": {
+      "timestamp": "2026-11-09T14:34:00Z",
+      "open": 19,
+      "high": 19,
+      "low": 19,
+      "close": 19,
+      "volume": null
+    },
+    "indicators": {
+      "short_window": 2,
+      "long_window": 3,
+      "at_candle": {
+        "timestamp": "2026-11-09T14:34:00Z",
+        "short": 16.0,
+        "long": 13.0,
+        "signal": "up"
+      }
+    },
+    "account": {
+      "account_id": "live",
+      "mode": "live",
+      "cash_cents": 100000,
+      "cash": 1000.0,
+      "shares": 0,
+      "fills": [],
+      "currency": "USD"
+    }
+  },
+  "result": {
+    "decision_id": "91d12320-d164-4ecd-aafb-734365748c66",
+    "snapshot_id": "48284b1d-b621-40e6-9033-f3eb1f877ffa",
+    "provider": "controlled-test",
+    "model": "gpt-6-luna",
+    "model_call": "controlled_test",
+    "status": "valid",
+    "proposal": {
+      "action": "wait",
+      "quantity": null
+    },
+    "validation": {
+      "valid": true,
+      "reason": null
+    },
+    "explanation": "Recorded AAPL 1m close at 2026-11-09T14:35:00Z: price 19; SMA(2) 16.0, SMA(3) 13.0; crossover up. Simulated cash $1000.00; shares 0. These are backend facts, not model reasoning.",
+    "explanation_source": "backend recorded facts",
+    "order_eligible": false,
+    "order_created": false,
+    "market_data": "CONSTRUCTED / LABELED test observations; not live market evidence"
+  },
+  "controlled_failure": {
+    "decision_id": "54002e56-afd9-4993-bff3-765646107eba",
+    "snapshot_id": "48284b1d-b621-40e6-9033-f3eb1f877ffa",
+    "provider": "controlled-test",
+    "model": "gpt-6-luna",
+    "model_call": "controlled_test",
+    "status": "timeout",
+    "proposal": null,
+    "validation": {
+      "valid": false,
+      "reason": "timeout"
+    },
+    "explanation": "Recorded AAPL 1m close at 2026-11-09T14:35:00Z: price 19; SMA(2) 16.0, SMA(3) 13.0; crossover up. Simulated cash $1000.00; shares 0. These are backend facts, not model reasoning.",
+    "explanation_source": "backend recorded facts",
+    "order_eligible": false,
+    "order_created": false,
+    "market_data": "CONSTRUCTED / LABELED test observations; not live market evidence"
+  },
+  "sqlite_matches_response": true,
+  "paper_ledger_unchanged": true
+}

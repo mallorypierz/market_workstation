@@ -1,0 +1,225 @@
+{
+  "source_database": "/var/folders/3g/dkkb0s4s7ps9dx9cc7l51k600000gn/T/chart-smoke-2nzwpgus/fixture.sqlite3",
+  "mock_result": {
+    "answers": {
+      "action": "buy",
+      "crossover": "up",
+      "evidence": "sufficient"
+    },
+    "chart_range": {
+      "from": "2026-11-09T14:31:00Z",
+      "to": "2026-11-09T14:34:00Z"
+    },
+    "cutoff": "2026-11-09T14:35:00Z",
+    "decision_id": "09b618fa-077c-46d3-9242-8efaa75c443a",
+    "explanation": "Python recorded crossover up at 2026-11-09T14:35:00Z; model image answer up. Frozen cash $1000.00, shares 0. No order submitted.",
+    "explanation_source": "backend recorded facts",
+    "image": {
+      "height": 1120,
+      "sha256": "84bf83823b9b8d024fcd140fac69c78b67da56a044228f83a6b79b3fe9517113",
+      "url": "/api/decisions/09b618fa-077c-46d3-9242-8efaa75c443a/image",
+      "width": 2000
+    },
+    "market_data": "CONSTRUCTED / LABELED test observations; not live market evidence",
+    "model": "gpt-6-luna",
+    "model_call": "controlled_test",
+    "order_created": false,
+    "order_eligible": false,
+    "proposal": {
+      "action": "buy",
+      "quantity": 1
+    },
+    "provider": "controlled-test",
+    "python_crossover": "up",
+    "questions": [
+      {
+        "choices": [
+          {
+            "description": "Add order_size shares.",
+            "value": "buy"
+          },
+          {
+            "description": "Reduce holdings by order_size shares.",
+            "value": "sell"
+          },
+          {
+            "description": "Keep an open position.",
+            "value": "hold"
+          },
+          {
+            "description": "Stay flat.",
+            "value": "wait"
+          },
+          {
+            "description": "Exit the entire position.",
+            "value": "close"
+          }
+        ],
+        "instructions": "Which action fits this paper position and the strategy rules? Use frozen account facts and configured order_size. A bullish SMA crossover supports buy if affordable; a bearish crossover supports reducing/exiting. Hold requires shares; wait requires no shares. Propose only, never execute.",
+        "name": "action",
+        "type": "choice"
+      },
+      {
+        "choices": [
+          {
+            "value": "up"
+          },
+          {
+            "value": "down"
+          },
+          {
+            "value": "none"
+          },
+          {
+            "value": "unreadable"
+          }
+        ],
+        "instructions": "At the selected candle cutoff, is an upward crossover, downward crossover, or no crossover visible in the PNG? Judge the image, not the supplied Python signal. If the lines/cutoff cannot be read, answer unreadable. Equal averages retain the last known side; only a change of side confirms a crossover.",
+        "name": "crossover",
+        "type": "choice"
+      },
+      {
+        "choices": [
+          {
+            "value": "sufficient"
+          },
+          {
+            "value": "insufficient"
+          },
+          {
+            "value": "unreadable"
+          }
+        ],
+        "instructions": "Is the visible chart sufficient to assess the signal at the cutoff? Require identifiable cutoff, both SMA lines and enough preceding context to establish a change of side. The first comparable pair alone is not a crossover.",
+        "name": "evidence",
+        "type": "choice"
+      }
+    ],
+    "snapshot_id": "80098276-d8be-4cae-b373-bb3efe08b3cf",
+    "status": "valid",
+    "validation": {
+      "action_reason": null,
+      "evidence_sufficient": true,
+      "recapture_required": false,
+      "valid": true,
+      "visual_matches_python": true
+    }
+  },
+  "png_sha256": "84bf83823b9b8d024fcd140fac69c78b67da56a044228f83a6b79b3fe9517113",
+  "decoded_dimensions": [
+    2000,
+    1120
+  ],
+  "provider_png_equals_saved": true,
+  "provider_snapshot_equals_saved": true,
+  "order_count": 0,
+  "browser_observation": "Student-operated UI; automated browser blocked by approval usage limit.",
+  "live_result": {
+    "decision_id": "1cfc0167-c977-4ec3-b0c8-8c6cf11d6f7a",
+    "snapshot_id": "80098276-d8be-4cae-b373-bb3efe08b3cf",
+    "provider": "openai",
+    "model": "gpt-6-luna",
+    "model_call": "live_provider",
+    "market_data": "CONSTRUCTED / LABELED test observations; not live market evidence",
+    "status": "valid",
+    "questions": [
+      {
+        "name": "action",
+        "type": "choice",
+        "instructions": "Which action fits this paper position and the strategy rules? Use frozen account facts and configured order_size. A bullish SMA crossover supports buy if affordable; a bearish crossover supports reducing/exiting. Hold requires shares; wait requires no shares. Propose only, never execute.",
+        "choices": [
+          {
+            "value": "buy",
+            "description": "Add order_size shares."
+          },
+          {
+            "value": "sell",
+            "description": "Reduce holdings by order_size shares."
+          },
+          {
+            "value": "hold",
+            "description": "Keep an open position."
+          },
+          {
+            "value": "wait",
+            "description": "Stay flat."
+          },
+          {
+            "value": "close",
+            "description": "Exit the entire position."
+          }
+        ]
+      },
+      {
+        "name": "crossover",
+        "type": "choice",
+        "instructions": "At the selected candle cutoff, is an upward crossover, downward crossover, or no crossover visible in the PNG? Judge the image, not the supplied Python signal. If the lines/cutoff cannot be read, answer unreadable. Equal averages retain the last known side; only a change of side confirms a crossover.",
+        "choices": [
+          {
+            "value": "up"
+          },
+          {
+            "value": "down"
+          },
+          {
+            "value": "none"
+          },
+          {
+            "value": "unreadable"
+          }
+        ]
+      },
+      {
+        "name": "evidence",
+        "type": "choice",
+        "instructions": "Is the visible chart sufficient to assess the signal at the cutoff? Require identifiable cutoff, both SMA lines and enough preceding context to establish a change of side. The first comparable pair alone is not a crossover.",
+        "choices": [
+          {
+            "value": "sufficient"
+          },
+          {
+            "value": "insufficient"
+          },
+          {
+            "value": "unreadable"
+          }
+        ]
+      }
+    ],
+    "answers": {
+      "action": "buy",
+      "crossover": "up",
+      "evidence": "sufficient"
+    },
+    "proposal": {
+      "action": "buy",
+      "quantity": 1
+    },
+    "validation": {
+      "valid": true,
+      "action_reason": null,
+      "visual_matches_python": true,
+      "evidence_sufficient": true,
+      "recapture_required": false
+    },
+    "order_eligible": false,
+    "order_created": false,
+    "explanation_source": "backend recorded facts",
+    "explanation": "Python recorded crossover up at 2026-11-09T14:35:00Z; model image answer up. Frozen cash $1000.00, shares 0. No order submitted.",
+    "image": {
+      "url": "/api/decisions/1cfc0167-c977-4ec3-b0c8-8c6cf11d6f7a/image",
+      "sha256": "84bf83823b9b8d024fcd140fac69c78b67da56a044228f83a6b79b3fe9517113",
+      "width": 2000,
+      "height": 1120
+    },
+    "cutoff": "2026-11-09T14:35:00Z",
+    "chart_range": {
+      "from": "2026-11-09T14:31:00Z",
+      "to": "2026-11-09T14:34:00Z"
+    },
+    "python_crossover": "up"
+  },
+  "live_database": "/private/tmp/market-decisions-live-check.sqlite3",
+  "live_sqlite_matches_response": true,
+  "live_paper_ledger_unchanged": true
+}

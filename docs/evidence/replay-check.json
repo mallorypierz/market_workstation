@@ -1,0 +1,122 @@
+{
+  "selection": {
+    "symbol": "AAPL",
+    "start": "2026-11-12T14:22:20.887545Z",
+    "end": "2026-11-12T14:31:10.259675Z"
+  },
+  "expected_from_sqlite": {
+    "timestamp": "2026-11-12T14:31:00Z",
+    "close": 356.24,
+    "volume": null,
+    "volume_reason": "No verified live cumulative-volume semantics; no per-minute volume field; unknown is not zero"
+  },
+  "observation_count_before": 197,
+  "delivery_count_before": 199,
+  "database_sha256_before": "c4d70ae8a625d06226d4171f7eea120e04b9b95c0b98ee45ba5366cff8806b3f",
+  "after_first_run": {
+    "observations": 197,
+    "deliveries": 199,
+    "sha256": "c4d70ae8a625d06226d4171f7eea120e04b9b95c0b98ee45ba5366cff8806b3f",
+    "browser_close": 356.24,
+    "browser_volume": "Unknown"
+  },
+  "after_second_run": {
+    "observations": 197,
+    "deliveries": 199,
+    "sha256": "c4d70ae8a625d06226d4171f7eea120e04b9b95c0b98ee45ba5366cff8806b3f",
+    "browser_close": 356.24,
+    "browser_volume": "Unknown"
+  },
+  "final_api_view": {
+    "type": "replay",
+    "symbol": "AAPL",
+    "timeframe": "1m",
+    "source": "replay:yahoo",
+    "as_of": "2026-11-12T14:31:10.259674Z",
+    "candles": [
+      {
+        "timestamp": "2026-11-12T14:30:00Z",
+        "open": 357.9,
+        "high": 358.84,
+        "low": 356.5,
+        "close": 356.5,
+        "volume": null
+      },
+      {
+        "timestamp": "2026-11-12T14:31:00Z",
+        "open": 356.24,
+        "high": 356.24,
+        "low": 356.24,
+        "close": 356.24,
+        "volume": null
+      }
+    ],
+    "status": {
+      "2026-11-12T14:30:00Z": {
+        "session_open": "2026-11-12T14:30:00Z",
+        "interval_end": "2026-11-12T14:31:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 1,
+        "coverage_complete": true,
+        "ended": true,
+        "complete": true,
+        "volume_known_for_present_minutes": false,
+        "volume_status": "unknown",
+        "underlying_volume_quality": [
+          "unknown"
+        ]
+      },
+      "2026-11-12T14:31:00Z": {
+        "session_open": "2026-11-12T14:30:00Z",
+        "interval_end": "2026-11-12T14:32:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 1,
+        "coverage_complete": true,
+        "ended": false,
+        "complete": false,
+        "volume_known_for_present_minutes": false,
+        "volume_status": "unknown",
+        "underlying_volume_quality": [
+          "unknown"
+        ]
+      }
+    },
+    "excluded_outside_session": [
+      "2026-11-12T14:22:00Z",
+      "2026-11-12T14:23:00Z",
+      "2026-11-12T14:24:00Z",
+      "2026-11-12T14:25:00Z",
+      "2026-11-12T14:26:00Z",
+      "2026-11-12T14:27:00Z",
+      "2026-11-12T14:28:00Z",
+      "2026-11-12T14:29:00Z"
+    ],
+    "replay": {
+      "step": 199,
+      "total": 199,
+      "finished": true,
+      "empty": false,
+      "snapshot_cutoff": 199,
+      "start": "2026-11-12T14:22:20.887545Z",
+      "end": "2026-11-12T14:31:10.259675Z"
+    },
+    "feed": {
+      "status": "replay",
+      "upstream_connected": false,
+      "enabled": false,
+      "source_age_seconds": null,
+      "latest": {
+        "observation_id": 197,
+        "receipt_id": 199,
+        "source_time": "2026-11-12T14:31:03Z",
+        "receipt_time": "2026-11-12T14:31:10.259674Z",
+        "price": 356.24
+      },
+      "market_session": "recorded session"
+    }
+  },
+  "identical_api_results": true,
+  "health": {
+    "status": "ok"
+  }
+}

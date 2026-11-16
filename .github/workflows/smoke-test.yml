@@ -1,0 +1,38 @@
+name: Offline workstation SmokeTest
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install declared dependencies
+        run: |
+          python -m pip install -r backend/requirements.txt
+          npm ci --prefix frontend
+          frontend/node_modules/.bin/playwright install --with-deps chromium
+      - name: Run offline SmokeTest twice with fresh accounts
+        env:
+          CI: 'true'
+        run: |
+          python3 docs/smoke_test.py
+          python3 docs/smoke_test.py
+      - uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: smoke-evidence
+          path: test-results/smoke/
+          retention-days: 14

@@ -1,0 +1,232 @@
+{
+  "label": "CONSTRUCTED sample/test minute inputs; not live data",
+  "sample_5m": {
+    "candles": [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "open": 100.0,
+        "high": 105.0,
+        "low": 99.0,
+        "close": 104.0,
+        "volume": 3550
+      }
+    ],
+    "status": {
+      "2026-11-09T14:30:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T14:35:00Z",
+        "present_minutes": 3,
+        "expected_minutes": 5,
+        "coverage_complete": false,
+        "ended": true,
+        "complete": false,
+        "volume_known_for_present_minutes": true,
+        "volume_status": "partial_coverage_sum",
+        "underlying_volume_quality": [
+          "provided_minute_volume"
+        ]
+      }
+    },
+    "excluded_outside_session": []
+  },
+  "sample_1d": {
+    "candles": [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "open": 100.0,
+        "high": 105.0,
+        "low": 99.0,
+        "close": 104.0,
+        "volume": 3550
+      }
+    ],
+    "status": {
+      "2026-11-09T14:30:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T21:00:00Z",
+        "present_minutes": 3,
+        "expected_minutes": 390,
+        "coverage_complete": false,
+        "ended": true,
+        "complete": false,
+        "volume_known_for_present_minutes": true,
+        "volume_status": "partial_coverage_sum",
+        "underlying_volume_quality": [
+          "provided_minute_volume"
+        ]
+      }
+    },
+    "excluded_outside_session": []
+  },
+  "added_minutes": [
+    {
+      "timestamp": "2026-11-09T14:35:00Z",
+      "open": 106,
+      "high": 106,
+      "low": 106,
+      "close": 106,
+      "volume": 100
+    },
+    {
+      "timestamp": "2026-11-10T14:30:00Z",
+      "open": 106,
+      "high": 106,
+      "low": 106,
+      "close": 106,
+      "volume": 100
+    }
+  ],
+  "extended_5m": {
+    "candles": [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "open": 100.0,
+        "high": 105.0,
+        "low": 99.0,
+        "close": 104.0,
+        "volume": 3550
+      },
+      {
+        "timestamp": "2026-11-09T14:35:00Z",
+        "open": 106,
+        "high": 106,
+        "low": 106,
+        "close": 106,
+        "volume": 100
+      },
+      {
+        "timestamp": "2026-11-10T14:30:00Z",
+        "open": 106,
+        "high": 106,
+        "low": 106,
+        "close": 106,
+        "volume": 100
+      }
+    ],
+    "status": {
+      "2026-11-09T14:30:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T14:35:00Z",
+        "present_minutes": 3,
+        "expected_minutes": 5,
+        "coverage_complete": false,
+        "ended": true,
+        "complete": false,
+        "volume_known_for_present_minutes": true,
+        "volume_status": "partial_coverage_sum",
+        "underlying_volume_quality": [
+          "provided_minute_volume"
+        ]
+      },
+      "2026-11-09T14:35:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T14:40:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 5,
+        "coverage_complete": false,
+        "ended": true,
+        "complete": false,
+        "volume_known_for_present_minutes": true,
+        "volume_status": "partial_coverage_sum",
+        "underlying_volume_quality": [
+          "provided_minute_volume"
+        ]
+      },
+      "2026-11-10T14:30:00Z": {
+        "session_open": "2026-11-10T14:30:00Z",
+        "interval_end": "2026-11-10T14:35:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 5,
+        "coverage_complete": false,
+        "ended": true,
+        "complete": false,
+        "volume_known_for_present_minutes": true,
+        "volume_status": "partial_coverage_sum",
+        "underlying_volume_quality": [
+          "provided_minute_volume"
+        ]
+      }
+    },
+    "excluded_outside_session": []
+  },
+  "extended_daily": {
+    "candles": [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "open": 100.0,
+        "high": 106,
+        "low": 99.0,
+        "close": 106,
+        "volume": 3650
+      },
+      {
+        "timestamp": "2026-11-10T14:30:00Z",
+        "open": 106,
+        "high": 106,
+        "low": 106,
+        "close": 106,
+        "volume": 100
+      }
+    ],
+    "status": {
+      "2026-11-09T14:30:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T21:00:00Z",
+        "present_minutes": 4,
+        "expected_minutes": 390,
+        "coverage_complete": false,
+        "ended": true,
+        "complete": false,
+        "volume_known_for_present_minutes": true,
+        "volume_status": "partial_coverage_sum",
+        "underlying_volume_quality": [
+          "provided_minute_volume"
+        ]
+      },
+      "2026-11-10T14:30:00Z": {
+        "session_open": "2026-11-10T14:30:00Z",
+        "interval_end": "2026-11-10T21:00:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 390,
+        "coverage_complete": false,
+        "ended": true,
+        "complete": false,
+        "volume_known_for_present_minutes": true,
+        "volume_status": "partial_coverage_sum",
+        "underlying_volume_quality": [
+          "provided_minute_volume"
+        ]
+      }
+    },
+    "excluded_outside_session": []
+  },
+  "early_close": {
+    "candles": [
+      {
+        "timestamp": "2026-11-27T14:30:00Z",
+        "open": 106,
+        "high": 106,
+        "low": 106,
+        "close": 106,
+        "volume": 100
+      }
+    ],
+    "status": {
+      "2026-11-27T14:30:00Z": {
+        "session_open": "2026-11-27T14:30:00Z",
+        "interval_end": "2026-11-27T18:00:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 210,
+        "coverage_complete": false,
+        "ended": true,
+        "complete": false,
+        "volume_known_for_present_minutes": true,
+        "volume_status": "partial_coverage_sum",
+        "underlying_volume_quality": [
+          "provided_minute_volume"
+        ]
+      }
+    },
+    "excluded_outside_session": []
+  }
+}

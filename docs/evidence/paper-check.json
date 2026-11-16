@@ -1,0 +1,267 @@
+{
+  "label": "CONSTRUCTED PAPER ACCOUNT, NOT REAL TRADING",
+  "database": "/var/folders/3g/dkkb0s4s7ps9dx9cc7l51k600000gn/T/paper-fixture-_nf5pu3i/account.sqlite3",
+  "expected_steps": [
+    [
+      600,
+      4
+    ],
+    [
+      710,
+      3
+    ],
+    [
+      1025,
+      0
+    ]
+  ],
+  "before_restart": {
+    "id": "live",
+    "mode": "live",
+    "cash_cents": 102500,
+    "starting_cash_cents": 100000,
+    "created_at": "2026-11-15T23:05:29.523798Z",
+    "cursor": 3,
+    "replay_step": 0,
+    "spec_json": null,
+    "cash": 1025.0,
+    "positions": [
+      {
+        "symbol": "AAPL",
+        "quantity": 0
+      }
+    ],
+    "orders": [
+      {
+        "id": 1,
+        "account_id": "live",
+        "request_id": "361095a5-1f20-4201-b780-d8b6c360fbf7",
+        "symbol": "AAPL",
+        "action": "buy",
+        "side": "buy",
+        "quantity": 4,
+        "requested_quantity_json": "4",
+        "submitted_at": "2026-11-15T23:06:12.723954Z",
+        "after_receipt": 0,
+        "status": "filled",
+        "rejection_reason": null
+      },
+      {
+        "id": 2,
+        "account_id": "live",
+        "request_id": "4ad79bc5-954d-4eff-8530-ddba7dae759c",
+        "symbol": "AAPL",
+        "action": "sell",
+        "side": "sell",
+        "quantity": 1,
+        "requested_quantity_json": "1",
+        "submitted_at": "2026-11-15T23:06:27.968006Z",
+        "after_receipt": 1,
+        "status": "filled",
+        "rejection_reason": null
+      },
+      {
+        "id": 3,
+        "account_id": "live",
+        "request_id": "1870eab4-a1ab-4b5f-985f-01fdc683c34c",
+        "symbol": "AAPL",
+        "action": "close",
+        "side": "sell",
+        "quantity": 3,
+        "requested_quantity_json": "null",
+        "submitted_at": "2026-11-15T23:06:38.059158Z",
+        "after_receipt": 2,
+        "status": "filled",
+        "rejection_reason": null
+      },
+      {
+        "id": 4,
+        "account_id": "live",
+        "request_id": "531aa8a0-c328-455b-95ec-c75096a38fab",
+        "symbol": "AAPL",
+        "action": "sell",
+        "side": "sell",
+        "quantity": 1,
+        "requested_quantity_json": "1",
+        "submitted_at": "2026-11-15T23:06:47.175532Z",
+        "after_receipt": 3,
+        "status": "rejected",
+        "rejection_reason": "Insufficient shares"
+      }
+    ],
+    "fills": [
+      {
+        "id": 1,
+        "order_id": 1,
+        "observation_id": 1,
+        "receipt_id": 1,
+        "price_cents": 10000,
+        "quantity": 4,
+        "fee_cents": 0,
+        "executed_at": "2026-11-15T23:06:17.299257Z",
+        "processed_at": "2026-11-15T23:06:17.300345Z",
+        "symbol": "AAPL",
+        "side": "buy"
+      },
+      {
+        "id": 2,
+        "order_id": 2,
+        "observation_id": 2,
+        "receipt_id": 2,
+        "price_cents": 11000,
+        "quantity": 1,
+        "fee_cents": 0,
+        "executed_at": "2026-11-15T23:06:33.097114Z",
+        "processed_at": "2026-11-15T23:06:33.098424Z",
+        "symbol": "AAPL",
+        "side": "sell"
+      },
+      {
+        "id": 3,
+        "order_id": 3,
+        "observation_id": 3,
+        "receipt_id": 3,
+        "price_cents": 10500,
+        "quantity": 3,
+        "fee_cents": 0,
+        "executed_at": "2026-11-15T23:06:42.762295Z",
+        "processed_at": "2026-11-15T23:06:42.764020Z",
+        "symbol": "AAPL",
+        "side": "sell"
+      }
+    ]
+  },
+  "after_backend_restart": {
+    "id": "live",
+    "mode": "live",
+    "cash_cents": 102500,
+    "starting_cash_cents": 100000,
+    "created_at": "2026-11-15T23:05:29.523798Z",
+    "cursor": 3,
+    "replay_step": 0,
+    "spec_json": null,
+    "cash": 1025.0,
+    "positions": [
+      {
+        "symbol": "AAPL",
+        "quantity": 0
+      }
+    ],
+    "orders": [
+      {
+        "id": 1,
+        "account_id": "live",
+        "request_id": "361095a5-1f20-4201-b780-d8b6c360fbf7",
+        "symbol": "AAPL",
+        "action": "buy",
+        "side": "buy",
+        "quantity": 4,
+        "requested_quantity_json": "4",
+        "submitted_at": "2026-11-15T23:06:12.723954Z",
+        "after_receipt": 0,
+        "status": "filled",
+        "rejection_reason": null
+      },
+      {
+        "id": 2,
+        "account_id": "live",
+        "request_id": "4ad79bc5-954d-4eff-8530-ddba7dae759c",
+        "symbol": "AAPL",
+        "action": "sell",
+        "side": "sell",
+        "quantity": 1,
+        "requested_quantity_json": "1",
+        "submitted_at": "2026-11-15T23:06:27.968006Z",
+        "after_receipt": 1,
+        "status": "filled",
+        "rejection_reason": null
+      },
+      {
+        "id": 3,
+        "account_id": "live",
+        "request_id": "1870eab4-a1ab-4b5f-985f-01fdc683c34c",
+        "symbol": "AAPL",
+        "action": "close",
+        "side": "sell",
+        "quantity": 3,
+        "requested_quantity_json": "null",
+        "submitted_at": "2026-11-15T23:06:38.059158Z",
+        "after_receipt": 2,
+        "status": "filled",
+        "rejection_reason": null
+      },
+      {
+        "id": 4,
+        "account_id": "live",
+        "request_id": "531aa8a0-c328-455b-95ec-c75096a38fab",
+        "symbol": "AAPL",
+        "action": "sell",
+        "side": "sell",
+        "quantity": 1,
+        "requested_quantity_json": "1",
+        "submitted_at": "2026-11-15T23:06:47.175532Z",
+        "after_receipt": 3,
+        "status": "rejected",
+        "rejection_reason": "Insufficient shares"
+      }
+    ],
+    "fills": [
+      {
+        "id": 1,
+        "order_id": 1,
+        "observation_id": 1,
+        "receipt_id": 1,
+        "price_cents": 10000,
+        "quantity": 4,
+        "fee_cents": 0,
+        "executed_at": "2026-11-15T23:06:17.299257Z",
+        "processed_at": "2026-11-15T23:06:17.300345Z",
+        "symbol": "AAPL",
+        "side": "buy"
+      },
+      {
+        "id": 2,
+        "order_id": 2,
+        "observation_id": 2,
+        "receipt_id": 2,
+        "price_cents": 11000,
+        "quantity": 1,
+        "fee_cents": 0,
+        "executed_at": "2026-11-15T23:06:33.097114Z",
+        "processed_at": "2026-11-15T23:06:33.098424Z",
+        "symbol": "AAPL",
+        "side": "sell"
+      },
+      {
+        "id": 3,
+        "order_id": 3,
+        "observation_id": 3,
+        "receipt_id": 3,
+        "price_cents": 10500,
+        "quantity": 3,
+        "fee_cents": 0,
+        "executed_at": "2026-11-15T23:06:42.762295Z",
+        "processed_at": "2026-11-15T23:06:42.764020Z",
+        "symbol": "AAPL",
+        "side": "sell"
+      }
+    ],
+    "data_label": "CONSTRUCTED PAPER ACCOUNT \u2014 controlled test prices, not Yahoo data"
+  },
+  "sqlite_integrity_check": "ok",
+  "exact_fill_count": 3,
+  "browser_observed_steps": [
+    [
+      600,
+      4
+    ],
+    [
+      710,
+      3
+    ],
+    [
+      1025,
+      0
+    ]
+  ]
+}

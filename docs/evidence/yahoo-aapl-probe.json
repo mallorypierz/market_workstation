@@ -1,0 +1,21 @@
+{
+  "ticker": "AAPL",
+  "price": 356.07,
+  "source_time_raw": "1794454833000",
+  "source_time_unit": "Unix milliseconds, inferred from observed value",
+  "source_time_utc": "2026-11-12T03:40:33Z",
+  "receipt_time_utc": "2026-11-12T03:40:34.802194Z",
+  "source_age_seconds": 1.802194,
+  "volume_fields": {},
+  "payload": {
+    "id": "AAPL",
+    "price": 356.07,
+    "time": "1794454833000",
+    "exchange": "NMS",
+    "quote_type": 8,
+    "market_hours": 4,
+    "change_percent": 0.12372478,
+    "change": 0.44000244,
+    "price_hint": "2"
+  }
+}

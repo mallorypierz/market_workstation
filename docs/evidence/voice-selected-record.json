@@ -1,0 +1,144 @@
+{
+  "label": "Live GPT-Live voice on constructed market evidence; student operated microphone and speaker",
+  "summary": {
+    "decision_id": "8db1fa3d-eb51-435f-9207-f0390880d4e7",
+    "snapshot_id": "a959803e-5c06-4352-87c1-5e5a7410487c",
+    "record_as_of": "2026-11-16T02:39:01.875996+00:00",
+    "facts_at_decision": {
+      "symbol": "AAPL",
+      "interval": "1m",
+      "candle_timestamp": "2026-11-09T14:34:00Z",
+      "decision_time": "2026-11-09T14:35:00Z",
+      "market_data": "CONSTRUCTED / LABELED test observations; not live market evidence",
+      "kind": "test",
+      "candle": {
+        "close": 19,
+        "high": 19,
+        "low": 19,
+        "open": 19,
+        "timestamp": "2026-11-09T14:34:00Z",
+        "volume": null
+      },
+      "indicators": {
+        "at_candle": {
+          "long": 13.0,
+          "short": 16.0,
+          "signal": "up",
+          "timestamp": "2026-11-09T14:34:00Z"
+        },
+        "long_window": 3,
+        "short_window": 2
+      },
+      "account": {
+        "account_id": "live",
+        "cash": 1000.0,
+        "cash_cents": 100000,
+        "currency": "USD",
+        "fills": [],
+        "mode": "live",
+        "shares": 0
+      },
+      "order_size": 1,
+      "complete": true,
+      "reasons": []
+    },
+    "model_call": "live_provider",
+    "provider": "openai",
+    "model": "gpt-6-luna",
+    "analyst_proposal": {
+      "action": "wait",
+      "quantity": null
+    },
+    "named_answers": null,
+    "roles": {
+      "analyst": {
+        "model": "gpt-6-luna",
+        "returned_model": "gpt-6-luna",
+        "provider": "openai",
+        "status": "valid_output",
+        "output": [
+          {
+            "choice": "wait",
+            "name": "paper_action",
+            "type": "choice"
+          }
+        ],
+        "verdict": null,
+        "validation": {
+          "reason": null,
+          "valid": true
+        },
+        "snapshot_sha256": "131d7fc115395d7ff1a6b2304343e722b66c145ed59c34c4a80a9bf5e6475ef3"
+      },
+      "reviewer": {
+        "model": "gpt-6-luna",
+        "returned_model": "gpt-6-luna",
+        "provider": "openai",
+        "status": "valid_output",
+        "output": [
+          {
+            "choice": "accept",
+            "name": "review_verdict",
+            "type": "choice"
+          }
+        ],
+        "verdict": "accept",
+        "validation": null,
+        "snapshot_sha256": "131d7fc115395d7ff1a6b2304343e722b66c145ed59c34c4a80a9bf5e6475ef3"
+      }
+    },
+    "explanation": "Analyst proposed wait; reviewer verdict accept. Recorded cash $1000.00; 1 share(s) at $19.00 cost $19.00; held 0. Python crossover up; account rules pass, strategy pass, chart evidence pass. These are backend observations, not model reasoning. No order submitted.",
+    "status": "valid",
+    "final_check": {
+      "account_rules_pass": true,
+      "action": "wait",
+      "buy_cost_cents": 1900,
+      "cash_cents": 100000,
+      "chart_evidence_pass": true,
+      "configured_order_size": 1,
+      "order_eligible": false,
+      "passed": true,
+      "python_crossover": "up",
+      "reason": "Checks passed",
+      "reviewer_accepted": true,
+      "shares": 0,
+      "snapshot_complete": true,
+      "snapshot_order_eligible": false,
+      "strategy_rules_pass": true,
+      "strategy_version": "sma-cross-v1",
+      "unit_price_cents": 1900
+    },
+    "recorded_outcome": {
+      "paper_orders": [],
+      "paper_fills": [],
+      "paper_pnl": [],
+      "automation_jobs": []
+    },
+    "outcome_note": "No fill linked to this decision is recorded. A proposal or pending order is not an execution.",
+    "sha256": "2d667ae26060efa6ff7565bafde3d3e4248210d7453b6f32b5ff496539ad6bf9"
+  },
+  "counts_before_voice": {
+    "paper_orders": 0,
+    "paper_fills": 0,
+    "decisions": 3
+  },
+  "counts_after_voice": {
+    "paper_orders": 0,
+    "paper_fills": 0,
+    "decisions": 3
+  },
+  "ledger_account_after_voice": {
+    "id": "live",
+    "cash_cents": 100000
+  },
+  "positions_after_voice": [],
+  "live_voice": {
+    "source": "Student reported both spoken answers, UI captions and microphone indicator release",
+    "session_id": "live_u2_EkgwIp3oN1TJtMD5wnkMxRNTdOFkv3BY",
+    "displayed_state": "Ended \u00b7 Microphone off",
+    "first_answer": "The analyst proposed waiting, and the reviewer accepted that. No order was submitted, so nothing executed.",
+    "follow_up_answer": "No change. There's no recorded order or fill tied to this decision, so the paper account stayed at 1000 dollars cash and zero shares.",
+    "audible_both_answers_confirmed": true,
+    "browser_microphone_indicator_cleared": true
+  }
+}

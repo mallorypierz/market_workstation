@@ -1,0 +1,12 @@
+# AI and tool-use disclosure
+
+Draft for student review before submission. This records supported session facts; it does not invent the student's independent work or unrecorded tools.
+
+- **Coding assistant/editor:** OpenAI Codex desktop app was used to inspect the project, implement Python/FastAPI/Vue/SQLite code, propose dependency changes, write tests/documentation and diagnose failures. The student supplied requirements, approved installations and performed several browser/live-audio checks reported in verification.md. Generated work must be reviewed and explained by the student.
+- **Coding model identity:** the exact model/version used for every coding turn is not established by the repository evidence. The student should add the model names shown in their app/history if required; no unverified model or model-change history is asserted here.
+- **Browser/test tools:** desktop browser automation and later Playwright Test1.65.1/Chromium were used for running-interface checks. Python unittest and Node test checks are deterministic tests, not AI judgments. Playwright was added because desktop browser control cannot run as a standalone GitHub Actions job.
+- **Part4.1 data/services:** yfinance is an independent Yahoo Finance client. Yahoo supplies market messages; it is not a coding model. TradingView Lightweight Charts renders the chart. No model API or speech service is necessary to run the Part4.1 market-data path.
+- **Later-part runtime models (outside Part4.1 claims):** saved decision records identify OpenAI gpt-6-luna for analyst/reviewer work, and the voice implementation uses gpt-live-1. Their live-provider checks used labeled constructed market evidence. These are application integrations, not evidence of which model generated the source code.
+- **Verification boundaries:** mocked providers and constructed market events are labeled separately from real Yahoo captures, live model responses and student-heard voice. The offline SmokeTest's passing result does not establish live provider availability.
+
+Prompts are preserved in prompts/. See [curated Part4.1 evidence](docs/part-4.1-evidence.md) and [detailed verification](docs/verification.md), including failures and subsequent corrections. Credentials are not included. Student review outstanding: disclose any additional coding agents/editors/models used outside this recorded session and correct this document as needed.

@@ -1,0 +1,459 @@
+{
+  "label": "CONSTRUCTED SMA test data, not Yahoo capture",
+  "database": "/var/folders/3g/dkkb0s4s7ps9dx9cc7l51k600000gn/T/sma-reference-44cxc2qt/constructed.sqlite3",
+  "batch": {
+    "type": "replay",
+    "symbol": "AAPL",
+    "timeframe": "1m",
+    "source": "replay:yahoo",
+    "as_of": "2026-11-09T14:37:00Z",
+    "candles": [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "open": 13,
+        "high": 13,
+        "low": 13,
+        "close": 13,
+        "volume": null
+      },
+      {
+        "timestamp": "2026-11-09T14:31:00Z",
+        "open": 10,
+        "high": 10,
+        "low": 10,
+        "close": 10,
+        "volume": null
+      },
+      {
+        "timestamp": "2026-11-09T14:32:00Z",
+        "open": 7,
+        "high": 7,
+        "low": 7,
+        "close": 7,
+        "volume": null
+      },
+      {
+        "timestamp": "2026-11-09T14:33:00Z",
+        "open": 13,
+        "high": 13,
+        "low": 13,
+        "close": 13,
+        "volume": null
+      },
+      {
+        "timestamp": "2026-11-09T14:34:00Z",
+        "open": 19,
+        "high": 19,
+        "low": 19,
+        "close": 19,
+        "volume": null
+      },
+      {
+        "timestamp": "2026-11-09T14:35:00Z",
+        "open": 7,
+        "high": 7,
+        "low": 7,
+        "close": 7,
+        "volume": null
+      },
+      {
+        "timestamp": "2026-11-09T14:36:00Z",
+        "open": 1,
+        "high": 1,
+        "low": 1,
+        "close": 1,
+        "volume": null
+      }
+    ],
+    "status": {
+      "2026-11-09T14:30:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T14:31:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 1,
+        "coverage_complete": true,
+        "ended": true,
+        "complete": true,
+        "volume_known_for_present_minutes": false,
+        "volume_status": "unknown",
+        "underlying_volume_quality": [
+          "unknown"
+        ]
+      },
+      "2026-11-09T14:31:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T14:32:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 1,
+        "coverage_complete": true,
+        "ended": true,
+        "complete": true,
+        "volume_known_for_present_minutes": false,
+        "volume_status": "unknown",
+        "underlying_volume_quality": [
+          "unknown"
+        ]
+      },
+      "2026-11-09T14:32:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T14:33:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 1,
+        "coverage_complete": true,
+        "ended": true,
+        "complete": true,
+        "volume_known_for_present_minutes": false,
+        "volume_status": "unknown",
+        "underlying_volume_quality": [
+          "unknown"
+        ]
+      },
+      "2026-11-09T14:33:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T14:34:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 1,
+        "coverage_complete": true,
+        "ended": true,
+        "complete": true,
+        "volume_known_for_present_minutes": false,
+        "volume_status": "unknown",
+        "underlying_volume_quality": [
+          "unknown"
+        ]
+      },
+      "2026-11-09T14:34:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T14:35:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 1,
+        "coverage_complete": true,
+        "ended": true,
+        "complete": true,
+        "volume_known_for_present_minutes": false,
+        "volume_status": "unknown",
+        "underlying_volume_quality": [
+          "unknown"
+        ]
+      },
+      "2026-11-09T14:35:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T14:36:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 1,
+        "coverage_complete": true,
+        "ended": true,
+        "complete": true,
+        "volume_known_for_present_minutes": false,
+        "volume_status": "unknown",
+        "underlying_volume_quality": [
+          "unknown"
+        ]
+      },
+      "2026-11-09T14:36:00Z": {
+        "session_open": "2026-11-09T14:30:00Z",
+        "interval_end": "2026-11-09T14:37:00Z",
+        "present_minutes": 1,
+        "expected_minutes": 1,
+        "coverage_complete": true,
+        "ended": true,
+        "complete": true,
+        "volume_known_for_present_minutes": false,
+        "volume_status": "unknown",
+        "underlying_volume_quality": [
+          "unknown"
+        ]
+      }
+    },
+    "excluded_outside_session": [],
+    "replay": {
+      "step": 7,
+      "total": 7,
+      "finished": true,
+      "empty": false,
+      "snapshot_cutoff": 7,
+      "start": "2026-11-09T14:30:00Z",
+      "end": "2026-11-09T14:38:00Z"
+    },
+    "feed": {
+      "status": "replay",
+      "upstream_connected": false,
+      "enabled": false,
+      "source_age_seconds": null,
+      "latest": {
+        "observation_id": 7,
+        "receipt_id": 7,
+        "source_time": "2026-11-09T14:36:00Z",
+        "receipt_time": "2026-11-09T14:37:00Z",
+        "price": 1
+      },
+      "market_session": "recorded session"
+    },
+    "sma": {
+      "short_window": 2,
+      "long_window": 3,
+      "values": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:31:00Z",
+          "short": 11.5,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:32:00Z",
+          "short": 8.5,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:33:00Z",
+          "short": 10.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:34:00Z",
+          "short": 16.0,
+          "long": 13.0,
+          "signal": "up"
+        },
+        {
+          "timestamp": "2026-11-09T14:35:00Z",
+          "short": 13.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:36:00Z",
+          "short": 4.0,
+          "long": 9.0,
+          "signal": "down"
+        }
+      ]
+    },
+    "data_label": ""
+  },
+  "replay": [
+    {
+      "short_window": 2,
+      "long_window": 3,
+      "values": []
+    },
+    {
+      "short_window": 2,
+      "long_window": 3,
+      "values": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        }
+      ]
+    },
+    {
+      "short_window": 2,
+      "long_window": 3,
+      "values": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:31:00Z",
+          "short": 11.5,
+          "long": null,
+          "signal": null
+        }
+      ]
+    },
+    {
+      "short_window": 2,
+      "long_window": 3,
+      "values": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:31:00Z",
+          "short": 11.5,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:32:00Z",
+          "short": 8.5,
+          "long": 10.0,
+          "signal": null
+        }
+      ]
+    },
+    {
+      "short_window": 2,
+      "long_window": 3,
+      "values": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:31:00Z",
+          "short": 11.5,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:32:00Z",
+          "short": 8.5,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:33:00Z",
+          "short": 10.0,
+          "long": 10.0,
+          "signal": null
+        }
+      ]
+    },
+    {
+      "short_window": 2,
+      "long_window": 3,
+      "values": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:31:00Z",
+          "short": 11.5,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:32:00Z",
+          "short": 8.5,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:33:00Z",
+          "short": 10.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:34:00Z",
+          "short": 16.0,
+          "long": 13.0,
+          "signal": "up"
+        }
+      ]
+    },
+    {
+      "short_window": 2,
+      "long_window": 3,
+      "values": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:31:00Z",
+          "short": 11.5,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:32:00Z",
+          "short": 8.5,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:33:00Z",
+          "short": 10.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:34:00Z",
+          "short": 16.0,
+          "long": 13.0,
+          "signal": "up"
+        },
+        {
+          "timestamp": "2026-11-09T14:35:00Z",
+          "short": 13.0,
+          "long": 13.0,
+          "signal": null
+        }
+      ]
+    },
+    {
+      "short_window": 2,
+      "long_window": 3,
+      "values": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:31:00Z",
+          "short": 11.5,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:32:00Z",
+          "short": 8.5,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:33:00Z",
+          "short": 10.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:34:00Z",
+          "short": 16.0,
+          "long": 13.0,
+          "signal": "up"
+        },
+        {
+          "timestamp": "2026-11-09T14:35:00Z",
+          "short": 13.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:36:00Z",
+          "short": 4.0,
+          "long": 9.0,
+          "signal": "down"
+        }
+      ]
+    }
+  ]
+}

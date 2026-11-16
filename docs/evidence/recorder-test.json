@@ -1,0 +1,63 @@
+{
+  "label": "CONSTRUCTED TEST DATA, not Yahoo observations",
+  "database": "/private/tmp/market-recorder-test-qli4h7tk/constructed.sqlite3",
+  "insert_results": [
+    {
+      "observation_id": 1,
+      "receipt_id": 1,
+      "exact_repeat": false
+    },
+    {
+      "observation_id": 1,
+      "receipt_id": 2,
+      "exact_repeat": true
+    },
+    {
+      "observation_id": 2,
+      "receipt_id": 3,
+      "exact_repeat": false
+    }
+  ],
+  "snapshot": {
+    "observations": [
+      {
+        "observation_id": 1,
+        "source": "constructed-test",
+        "ticker": "AAPL",
+        "source_time_json": "\"1794234600000\"",
+        "source_time_ms": 1794234600000,
+        "payload_json": "{\"day_volume\":\"1200\",\"id\":\"AAPL\",\"price\":100.0,\"time\":\"1794234600000\"}"
+      },
+      {
+        "observation_id": 2,
+        "source": "constructed-test",
+        "ticker": "AAPL",
+        "source_time_json": "\"1794234600000\"",
+        "source_time_ms": 1794234600000,
+        "payload_json": "{\"day_volume\":\"1200\",\"id\":\"AAPL\",\"price\":101.0,\"time\":\"1794234600000\"}"
+      }
+    ],
+    "deliveries": [
+      {
+        "receipt_id": 1,
+        "observation_id": 1,
+        "receipt_time": "2026-11-09T14:30:01Z",
+        "decoded_message_json": "{\"id\": \"AAPL\", \"time\": \"1794234600000\", \"price\": 100.0, \"day_volume\": \"1200\"}"
+      },
+      {
+        "receipt_id": 2,
+        "observation_id": 1,
+        "receipt_time": "2026-11-09T14:30:02Z",
+        "decoded_message_json": "{\"id\": \"AAPL\", \"time\": \"1794234600000\", \"price\": 100.0, \"day_volume\": \"1200\"}"
+      },
+      {
+        "receipt_id": 3,
+        "observation_id": 2,
+        "receipt_time": "2026-11-09T14:30:03Z",
+        "decoded_message_json": "{\"id\": \"AAPL\", \"time\": \"1794234600000\", \"price\": 101.0, \"day_volume\": \"1200\"}"
+      }
+    ],
+    "revisions": []
+  },
+  "restart_check": "Separate writer exited; two new backend recorder processes reopened database; snapshots identical"
+}

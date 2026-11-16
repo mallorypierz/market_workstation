@@ -1,0 +1,30 @@
+{
+  "label": "CONSTRUCTED range fixture, not Yahoo capture",
+  "folder": "/var/folders/3g/dkkb0s4s7ps9dx9cc7l51k600000gn/T/range-fixture-q5m0a4wp",
+  "pairs": [
+    [
+      12,
+      9
+    ],
+    [
+      15,
+      10
+    ],
+    [
+      13,
+      11
+    ]
+  ],
+  "expected": {
+    "Range 2": [
+      null,
+      6,
+      5
+    ],
+    "Range 3": [
+      null,
+      null,
+      6
+    ]
+  }
+}

@@ -1,23 +1,17 @@
-# Current handoff
+# Current handoff — standalone offline SmokeTest complete
 
-Updated: 2026-11-05
+Project root `/Users/mallorypierz/Documents/market_workstation`; preserve starter collection/archive and prior live evidence. No Git repository/remote exists. No commit/push performed.
 
-## Current state
+One command: `python3 docs/smoke_test.py`. Starts temporary SQLite fixture, FastAPI/Vite on free ports, waits for readiness, invokes real Chromium/Playwright, performs Vue operations and SQLite assertions, exits nonzero on failure and stops owned process groups. Never installs dependencies or edits source. Prior structure-only command moved to docs/structure_check.py. New fixture backend/smoke_fixture.py controls only external Yahoo/model boundaries, clock/events/order-size; production calculations, capture, agent review, simulator and ledger run normally. Test configuration/tests in frontend/smoke.config.js and frontend/tests/smoke.spec.js. .github/workflows/smoke-test.yml runs the same command twice on push/PR/dispatch and uploads artifacts.
 
-- Repository root: `/Users/mallorypierz/Documents/market_workstation`.
-- Git branch: `main`. Origin: `https://github.com/mallorypierz/market_workstation.git`.
-- The remote initial commit is preserved as the parent of the project setup commit.
-- Vue handles screens; Python handles calculations; FastAPI carries API requests and results.
-- Approved Python packages installed in `backend/.venv`; exact installed versions recorded in `backend/requirements.txt`.
-- Approved Vue, Vite, and Vue plugin packages installed in `frontend/node_modules`; npm manifest and lockfile present.
-- `.gitignore` excludes `.env`, `.venv/`, `node_modules/`, and Python bytecode at any depth.
-- Major prompts recorded in numbered files 01–05; file map and repeatable verification updated.
-- No application code or build configuration yet. `AGENTS.md` remains empty.
+Student approved and installed @playwright/test1.65.1 with matching Chromium159.0.8154.6/build1255. frontend/package.json/package-lock.json changed; existing Python framework3.12.5 environment reused, no Python installs or venv. Node24.20.0/npm11.19.0. Browser cache is in user's Library/Caches/ms-playwright. npm audit0 vulnerabilities; optional fsevents install script not needed/approved. Future installs still require approval.
 
-## Verification
+Minimal production addition: named indicator window editing in CandleChart.vue, PUT route in main.py, update_window in indicator_store.py, one regression test. Reuses existing instances and validation. Added docs/smoke-test.md; updated README, AGENTS, design-pipeline, verification and .gitignore. Reused supplied prompt14. Evidence summary/success screenshot/deliberate-failure screenshot in docs/evidence/smoke-*; detailed ignored artifacts under test-results/smoke/.
 
-Python/FastAPI/Uvicorn imports and frontend Vue/Vite/plugin imports passed. `pip check` found no broken requirements; npm installation audit reported zero vulnerabilities. Git root, branch, and requested ignore patterns verified. No application tests exist; npm's generated test script is a placeholder.
+Validation: exact command passed twice on fresh databases/browser contexts (UTC run IDs20261116T024637-97103 and20261116T024837-97200, local Nov15). SMA2=16 and edited SMA3=13; manual PNG matches saved AAPL/1m/cutoff and has decodable nonblank pixels; analyst/reviewer hashes match; manual known replies and controlled error visible with no fills. Automation buy4@100 →600cash/4shares; sale1@110 →710/3; close3@105 →1025/0. Final realized25/unrealized0, exactly3fills. Veto, duplicate delivery/job retry, Stop+newcandle do not add fills/orders. SQLite independently matches UI.23 controlled role calls/run. Both cleaned processes.
 
-## Outstanding work
+Deliberate failure run20261116T025035-97294 with SMOKE_INJECT_PROVIDER_FAILURE=1 returned1 as expected, missing required valid result after provider_error; screenshot/trace/logs retained and processes stopped. No AutoLoop corrections needed.89 backend tests,9 frontend JS tests,31-module build and structure/links all passed. Existing pandas and color-env warnings nonfatal.
 
-The setup is prepared for the authorized commit and push to `origin/main`. Verify synchronization with `git status -sb` and `git rev-parse HEAD origin/main` after pushing. Application implementation awaits further instructions.
+All services/browsers started by SmokeTest ended. User-owned backend8001 from prior task was not stopped. Prior live Yahoo/image-model/two-way-voice evidence remains separate; this test never requests microphone or provider credentials. CI workflow prepared but not run remotely: repository setup/review/commit/push remains a separate authorized Git step. No remaining local SmokeTest blocker.
+
+On resume: read AGENTS/current files, inspect status, preserve work. Review changes with student before any commit. Use docs/smoke-test.md for restoration/diagnostics. Normal SmokeTest is read-only to source; AutoLoop may apply at most5 scoped correction cycles separately.

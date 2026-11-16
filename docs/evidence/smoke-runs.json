@@ -1,0 +1,42 @@
+{
+  "label": "Offline constructed market events and controlled provider; real Chromium/Vue/FastAPI/SQLite",
+  "runs": [
+    {
+      "run": "20261116T024637-97103",
+      "status": "passed",
+      "provider": "controlled offline",
+      "market_data": "constructed",
+      "cash": 1025,
+      "shares": 0,
+      "fills": 3,
+      "realized": 25,
+      "unrealized": 0,
+      "provider_calls": 23,
+      "owned_processes_stopped": true
+    },
+    {
+      "run": "20261116T024837-97200",
+      "status": "passed",
+      "provider": "controlled offline",
+      "market_data": "constructed",
+      "cash": 1025,
+      "shares": 0,
+      "fills": 3,
+      "realized": 25,
+      "unrealized": 0,
+      "provider_calls": 23,
+      "owned_processes_stopped": true
+    }
+  ],
+  "intentional_failure_check": {
+    "run": "20261116T025035-97294",
+    "status": "failed",
+    "provider": "controlled offline",
+    "market_data": "constructed",
+    "error": "RuntimeError: Browser assertions failed (exit 1); see trace/screenshots/logs",
+    "owned_processes_stopped": true,
+    "expected_exit_code": 1,
+    "observed_exit_code": 1,
+    "reason": "First controlled provider deliberately failed where valid result was required"
+  }
+}

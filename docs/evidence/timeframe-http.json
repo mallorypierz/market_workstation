@@ -1,0 +1,216 @@
+[
+  {
+    "url": "http://127.0.0.1:8000/api/history",
+    "status": 200,
+    "body": [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "open": 100.0,
+        "high": 103.0,
+        "low": 99.0,
+        "close": 102.0,
+        "volume": 1200
+      },
+      {
+        "timestamp": "2026-11-09T14:31:00Z",
+        "open": 102.0,
+        "high": 104.0,
+        "low": 100.0,
+        "close": 101.0,
+        "volume": 850
+      },
+      {
+        "timestamp": "2026-11-09T14:32:00Z",
+        "open": 101.0,
+        "high": 105.0,
+        "low": 101.0,
+        "close": 104.0,
+        "volume": 1500
+      }
+    ]
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/history?symbol=SAMPLE&timeframe=5m&include_metadata=true",
+    "status": 200,
+    "body": {
+      "symbol": "SAMPLE",
+      "source": "synthetic-csv",
+      "timeframe": "5m",
+      "as_of": "2026-11-12T14:13:09.851971Z",
+      "calendar": "XNAS (library alias XNYS)",
+      "candles": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "open": 100.0,
+          "high": 105.0,
+          "low": 99.0,
+          "close": 104.0,
+          "volume": 3550
+        }
+      ],
+      "status": {
+        "2026-11-09T14:30:00Z": {
+          "session_open": "2026-11-09T14:30:00Z",
+          "interval_end": "2026-11-09T14:35:00Z",
+          "present_minutes": 3,
+          "expected_minutes": 5,
+          "coverage_complete": false,
+          "ended": true,
+          "complete": false,
+          "volume_known_for_present_minutes": true,
+          "volume_status": "partial_coverage_sum",
+          "underlying_volume_quality": [
+            "provided_minute_volume"
+          ]
+        }
+      },
+      "excluded_outside_session": []
+    }
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/history?symbol=SAMPLE&timeframe=15m",
+    "status": 200,
+    "body": [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "open": 100.0,
+        "high": 105.0,
+        "low": 99.0,
+        "close": 104.0,
+        "volume": 3550
+      }
+    ]
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/history?symbol=SAMPLE&timeframe=1h",
+    "status": 200,
+    "body": [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "open": 100.0,
+        "high": 105.0,
+        "low": 99.0,
+        "close": 104.0,
+        "volume": 3550
+      }
+    ]
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/history?symbol=SAMPLE&timeframe=1d&include_metadata=true",
+    "status": 200,
+    "body": {
+      "symbol": "SAMPLE",
+      "source": "synthetic-csv",
+      "timeframe": "1d",
+      "as_of": "2026-11-12T14:13:09.859978Z",
+      "calendar": "XNAS (library alias XNYS)",
+      "candles": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "open": 100.0,
+          "high": 105.0,
+          "low": 99.0,
+          "close": 104.0,
+          "volume": 3550
+        }
+      ],
+      "status": {
+        "2026-11-09T14:30:00Z": {
+          "session_open": "2026-11-09T14:30:00Z",
+          "interval_end": "2026-11-09T21:00:00Z",
+          "present_minutes": 3,
+          "expected_minutes": 390,
+          "coverage_complete": false,
+          "ended": true,
+          "complete": false,
+          "volume_known_for_present_minutes": true,
+          "volume_status": "partial_coverage_sum",
+          "underlying_volume_quality": [
+            "provided_minute_volume"
+          ]
+        }
+      },
+      "excluded_outside_session": []
+    }
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/history?symbol=SAMPLE&timeframe=5m&as_of=2026-11-09T14:31:00Z&include_metadata=true",
+    "status": 200,
+    "body": {
+      "symbol": "SAMPLE",
+      "source": "synthetic-csv",
+      "timeframe": "5m",
+      "as_of": "2026-11-09T14:31:00Z",
+      "calendar": "XNAS (library alias XNYS)",
+      "candles": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "open": 100.0,
+          "high": 103.0,
+          "low": 99.0,
+          "close": 102.0,
+          "volume": 1200
+        }
+      ],
+      "status": {
+        "2026-11-09T14:30:00Z": {
+          "session_open": "2026-11-09T14:30:00Z",
+          "interval_end": "2026-11-09T14:35:00Z",
+          "present_minutes": 1,
+          "expected_minutes": 5,
+          "coverage_complete": false,
+          "ended": false,
+          "complete": false,
+          "volume_known_for_present_minutes": true,
+          "volume_status": "partial_coverage_sum",
+          "underlying_volume_quality": [
+            "provided_minute_volume"
+          ]
+        }
+      },
+      "excluded_outside_session": []
+    }
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/history?timeframe=2m",
+    "status": 422,
+    "body": {
+      "detail": [
+        {
+          "type": "literal_error",
+          "loc": [
+            "query",
+            "timeframe"
+          ],
+          "msg": "Input should be '1m', '5m', '15m', '1h' or '1d'",
+          "input": "2m",
+          "ctx": {
+            "expected": "'1m', '5m', '15m', '1h' or '1d'"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/history?symbol=AAPL",
+    "status": 422,
+    "body": {
+      "detail": "Use symbol=SAMPLE for sample data or symbol=AAPL for Yahoo records"
+    }
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/history?symbol=AAPL&source=yahoo&include_metadata=true",
+    "status": 200,
+    "body": {
+      "symbol": "AAPL",
+      "source": "yahoo-recorded",
+      "timeframe": "1m",
+      "as_of": "2026-11-12T14:13:09.867756Z",
+      "calendar": "XNAS (library alias XNYS)",
+      "candles": [],
+      "status": {},
+      "excluded_outside_session": [],
+      "database_initialized": false
+    }
+  }
+]

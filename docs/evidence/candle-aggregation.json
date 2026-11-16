@@ -1,0 +1,178 @@
+{
+  "label": "CONSTRUCTED assignment input; not Yahoo live verification",
+  "before_end": {
+    "candles": [
+      {
+        "timestamp": "2026-11-09T14:59:00Z",
+        "open": 99,
+        "high": 99,
+        "low": 99,
+        "close": 99,
+        "volume": null
+      },
+      {
+        "timestamp": "2026-11-09T15:00:00Z",
+        "open": 100,
+        "high": 103,
+        "low": 100,
+        "close": 101,
+        "volume": 11
+      }
+    ],
+    "status": {
+      "2026-11-09T14:59:00Z": {
+        "ended": true,
+        "volume_status": "unknown",
+        "volume_reasons": [
+          "missing_baseline"
+        ],
+        "observation_ids": [
+          1
+        ]
+      },
+      "2026-11-09T15:00:00Z": {
+        "ended": false,
+        "volume_status": "observed_delta_estimate",
+        "volume_reasons": [],
+        "observation_ids": [
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    "receipt_cutoff": 4,
+    "skipped_observation_ids": []
+  },
+  "after_end": {
+    "candles": [
+      {
+        "timestamp": "2026-11-09T14:59:00Z",
+        "open": 99,
+        "high": 99,
+        "low": 99,
+        "close": 99,
+        "volume": null
+      },
+      {
+        "timestamp": "2026-11-09T15:00:00Z",
+        "open": 100,
+        "high": 103,
+        "low": 100,
+        "close": 101,
+        "volume": 11
+      }
+    ],
+    "status": {
+      "2026-11-09T14:59:00Z": {
+        "ended": true,
+        "volume_status": "unknown",
+        "volume_reasons": [
+          "missing_baseline"
+        ],
+        "observation_ids": [
+          1
+        ]
+      },
+      "2026-11-09T15:00:00Z": {
+        "ended": true,
+        "volume_status": "observed_delta_estimate",
+        "volume_reasons": [],
+        "observation_ids": [
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    "receipt_cutoff": 4,
+    "skipped_observation_ids": []
+  },
+  "before_late_middle": {
+    "candles": [
+      {
+        "timestamp": "2026-11-09T14:59:00Z",
+        "open": 99,
+        "high": 99,
+        "low": 99,
+        "close": 99,
+        "volume": null
+      },
+      {
+        "timestamp": "2026-11-09T15:00:00Z",
+        "open": 100,
+        "high": 101,
+        "low": 100,
+        "close": 101,
+        "volume": 11
+      }
+    ],
+    "status": {
+      "2026-11-09T14:59:00Z": {
+        "ended": true,
+        "volume_status": "unknown",
+        "volume_reasons": [
+          "missing_baseline"
+        ],
+        "observation_ids": [
+          1
+        ]
+      },
+      "2026-11-09T15:00:00Z": {
+        "ended": true,
+        "volume_status": "observed_delta_estimate",
+        "volume_reasons": [],
+        "observation_ids": [
+          2,
+          3
+        ]
+      }
+    },
+    "receipt_cutoff": 3,
+    "skipped_observation_ids": []
+  },
+  "after_late_middle": {
+    "candles": [
+      {
+        "timestamp": "2026-11-09T14:59:00Z",
+        "open": 99,
+        "high": 99,
+        "low": 99,
+        "close": 99,
+        "volume": null
+      },
+      {
+        "timestamp": "2026-11-09T15:00:00Z",
+        "open": 100,
+        "high": 103,
+        "low": 100,
+        "close": 101,
+        "volume": 11
+      }
+    ],
+    "status": {
+      "2026-11-09T14:59:00Z": {
+        "ended": true,
+        "volume_status": "unknown",
+        "volume_reasons": [
+          "missing_baseline"
+        ],
+        "observation_ids": [
+          1
+        ]
+      },
+      "2026-11-09T15:00:00Z": {
+        "ended": true,
+        "volume_status": "observed_delta_estimate",
+        "volume_reasons": [],
+        "observation_ids": [
+          2,
+          4,
+          3
+        ]
+      }
+    },
+    "receipt_cutoff": 4,
+    "skipped_observation_ids": []
+  }
+}

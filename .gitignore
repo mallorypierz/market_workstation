@@ -1,5 +1,20 @@
 .env
+.env.*
+!.env.example
 .venv/
 node_modules/
 __pycache__/
-*.py[cod]
+*.pyc
+frontend/dist/
+*.db
+*.sqlite
+*.sqlite3
+*.db-*
+*.sqlite-*
+*.sqlite3-*
+.DS_Store
+
+# Offline browser test artifacts
+test-results/
+frontend/test-results/
+frontend/playwright-report/
