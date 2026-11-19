@@ -1,3 +1,17 @@
+# Current handoff — Part4.2 published and report finalized (November18,2026)
+
+Student explicitly authorized committing/pushing all Part4.2 changes and updating everything. Implementation/evidence/video commit `8565d239f94a356f91cbd47054e416e8bc465345` is pushed to origin/main at https://github.com/mallorypierz/market_workstation. Root report.md is finalized in the subsequent documentation commit; supporting technical links/video pin the implementation SHA. Earlier pending preparation statements below are historical, superseded by this heading.
+
+Verified public access:25unauthenticated raw downloads allHTTP200and SHA256matched local bytes, including complete59.00second video docs/evidence/part-4.2-demo.webm. Exact implementation workflow https://github.com/mallorypierz/market_workstation/actions/runs/44444599750 completed success: correctness tests,build,twofresh browser smoke runs,artifact upload. Evidence docs/evidence/part42-submission/public-access.json,remote-ci.json,publication.json. No remote success inferred from local tests.
+
+Clean detached checkout of exact implementation SHA passed110tests,Vue build and both actual-browser scenarios; after removing its test-only dependency symlink Git status remained clean. Local dependencies reused. Initial harness cleanliness failure and correction are documented and retained; production code unchanged. Resume SmokeTest20261119T022711-29640 also passed. No local installation or manifest change.
+
+Current documentation removes publication-pending status, records public video/CI and keeps historical preparation evidence distinct. Part4.1 archive/report/evidence preserved. A staged check exposed trailing whitespace in copied evidence text; normalized in the documentation follow-up. All changed files were presented for review before explicit commit/push authorization.
+
+Next: student reviews finalized root report.md and uploads ONLY report.md to Canvas. Do not submit on their behalf. No further feature changes or performance tuning needed. On resume inspect actual Git/remote status and follow current authorization; do not assume the prior pending-publication restrictions remain active. Final documentation push/its latest CI will be checked before ending the publication turn.
+
+## Previous handoff retained
+
 # Current handoff — Part4.2 report/video prepared; publication pending (November18,2026)
 
 Root /Users/mallorypierz/Documents/market_workstation. Student authorized Prompt19 step8 report/evidence audit, preservation, recording and reproducibility checks. Preparation complete. No commit/push/install/manifest change or Canvas submission. User must authorize publication after reviewing docs/part-4.2-review.md; do not infer authorization from prior Part4.1 commits.

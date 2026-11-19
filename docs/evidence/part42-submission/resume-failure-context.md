@@ -560,7 +560,7 @@ TypeError: Cannot read properties of undefined (reading 'account')
   82  |   await auto.screenshot({path:process.env.SMOKE_ARTIFACTS+'/account.png'})
   83  |   fs.writeFileSync(process.env.SMOKE_ARTIFACTS+'/browser-evidence.json',JSON.stringify({sma:{window2:16,window3:13},manual_fills:0,after_stop:counts,...saved},null,2))
   84  | })
-  85  | 
+  85  |
   86  | // Same single-worker runner, separate SQLite source/accounts; no historical files or providers.
   87  | test('Part 4.2: completed crossover, later fill, causal saved backtest and SQLite evidence',async({page,context})=>{
   88  |  await context.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort())
@@ -621,5 +621,5 @@ TypeError: Cannot read properties of undefined (reading 'account')
   142 |  expect(errors).toEqual([])
   143 |  fs.writeFileSync(process.env.SMOKE_ARTIFACTS+'/part42-browser.json',JSON.stringify({label:'OFFLINE constructed correctness fixture; not Yahoo evidence',strategy_id:id,unfinished,pending,bought,down,final,prefix,prefixLater,full,error_status:invalid.status()},null,2))
   144 | })
-  145 | 
+  145 |
 ```

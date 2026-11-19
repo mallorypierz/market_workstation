@@ -1,0 +1,11 @@
+{
+  "implementation_commit": "8565d239f94a356f91cbd47054e416e8bc465345",
+  "repository": "https://github.com/mallorypierz/market_workstation",
+  "video": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/part-4.2-demo.webm",
+  "video_duration_seconds": 59,
+  "public_access": "25 resources HTTP200and local-hash matched without credentials",
+  "ci_url": "https://github.com/mallorypierz/market_workstation/actions/runs/44444599750",
+  "ci_conclusion": "success",
+  "clean_checkout": "passed; existing local dependencies reused",
+  "canvas_submitted": false
+}

@@ -1,0 +1,126 @@
+PASS: required structure and local Markdown links (7 files).
+Python 3.12.5: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+SQLite import OK: 3.45.3
+NOT TESTED: application startup, browser UI, live feed, database persistence/replay.
+
+Running 2 tests using 1 worker
+
+(node:30169) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/smoke.spec.js:4:1 › offline workstation: replay, indicators, chart review, automated paper ledger (38.2s)
+  ✓  2 tests/smoke.spec.js:87:1 › Part 4.2: completed crossover, later fill, causal saved backtest and SQLite evidence (4.7s)
+
+  2 passed (43.6s)
+{
+  "run": "20261119T023056-30152",
+  "status": "passed",
+  "provider": "controlled offline",
+  "market_data": "constructed",
+  "cash": 1025,
+  "shares": 0,
+  "fills": 3,
+  "realized": 25,
+  "unrealized": 0,
+  "provider_calls": 23,
+  "part42": {
+    "status": "passed",
+    "data": "OFFLINE constructed; not historical/live evidence",
+    "strategy_id": "2a7cab04-e6f2-4c62-8212-63ced97632b4",
+    "backtest_id": "197b3386-f1e3-4933-8424-a04748c3655d",
+    "cash_cents": 101000,
+    "shares": 0,
+    "fills": 2,
+    "realized": 10,
+    "unrealized": 0,
+    "sma_expected": [
+      [
+        null,
+        null,
+        null
+      ],
+      [
+        11.5,
+        null,
+        null
+      ],
+      [
+        8.5,
+        10,
+        null
+      ],
+      [
+        10,
+        10,
+        null
+      ],
+      [
+        16,
+        13,
+        "up"
+      ],
+      [
+        13,
+        13,
+        null
+      ],
+      [
+        4,
+        9,
+        "down"
+      ]
+    ],
+    "sma_sqlite": [
+      [
+        null,
+        null,
+        null
+      ],
+      [
+        11.5,
+        null,
+        null
+      ],
+      [
+        8.5,
+        10.0,
+        null
+      ],
+      [
+        10.0,
+        10.0,
+        null
+      ],
+      [
+        16.0,
+        13.0,
+        "up"
+      ],
+      [
+        13.0,
+        13.0,
+        null
+      ],
+      [
+        4.0,
+        9.0,
+        "down"
+      ]
+    ],
+    "unfinished_receipt": 5,
+    "up_decision_receipt": 6,
+    "fill_receipts": [
+      7,
+      10
+    ],
+    "initial_equity": 1000,
+    "minimum_equity": 901,
+    "ending_equity": 1010,
+    "return": 0.01,
+    "drawdown": 0.099,
+    "prefix_before_after_future_equal": true,
+    "provider_calls": 0,
+    "error_status": 422
+  },
+  "owned_processes_stopped": true,
+  "artifacts": "/private<CLEAN_CHECKOUT>/repo/test-results/smoke/20261119T023056-30152"
+}

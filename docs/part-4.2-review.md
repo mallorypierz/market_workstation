@@ -1,6 +1,6 @@
 # Part4.2 pre-publication review
 
-No commit/push performed. Current branch is main; current HEAD360ed24d9f5c66fb5b29d3f7fae8926003320fa3 is the earlier Part4.1 report version, not Part4.2.
+The review below was presented before authorization. The student then authorized publication: implementation/evidence `8565d239f94a356f91cbd47054e416e8bc465345` is pushed to main; public access and [remote CI](https://github.com/mallorypierz/market_workstation/actions/runs/44444599750) passed. The path/diff files below preserve the pre-publication review rather than pretending to be the latest Git status.
 
 ## Candidate changes
 
@@ -12,11 +12,11 @@ No commit/push performed. Current branch is main; current HEAD360ed24d9f5c66fb5b
 
 [All changed/untracked paths](evidence/part42-submission/review-status.txt) · [tracked diff summary](evidence/part42-submission/review-tracked-stat.txt) · [report/test/workflow diff](evidence/part42-submission/review-report-test-workflow.diff). The tracked diff summary excludes new untracked files; the path list includes them. The linked implementation files themselves are available for review in this working tree.
 
-## Proposed publication after explicit authorization
+## Reviewed publication plan (now authorized and executed)
 
 1. Commit the reviewed Part4.2 implementation, tests, evidence/video and documentation to the existing repository; record the real implementation/evidence SHA.
 2. Push the authorized changes. Observe the workflow for that exact SHA, verify unauthenticated access to all report-linked documents and complete video playback/download.
 3. Replace report.md pending fields with the verified implementation/evidence SHA, one public video URL and actual CI run/conclusion. Pin all supporting links to that version. A subsequent documentation-only commit can contain the finalized report without pretending it can name its own hash.
 4. The student reviews and uploads **only report.md** to Canvas. No automatic Canvas submission.
 
-If remote checks fail, record the actual failure and fix within authorized scope; do not label the report ready based solely on local tests. A final-SHA clean checkout is still pending until the commit exists. The current candidate source export passed startup,110tests,build and both browser scenarios with existing dependencies.
+If remote checks fail, record the actual failure and fix within authorized scope; do not label the report ready based solely on local tests. The final implementation-SHA clean checkout has now passed, with reused dependencies. The current candidate source export passed startup,110tests,build and both browser scenarios with existing dependencies.

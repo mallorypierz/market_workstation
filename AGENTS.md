@@ -74,3 +74,5 @@ Student authorized Prompt19 step8: preserve Part4.1 report/evidence; audit and d
 ## Part4.2 publication authorization
 
 The student explicitly authorized committing and pushing all Part4.2 changes and updating submission documentation on November18,2026. This authorizes the reviewed implementation/evidence commit, remote CI/access verification and follow-up report/documentation commits. It does not authorize Canvas submission, real brokerage or new local dependency installation. Earlier preparation-only restrictions are superseded for this publication task.
+
+Publication result: Part4.2 implementation/evidence `8565d239f94a356f91cbd47054e416e8bc465345` is public; its remote CI passed and the59second video plus report-linked evidence were downloaded without credentials and hash-verified. Root report is finalized in a documentation follow-up. Canvas upload remains the student’s responsibility.

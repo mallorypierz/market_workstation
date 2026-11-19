@@ -1,5 +1,7 @@
 # Offline SmokeTest
 
+Published implementation/evidence [8565d23](https://github.com/mallorypierz/market_workstation/commit/8565d239f94a356f91cbd47054e416e8bc465345); [remote CI](https://github.com/mallorypierz/market_workstation/actions/runs/44444599750) **success**; [59-second video](https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/part-4.2-demo.webm) verified by unauthenticated full download and matching SHA256. The exact committed checkout passed tests/build/browser checks with reused local dependencies. Student review and Canvas upload remain the student’s actions.
+
 From the project root, run one command:
 
 ```sh
@@ -47,7 +49,7 @@ SmokeTest reports only. AutoLoop is separate agent work: inspect failure, make a
 
 ## CI and live evidence
 
-`.github/workflows/smoke-test.yml` runs the same command twice on pushes, pull requests and manual dispatch. It uploads ignored run artifacts even on failure. No provider secrets are configured. The repository is configured at https://github.com/mallorypierz/market_workstation. The Part4.2 changes are currently uncommitted; there is no final submitted Part4.2 commit or observed remote conclusion for them. Local success does not establish remote CI success. After an authorized submission commit/push, inspect the Actions run matching its exact SHA and record the run URL and conclusion; do not push just to trigger CI.
+`.github/workflows/smoke-test.yml` runs the same command twice on pushes, pull requests and manual dispatch. It uploads ignored run artifacts even on failure. No provider secrets are configured. The repository is configured at https://github.com/mallorypierz/market_workstation. Part4.2 commit `8565d239f94a356f91cbd47054e416e8bc465345` is published and [its observed workflow](https://github.com/mallorypierz/market_workstation/actions/runs/44444599750) completed successfully. Both smoke invocations, correctness tests and the build passed. This remote result is separate from local evidence.
 
 Offline passes do not verify live Yahoo availability, live image-model interpretation, or microphone/speaker audio. Those remain separate observations in verification.md and the live-dashboard, chart-analysis, decision-review and decision-voice notes. The offline suite never calls the voice provider or requests microphone access.
 

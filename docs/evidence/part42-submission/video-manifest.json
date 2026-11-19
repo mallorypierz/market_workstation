@@ -18,6 +18,7 @@
     ]
   },
   "editing": "Trailing footage only trimmed with installed Playwright FFmpeg stream copy from60.92to59.00seconds; no result edits",
-  "public_url": null,
-  "instructor_access": "PENDING publication and unauthenticated playback"
+  "public_url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/part-4.2-demo.webm",
+  "instructor_access": "Verified unauthenticated full HTTP200download; SHA256matches locally played59second file",
+  "commit": "8565d239f94a356f91cbd47054e416e8bc465345"
 }

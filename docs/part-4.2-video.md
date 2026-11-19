@@ -1,8 +1,10 @@
 # Part4.2 actual-app demonstration
 
+Published implementation/evidence [8565d23](https://github.com/mallorypierz/market_workstation/commit/8565d239f94a356f91cbd47054e416e8bc465345); [remote CI](https://github.com/mallorypierz/market_workstation/actions/runs/44444599750) **success**; [59-second video](https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/part-4.2-demo.webm) verified by unauthenticated full download and matching SHA256. The exact committed checkout passed tests/build/browser checks with reused local dependencies. Student review and Canvas upload remain the student’s actions.
+
 **Recorded locally:59.00seconds,1440×1000WebM, silent with readable narration captions.** [Local recording](evidence/part-4.2-demo.webm) · [measured duration](evidence/part42-submission/duration.json) · [hash/size manifest](evidence/part42-submission/video-manifest.json).
 
-**Public instructor-accessible URL: PENDING publication and unauthenticated playback check.** The repository page returned HTTP200 without credentials, but that does not make an uncommitted local video publicly accessible. Do not use the old112.08second Part4.1 video. Only one final Part4.2 video should be linked from the submitted report.
+**Public instructor-accessible URL:** [59-second demonstration](https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/part-4.2-demo.webm). The complete file returned HTTP200 without credentials and its hash matched the locally played/measured video. The old112second Part4.1 recording is not the submitted Part4.2 video.
 
 ## Script and observed recording
 
@@ -31,6 +33,6 @@ The first command launches isolated normal FastAPI/Vue and records the real appl
 
 For a student-operated replacement: start the app per README, create/load the isolated constructed result and saved Yahoo daily run, follow the timing table, keep captions/narration and provenance readable, hide unrelated tabs/account identifiers, stop recording by60seconds, and remeasure the final exported file. Do not edit performance figures or tune windows for a positive result.
 
-## Publication acceptance
+## Publication verification
 
-After explicit commit/push authorization, publish the reviewed video with implementation/evidence, pin one raw/blob URL to that real commit, and test it in a signed-out browser (or unauthenticated HTTP plus playback). Confirm the complete59seconds can play or download without an access request. Replace report.md's pending link/SHA and pin supporting-document links to the same implementation/evidence commit; a later documentation-only commit may contain that finalized report. Record observed remote CI for the submitted implementation SHA. None of those remote checks has been claimed yet. The student uploads only report.md to Canvas.
+Student authorized commit/push. Implementation/evidence SHA `8565d239f94a356f91cbd47054e416e8bc465345` is public. [Access evidence](evidence/part42-submission/public-access.json) records25unauthenticated HTTP200resources with byte hashes matching local files, including the complete video. [CI evidence](evidence/part42-submission/remote-ci.json) records success for this exact SHA. The report now pins its one video and supporting links to that commit. A later documentation-only commit records the final report; the student uploads only report.md to Canvas.

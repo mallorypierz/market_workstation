@@ -1,5 +1,7 @@
 # Observation recorder schema and identity
 
+Published implementation/evidence [8565d23](https://github.com/mallorypierz/market_workstation/commit/8565d239f94a356f91cbd47054e416e8bc465345); [remote CI](https://github.com/mallorypierz/market_workstation/actions/runs/44444599750) **success**; [59-second video](https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/part-4.2-demo.webm) verified by unauthenticated full download and matching SHA256. The exact committed checkout passed tests/build/browser checks with reused local dependencies. Student review and Canvas upload remain the student’s actions.
+
 Implemented with Python sqlite3, no added packages. Default path: `backend/data/market.sqlite3` under the project root. `MARKET_DB_PATH` overrides it; relative environment paths resolve against the root. Runtime SQLite files and sidecars are already excluded by `.gitignore`.
 
 ## Tables

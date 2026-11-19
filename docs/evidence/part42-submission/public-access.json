@@ -1,0 +1,208 @@
+{
+  "commit": "8565d239f94a356f91cbd47054e416e8bc465345",
+  "authenticated": false,
+  "status": "passed",
+  "resources": [
+    {
+      "path": "AGENTS.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/AGENTS.md",
+      "status": 200,
+      "bytes": 11040,
+      "sha256": "1ff06f158288f5287e9eacad77f6e9bac1e3d36d3613a9a46bc058f028f4f17f",
+      "matches_local": true
+    },
+    {
+      "path": "AI-USE.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/AI-USE.md",
+      "status": 200,
+      "bytes": 3621,
+      "sha256": "cacd54468c17fea8eac6be7467ef651e9b59ff9acfe2b23d934a38243e9f25c2",
+      "matches_local": true
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/README.md",
+      "status": 200,
+      "bytes": 36132,
+      "sha256": "7c34fe62df5407c1f64402b8e0d993cf6a8c1833139115f15aa9af40b46a0de0",
+      "matches_local": true
+    },
+    {
+      "path": "backend/sma_reference.py",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/backend/sma_reference.py",
+      "status": 200,
+      "bytes": 2154,
+      "sha256": "f22dc20413035932ffb27443475746fb1afb634cb8adcd8d611198b08c22b59b",
+      "matches_local": true
+    },
+    {
+      "path": "backend/test_backtest.py",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/backend/test_backtest.py",
+      "status": 200,
+      "bytes": 7674,
+      "sha256": "dac80fab104238d5d7a9bffa564063c949965a926d4ae6c9214576afddddb9f4",
+      "matches_local": true
+    },
+    {
+      "path": "backend/test_pnl.py",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/backend/test_pnl.py",
+      "status": 200,
+      "bytes": 7906,
+      "sha256": "011b71b1a74d71b019deedb2d7c7b28e778c66f32b48f8c1e1321a6719b7d757",
+      "matches_local": true
+    },
+    {
+      "path": "backend/test_sma.py",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/backend/test_sma.py",
+      "status": 200,
+      "bytes": 7335,
+      "sha256": "0c6b9c2b0dd40b56617e06526feba062b3b20fd43be4f354426a2a9ce0ece077",
+      "matches_local": true
+    },
+    {
+      "path": "docs/archive/part-4.1/report.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/archive/part-4.1/report.md",
+      "status": 200,
+      "bytes": 8852,
+      "sha256": "0c01f84818a9734d873141c93563e1d4d840ec5693d04053c8625f600c7510b1",
+      "matches_local": true
+    },
+    {
+      "path": "docs/backtesting.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/backtesting.md",
+      "status": 200,
+      "bytes": 16032,
+      "sha256": "0ad0e83f22a7c964ee4c9944306c67be3022dde1bf2ad4a28257a7e108791150",
+      "matches_local": true
+    },
+    {
+      "path": "docs/design-pipeline.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/design-pipeline.md",
+      "status": 200,
+      "bytes": 15802,
+      "sha256": "a225b06e43d31bd19921f5643b28d58f1ec79ddbfed044f19b50e652edcbd997",
+      "matches_local": true
+    },
+    {
+      "path": "docs/evidence/aapl-2025-daily.json",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/aapl-2025-daily.json",
+      "status": 200,
+      "bytes": 9363,
+      "sha256": "7e3993f8352792f6620d158d1d9bff5f5cb22172de44caf300399eed6c0f47e5",
+      "matches_local": true
+    },
+    {
+      "path": "docs/evidence/accounting-part42/result.json",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/accounting-part42/result.json",
+      "status": 200,
+      "bytes": 4879,
+      "sha256": "caa81a9cd8fea9f8b8e147871afe8f82a8acd74a315d071d6baf69b3bc42a371",
+      "matches_local": true
+    },
+    {
+      "path": "docs/evidence/backtest-ui/result.json",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/backtest-ui/result.json",
+      "status": 200,
+      "bytes": 461,
+      "sha256": "fdd0485db0f3164ef5d5d696ee803759bc9271ebe192c41504be0080c4937479",
+      "matches_local": true
+    },
+    {
+      "path": "docs/evidence/backtest-yahoo-daily.json",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/backtest-yahoo-daily.json",
+      "status": 200,
+      "bytes": 83821,
+      "sha256": "d3343325ae195d383a0f9eefad4a913a9873a2beabfcccc5e6ba4df1c21b4927",
+      "matches_local": true
+    },
+    {
+      "path": "docs/evidence/part-4.2-demo.webm",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/part-4.2-demo.webm",
+      "status": 200,
+      "bytes": 10067383,
+      "sha256": "164df4194e1cba98db2ff1fc3c3319116314389c3ee2fac9911d000c5df78c06",
+      "matches_local": true
+    },
+    {
+      "path": "docs/evidence/part42-smoke/part42-sqlite.json",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/part42-smoke/part42-sqlite.json",
+      "status": 200,
+      "bytes": 1290,
+      "sha256": "ba62d7814c44d2874f1eca9b42c325569fc7adc6aaaf0e0491dca048e274a1ff",
+      "matches_local": true
+    },
+    {
+      "path": "docs/evidence/sma-part42-reference.json",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/sma-part42-reference.json",
+      "status": 200,
+      "bytes": 11310,
+      "sha256": "4de6cb6e8b712b1ec1a91e1f38c29ace1e08eeba0eabed0c9142a14e6e33cd2f",
+      "matches_local": true
+    },
+    {
+      "path": "docs/part-4.2-checklist.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/part-4.2-checklist.md",
+      "status": 200,
+      "bytes": 5086,
+      "sha256": "dda451025b9238c2dec91956026d1f211932d46d0a77ddb8426662d7387c1862",
+      "matches_local": true
+    },
+    {
+      "path": "docs/part-4.2-evidence.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/part-4.2-evidence.md",
+      "status": 200,
+      "bytes": 7745,
+      "sha256": "2e26b0de6f0b0b98c273b3f6a7369759ca6ce287481406e6b4f47ad783fa576e",
+      "matches_local": true
+    },
+    {
+      "path": "docs/part-4.2-video.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/part-4.2-video.md",
+      "status": 200,
+      "bytes": 4558,
+      "sha256": "8822764104882451188cc1ebf7136c13d73e4851cfe3fca8b618a55e3c7390cc",
+      "matches_local": true
+    },
+    {
+      "path": "docs/pnl.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/pnl.md",
+      "status": 200,
+      "bytes": 11447,
+      "sha256": "c0cd7fa052820f9cde68a7d859dad749d8aea1e99280bc657bf45cd311ea910b",
+      "matches_local": true
+    },
+    {
+      "path": "docs/sma-strategy.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/sma-strategy.md",
+      "status": 200,
+      "bytes": 9515,
+      "sha256": "9f85f9c5c5757cda80e4c0f55ba2c79e263184a847fa98e3bfa512b20911dac2",
+      "matches_local": true
+    },
+    {
+      "path": "docs/sma.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/sma.md",
+      "status": 200,
+      "bytes": 9828,
+      "sha256": "83d90a5477f4bc6c4ddf06a5d691b2841fbc75765878a4bdf1fcb978d7edb67c",
+      "matches_local": true
+    },
+    {
+      "path": "docs/sqlite-schema.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/sqlite-schema.md",
+      "status": 200,
+      "bytes": 11766,
+      "sha256": "1773a52d4c05c214a89cde168166c205f1afdadf2d8274d2abbd57bea00be400",
+      "matches_local": true
+    },
+    {
+      "path": "docs/verification.md",
+      "url": "https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/verification.md",
+      "status": 200,
+      "bytes": 149055,
+      "sha256": "4903c6cbfd016dbe6bfa77c0a83e14847ae1b19c7c9447ae1f06885340d5ed2d",
+      "matches_local": true
+    }
+  ],
+  "video_note": "Unauthenticated full download hash matches locally played/measured59second video; no instructor login required."
+}

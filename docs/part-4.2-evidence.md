@@ -1,6 +1,8 @@
 # Part4.2 curated evidence — November18,2026
 
-This log distinguishes independently checked numbers, constructed fixtures, real historical data and remote checks still pending. New curated textual logs normalize personal local paths to `<PROJECT>`/`<USER_HOME>`; no credentials, environment values, private-account screens or production databases are included. Existing historical evidence remains unchanged. Tests run with isolated temporary accounts; copied evidence databases remain ignored under test-results, not in the submission.
+Published implementation/evidence [8565d23](https://github.com/mallorypierz/market_workstation/commit/8565d239f94a356f91cbd47054e416e8bc465345); [remote CI](https://github.com/mallorypierz/market_workstation/actions/runs/44444599750) **success**; [59-second video](https://raw.githubusercontent.com/mallorypierz/market_workstation/8565d239f94a356f91cbd47054e416e8bc465345/docs/evidence/part-4.2-demo.webm) verified by unauthenticated full download and matching SHA256. The exact committed checkout passed tests/build/browser checks with reused local dependencies. Student review and Canvas upload remain the student’s actions.
+
+This log distinguishes independently checked numbers, constructed fixtures, real historical data and observed remote publication checks. New curated textual logs normalize personal local paths to `<PROJECT>`/`<USER_HOME>`; no credentials, environment values, private-account screens or production databases are included. Existing historical evidence remains unchanged. Tests run with isolated temporary accounts; copied evidence databases remain ignored under test-results, not in the submission.
 
 ## Observed evidence map
 
@@ -11,10 +13,10 @@ This log distinguishes independently checked numbers, constructed fixtures, real
 |Weighted-average accounting and restart|[accounting results](evidence/accounting-part42/result.json), [P&L explanation](pnl.md)|Independent expected values, API/browser/direct SQLite|
 |Real historical evaluation|[Yahoo daily source](evidence/aapl-2025-daily.json), [saved result](evidence/backtest-yahoo-daily.json)|37bars,4warm-up/33evaluation,10fills,999.64equity;price-only,not live evidence|
 |Actual UI/outage/restart|[historical browser result](evidence/backtest-ui/result.json)|Saved history; real backend stopped/restarted;SQLite identical|
-|Controlled CI path|[first](evidence/part42-smoke/run1-result.json), [second](evidence/part42-smoke/run2-result.json)|Local passes only; remote CI pending|
+|Controlled CI path|[first](evidence/part42-smoke/run1-result.json), [second](evidence/part42-smoke/run2-result.json)|Local passes plus [remote success](https://github.com/mallorypierz/market_workstation/actions/runs/44444599750)|
 |Current startup/source export|[result](evidence/part42-submission/source-export-result.json), [init](evidence/part42-submission/source-export-init.log), [tests](evidence/part42-submission/source-export-python-tests.log), [build](evidence/part42-submission/source-export-build.log), [smoke](evidence/part42-submission/source-export-smoke.log)|Clean candidate source export, not final-SHA Git checkout; dependencies reused|
-|Actual recorded demo|[video](evidence/part-4.2-demo.webm), [duration](evidence/part42-submission/duration.json), [script](part-4.2-video.md)|59seconds;local playback verified,public linkpending|
-|Repository access|[unauthenticated access attempts](evidence/part42-submission/repository-access.json)|HTTP200for repository page only; new commit/docs/video not yetpublished|
+|Actual recorded demo|[video](evidence/part-4.2-demo.webm), [duration](evidence/part42-submission/duration.json), [script](part-4.2-video.md)|59seconds;local playback and unauthenticated public download verified|
+|Repository access|[unauthenticated access attempts](evidence/part42-submission/repository-access.json)|Initial repository-only check; publication subsequently verified below|
 
 ## Actual failure → revised approach → result
 
@@ -48,6 +50,14 @@ The result records source-file hashes, exact command exits and service cleanup. 
 
 A default urllib repository request failed certificate verification. Reusing installed certifi's CA bundle with TLS verification still enabled returned unauthenticated HTTP200. This is a repository-page check only. No video has been published yet; no instructor video access or remote Actions conclusion is claimed. No commit/push/Canvas submission occurred.
 
-The [Part4.1 report](archive/part-4.1/report.md) and disclosure were copied verbatim before editing. [Preservation manifest](archive/part-4.1/preservation.json) identifies retained original evidence. The112.08second previous video remains historical material, not the Part4.2 link. Root report.md is now a clearly pending Part4.2 draft. All final supporting links must be checked at the eventual submitted implementation/evidence SHA before Canvas upload.
+The [Part4.1 report](archive/part-4.1/report.md) and disclosure were copied verbatim before editing. [Preservation manifest](archive/part-4.1/preservation.json) identifies retained original evidence. The112.08second previous video remains historical material, not the Part4.2 link. That paragraph describes the preparation stage. The current root report is finalized with the verified submitted SHA and public links; publication evidence follows.
 
 Final video revision: first capture56.00s; clearer historical-trade centering caused revised encoded length60.92s, failing the ≤60second check. Installed Playwright FFmpeg stream-copied only the first59seconds (`-t 59 -c copy`); final Chromium measurement59.00s passed. Final frame42shows the historical filled buy row; frame53retains the limitation caption. The final file/hash/frames replaced the earlier draft; no performance values changed.
+
+## Authorized publication — November18,2026
+
+Implementation/evidence `8565d239f94a356f91cbd47054e416e8bc465345` committed and pushed to origin/main. All25report-linked resources (including full59second video) returned unauthenticated HTTP200and matched local SHA256bytes: [access results](evidence/part42-submission/public-access.json). [Remote CI](https://github.com/mallorypierz/market_workstation/actions/runs/44444599750) completed **success** with correctness tests,build and both smoke runs; [saved API result](evidence/part42-submission/remote-ci.json).
+
+A clean detached checkout of this exact SHA passed110tests,Vue build and both browser scenarios: [checkout result](evidence/part42-submission/committed-checkout.json). The first harness cleanliness assertion counted its own temporary node_modules symlink as an untracked file; tests passed but the harness correctly recorded failed overall status. Removing only that test-owned link before the final status check produced a clean successful repeat. No production code or expected values changed. Local dependencies were reused; CI installed declared dependencies independently.
+
+Reviewed publication diff also exposed trailing spaces in copied failure context and the review-diff text. Those evidence-formatting spaces were normalized in the final documentation commit. Historical traces and all calculation results remain intact. The current report pins technical evidence to the implementation commit and records verified public/CI conclusions. No Canvas submission was performed.

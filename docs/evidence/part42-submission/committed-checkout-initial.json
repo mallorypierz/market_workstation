@@ -1,0 +1,133 @@
+{
+  "commit": "8565d239f94a356f91cbd47054e416e8bc465345",
+  "kind": "clean detached Git checkout of exact implementation commit",
+  "dependencies": "reused installed Python packages and symlinked frontend/node_modules; no installations",
+  "checks": [
+    {
+      "command": "python3 -m unittest discover -s backend -p test_*.py",
+      "exit_code": 0
+    },
+    {
+      "command": "npm --prefix frontend run build",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 docs/smoke_test.py",
+      "exit_code": 0
+    }
+  ],
+  "clean_after_checks": false,
+  "smoke": {
+    "run": "20261119T022907-29967",
+    "status": "passed",
+    "provider": "controlled offline",
+    "market_data": "constructed",
+    "cash": 1025,
+    "shares": 0,
+    "fills": 3,
+    "realized": 25,
+    "unrealized": 0,
+    "provider_calls": 23,
+    "part42": {
+      "status": "passed",
+      "data": "OFFLINE constructed; not historical/live evidence",
+      "strategy_id": "a4d67a02-469d-497d-91c0-152e3581820f",
+      "backtest_id": "d2bb87b0-ff2b-4540-8be2-492f95ac849a",
+      "cash_cents": 101000,
+      "shares": 0,
+      "fills": 2,
+      "realized": 10,
+      "unrealized": 0,
+      "sma_expected": [
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          11.5,
+          null,
+          null
+        ],
+        [
+          8.5,
+          10,
+          null
+        ],
+        [
+          10,
+          10,
+          null
+        ],
+        [
+          16,
+          13,
+          "up"
+        ],
+        [
+          13,
+          13,
+          null
+        ],
+        [
+          4,
+          9,
+          "down"
+        ]
+      ],
+      "sma_sqlite": [
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          11.5,
+          null,
+          null
+        ],
+        [
+          8.5,
+          10.0,
+          null
+        ],
+        [
+          10.0,
+          10.0,
+          null
+        ],
+        [
+          16.0,
+          13.0,
+          "up"
+        ],
+        [
+          13.0,
+          13.0,
+          null
+        ],
+        [
+          4.0,
+          9.0,
+          "down"
+        ]
+      ],
+      "unfinished_receipt": 5,
+      "up_decision_receipt": 6,
+      "fill_receipts": [
+        7,
+        10
+      ],
+      "initial_equity": 1000,
+      "minimum_equity": 901,
+      "ending_equity": 1010,
+      "return": 0.01,
+      "drawdown": 0.099,
+      "prefix_before_after_future_equal": true,
+      "provider_calls": 0,
+      "error_status": 422
+    },
+    "owned_processes_stopped": true
+  },
+  "status": "failed"
+}
