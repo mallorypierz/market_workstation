@@ -108,5 +108,6 @@ onBeforeUnmount(()=>{active=false;clearInterval(timer)})
 </section>
 </template>
 <style scoped>
+.pnl-history td:nth-child(n+3):nth-child(-n+9) {white-space:nowrap;overflow-wrap:normal}
 .pnl-history {margin: 20px 0; border:1px solid #dce4e9; padding:12px} summary {font-weight:bold;cursor:pointer} .pnl-history table {font-size:12px} .pnl-history td {overflow-wrap:anywhere;min-width:55px} .paper {border-top:2px solid #dce4e9;margin-top:24px;padding-top:16px} .actions {display:flex;gap:10px;flex-wrap:wrap;align-items:center} input {width:90px;font:inherit;padding:8px} dl {display:flex;gap:40px} dd {margin:0;font-weight:bold} .scroll {overflow:auto} table {width:100%;font-size:14px;text-align:left} th,td {padding:8px;border-bottom:1px solid #dce4e9}
 </style>

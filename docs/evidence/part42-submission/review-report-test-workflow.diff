@@ -1,0 +1,205 @@
+diff --git a/.github/workflows/smoke-test.yml b/.github/workflows/smoke-test.yml
+index 3985389..e4f6986 100644
+--- a/.github/workflows/smoke-test.yml
++++ b/.github/workflows/smoke-test.yml
+@@ -24,6 +24,10 @@ jobs:
+           python -m pip install -r backend/requirements.txt
+           npm ci --prefix frontend
+           frontend/node_modules/.bin/playwright install --with-deps chromium
++      - name: Run Python correctness tests
++        run: python3 -m unittest discover -s backend -p 'test_*.py' -v
++      - name: Build Vue application
++        run: npm --prefix frontend run build
+       - name: Run offline SmokeTest twice with fresh accounts
+         env:
+           CI: 'true'
+diff --git a/frontend/tests/smoke.spec.js b/frontend/tests/smoke.spec.js
+index 498c9a3..17be33e 100644
+--- a/frontend/tests/smoke.spec.js
++++ b/frontend/tests/smoke.spec.js
+@@ -82,3 +82,68 @@ test('offline workstation: replay, indicators, chart review, automated paper led
+   await auto.screenshot({path:process.env.SMOKE_ARTIFACTS+'/account.png'})
+   fs.writeFileSync(process.env.SMOKE_ARTIFACTS+'/browser-evidence.json',JSON.stringify({sma:{window2:16,window3:13},manual_fills:0,after_stop:counts,...saved},null,2))
+ })
++
++// Same single-worker runner, separate SQLite source/accounts; no historical files or providers.
++test('Part 4.2: completed crossover, later fill, causal saved backtest and SQLite evidence',async({page,context})=>{
++ await context.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort())
++ const errors=[];page.on('pageerror',e=>errors.push(e.message))
++ const api=async(path,body)=>{const r=await page.request[body===undefined?'get':'post'](path,body===undefined?{}:{data:body});expect(r.ok(),await r.text()).toBeTruthy();return r.json()}
++ const feed=body=>api('/api/smoke/part42',body)
++ await feed({activate:true});await page.goto('/')
++ const strategy=page.getByRole('region',{name:'Deterministic SMA strategy'}),bt=page.getByRole('region',{name:'Historical backtest'})
++ await strategy.getByRole('button',{name:'Start new SMA run',exact:true}).click()
++ await expect(strategy).toContainText('Cash $1000.00 · Shares 0 · Fills 0')
++ const id=await strategy.getByLabel('Saved SMA run').inputValue(),state=()=>api('/api/strategy/'+id)
++ for(const [minute,price] of [[0,13],[1,10],[2,7],[3,13]])await feed({minute,price})
++ await feed({minute:4,price:19,complete:false})
++ const unfinished=await state();expect(unfinished.events).toHaveLength(4);expect(unfinished.account.orders).toEqual([])
++ await expect(strategy).toContainText('Cash $1000.00 · Shares 0 · Fills 0')
++ await feed({minute:4,price:19})
++ await expect(strategy).toContainText('Upward crossover: buy one share')
++ const pending=await state();expect(pending.account.orders).toHaveLength(1);expect(pending.account.orders[0].status).toBe('pending');expect(pending.account.fills).toEqual([])
++ expect(pending.events.at(-1).short_value).toBe(16);expect(pending.events.at(-1).long_value).toBe(13)
++ async function runBacktest(end){
++  await bt.getByRole('button',{name:'Refresh saved results',exact:true}).click()
++  await bt.getByLabel('Warm-up start UTC').fill('2026-11-09T14:30:00Z')
++  await bt.getByLabel('Evaluation start UTC').fill('2026-11-09T14:30:00Z')
++  await bt.getByLabel('End exclusive UTC').fill(end)
++  // Wait for this submission, not a previous run's completed status or an option list still loading.
++  const responsePromise=page.waitForResponse(r=>r.url().endsWith('/api/backtests')&&r.request().method()==='POST')
++  await bt.getByRole('button',{name:'Run new backtest',exact:true}).click()
++  const response=await responsePromise;expect(response.status()).toBe(201)
++  const created=await response.json()
++  await expect(bt.getByRole('status')).toContainText('completed')
++  await expect(bt.getByLabel('Saved run',{exact:true})).toHaveValue(created.run_id)
++  return api('/api/backtests/'+created.run_id)
++ }
++ const prefix=await runBacktest('2026-11-09T14:35:00.001Z')
++ expect(prefix.result.account.fills).toEqual([]);expect(prefix.result.pending_orders).toHaveLength(1)
++ await feed({minute:5,price:100,complete:false})
++ await expect(strategy).toContainText('Cash $900.00 · Shares 1 · Fills 1')
++ const bought=await state();expect(bought.account.fills[0].price_cents).toBe(10000)
++ await feed({minute:5,price:7});await feed({minute:6,price:1})
++ const down=await state();expect(down.events.at(-1).signal).toBe('down');expect(down.events.at(-1).short_value).toBe(4);expect(down.events.at(-1).long_value).toBe(9)
++ expect(down.account.fills).toHaveLength(1)
++ await feed({minute:7,price:110,complete:false})
++ await expect(strategy).toContainText('Cash $1010.00 · Shares 0 · Fills 2');await expect(strategy).toContainText('Realized 10 · Unrealized 0')
++ const final=await state();expect(final.events.filter(e=>e.fill_id).every(e=>e.fill_receipt>e.receipt_id)).toBe(true)
++ await strategy.getByRole('button',{name:'Stop SMA run',exact:true}).click();await expect(strategy.getByText('Stopped',{exact:true})).toBeVisible()
++ // Same prefix re-evaluated after later prices exist must retain decisions and no fills.
++ const prefixLater=await runBacktest('2026-11-09T14:35:00.001Z')
++ expect(prefixLater.result.decisions).toEqual(prefix.result.decisions)
++ expect(prefixLater.result.equity_curve).toEqual(prefix.result.equity_curve)
++ expect(prefixLater.result.account.fills).toEqual([])
++ const full=await runBacktest('2026-11-09T14:40:00Z')
++ expect(full.result.account.cash_cents).toBe(101000);expect(full.result.ending_equity).toBe(1010)
++ expect(full.result.total_return).toBe(.01);expect(full.result.max_drawdown).toBe(.099)
++ await expect(bt).toContainText('Cash $1,010.00');await expect(bt).toContainText('Return 1.0000% · Maximum drawdown 9.9000%');await expect(bt).toContainText('Realized $10.00 · Unrealized $0.00')
++ const rows=bt.getByRole('table',{name:'Backtest decisions'}).locator('tbody tr')
++ await expect(rows.nth(4)).toContainText('up');await expect(rows.nth(6)).toContainText('down')
++ await bt.screenshot({path:process.env.SMOKE_ARTIFACTS+'/part42-backtest.png'})
++ await page.reload();await expect(bt.getByRole('status')).toContainText('completed');await expect(bt).toContainText('Cash $1,010.00')
++ expect(await api('/api/backtests/'+full.run_id)).toEqual(full)
++ await bt.getByLabel('Short window').fill('3');await bt.getByRole('button',{name:'Run new backtest',exact:true}).click();await expect(bt.getByRole('alert')).toContainText('short < long')
++ const invalid=await page.request.post('/api/backtests',{data:{run_id:'invalid-smoke',start:'2026-11-09T14:30:00Z',end:'2026-11-09T14:40:00Z',short:3,long:3}});expect(invalid.status()).toBe(422)
++ expect(errors).toEqual([])
++ fs.writeFileSync(process.env.SMOKE_ARTIFACTS+'/part42-browser.json',JSON.stringify({label:'OFFLINE constructed correctness fixture; not Yahoo evidence',strategy_id:id,unfinished,pending,bought,down,final,prefix,prefixLater,full,error_status:invalid.status()},null,2))
++})
+diff --git a/report.md b/report.md
+index e292136..a347a11 100644
+--- a/report.md
++++ b/report.md
+@@ -1,45 +1,84 @@
+-# Assignment 4.1 — Market Data and the Dashboard
++# Assignment 4, Part 4.2 — Indicators, simulated trading and backtesting
+ 
+-- **Repository:** [market_workstation](https://github.com/mallorypierz/market_workstation) (public).
+-- **Submitted code and evidence:** [72953e37d4ad8b4b15a835c285bdff38850b4c0e](https://github.com/mallorypierz/market_workstation/commit/72953e37d4ad8b4b15a835c285bdff38850b4c0e). This report is recorded in a subsequent documentation commit.
+-- **Selected video (1 minute52.08seconds):** [Watch or download my recording](https://raw.githubusercontent.com/mallorypierz/market_workstation/0b479854ef607d5611b9c9405548d2edc06fc7ab/docs/evidence/part-4.1-student-demo.mov). [GitHub video page](https://github.com/mallorypierz/market_workstation/blob/0b479854ef607d5611b9c9405548d2edc06fc7ab/docs/evidence/part-4.1-student-demo.mov).
++**Draft: implementation verified locally; submission identifiers and public access still pending.**
+ 
+-**Video length requirement remains unmet:** this user-selected recording is112.08seconds; the assignment permits30–60seconds. Shorten it before submission.
++- **Repository:** [mallorypierz/market_workstation](https://github.com/mallorypierz/market_workstation).
++- **Exact submitted implementation/evidence commit:** **PENDING — changes have not been committed/pushed for Part 4.2.** Current repository HEAD predates this implementation and must not be presented as its submitted version.
++- **One accessible 30–60 second video link:** **PENDING — 59.00-second recording prepared locally; publication and unauthenticated instructor access are not yet verified.** See [recording and script](docs/part-4.2-video.md).
++- **Remote CI run/conclusion for that exact commit:** **PENDING.** Local passes are not remote CI evidence.
+ 
+-This recording replaces the earlier46.44second demonstration. Sampled frames show the AAPL dashboard, disconnected Yahoo with the browser still connected, SQLite record221/receipt223 matching price353.97, and Replay. That record's daily cumulative volume is unavailable. These observations do not establish exact minute volume or a completed replay; earlier live evidence remains linked below.
++Supporting links below are repository-relative draft links. Before uploading this report alone to Canvas, publish all linked files, replace them with commit-pinned GitHub URLs and check access without credentials. Do not upload source files or ZIP archives. The assistant has not submitted anything to Canvas. The [original Part 4.1 report](docs/archive/part-4.1/report.md) and evidence were preserved; its112.08 second video is not used as a Part 4.2 demonstration.
+ 
+-## Completed work
++## Completed application and design
+ 
+-Vue and TradingView Lightweight Charts display AAPL candlesticks and volume. Python calculates candles; FastAPI transports history and WebSocket updates; SQLite retains decoded source observations, delivery times and revision history. The dashboard exposes source, source/receipt timestamps, age, feed status and candle completion. Stored data can be retrieved and replayed with Yahoo disconnected.
++Python calculates two configurable SMAs, confirmed crossovers, deterministic strategy decisions, simulated execution, weighted-average P&L and historical performance. FastAPI exposes validated requests/results; Vue renders candle/SMA/equity charts, controls and inspectable decisions/orders/fills. SQLite preserves source observations, every receipt, explicit revision links, accounts and isolated saved backtests. The existing AI-reviewed workflow remains separate; the Part 4.2 strategy requires no model API or credentials.
+ 
+-The retained live capture contains **197 distinct observations and 199 deliveries**. On November 12, 2026, observation 197 / receipt 199 carried price **356.24**, source time **14:31:03 UTC**, and receipt time **14:31:10.259674 UTC**. The displayed 14:31 candle matched that closing price. Earlier WebSocket frames show the 14:30 candle changing from close 357.79 to 358.054. Disconnecting Yahoo changed the upstream status while the browser–FastAPI connection stayed open.
++Both windows must be positive integers with short < long. For each symbol/timeframe, an SMA averages the last N **completed** closes, including the displayed candle. Warm-up and unfinished values are unavailable. Exact comparisons precede display rounding. Ties retain the last known side; the first unequal comparable pair establishes a side without a signal. Only a later side change signals.
+ 
+-Evidence: [source → database → WebSocket trace](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/evidence/live-yahoo-candle-trace.json), [live chart](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/evidence/live-yahoo-trace.png), [forming candle](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/evidence/live-forming-candle.png), and [disconnected upstream](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/evidence/upstream-disconnected.png). These describe the historical capture, not today's availability.
++The strategy buys one share on confirmed up when flat and affordable, closes on down, and records skipped reasons otherwise. No shorting, borrowing or pyramiding. A decision queues an order; only a later eligible observation may fill it. Stable run/request/event identities prevent duplicate execution on retries. Stop fences future submissions and cancels pending orders. Later revisions may change chart history but never rewrite executed fills. Accounts and backtests are separate from live/AI accounts.
+ 
+-## Design decisions
++[Calculation rules](docs/sma.md) · [strategy](docs/sma-strategy.md) · [backtesting](docs/backtesting.md) · [pipeline](docs/design-pipeline.md) · [schema](docs/sqlite-schema.md).
+ 
+-- **Identity and revisions:** canonical exact repeats reuse one observation ID while each delivery retains its receipt ID. Changed same-time messages remain distinct unless explicit correction evidence links them. Original payloads remain available. Yahoo has no verified stable event ID or revision sequence in this capture.
+-- **Ordering and replay:** source time assigns half-open UTC minute intervals and orders prices, with local observation ID breaking ties. Receipt order determines what replay knows. Late arrivals and identifiable corrections recompute candles without erasing earlier evidence.
+-- **Completion:** interval end, coverage and completion live outside the six candle fields. An ended candle does not guarantee every exchange event was received.
+-- **Volume:** Yahoo AAPL day_volume is interpreted as a daily cumulative share counter. Differences are labeled **estimated**, never summed as event volume. The recorded totals 1,958,108 at 14:30:56 and 2,011,028 at 14:31:03 produce **52,920 estimated shares** for the latter minute. That seven-second difference crosses a boundary and does not establish exact minute volume. Missing baselines, resets and ambiguous timestamps remain Unknown. last_size is not substituted.
+-- **Recovery:** accepted observations persist before broadcast; authoritative snapshots restore browser state after reconnect. Socket connection, source freshness and market-session status remain distinct.
++## Reference, batch and incremental verification
+ 
+-See [data flow](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/design-pipeline.md), [SQLite schema](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/sqlite-schema.md), [aggregation rules](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/candle-aggregation.md), [feed investigation and references](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/feed-investigation.md), and [replay](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/replay.md).
++For closes 13,10,7,13,19,7,1 with windows 2/3, the expected paired values/signals are:
+ 
+-## Verification and revised approach
++| Candle | Short | Long | Signal |
++|---|---:|---:|---|
++|1|unavailable|unavailable|none|
++|2|11.5|unavailable|none|
++|3|8.5|10|none; establish below|
++|4|10|10|none; retain below|
++|5|16|13|up|
++|6|13|13|none; retain above|
++|7|4|9|down|
+ 
+-- **90 backend tests passed**, including duplicate delivery, revisions, late arrivals, restart persistence, retrieval ordering, boundaries, counter resets and disconnected-feed behavior.
+-- **Frontend build passed.** Chromium displayed the stored 14:31 close 356.24 and **52,920 shares (estimated)**. [Screenshot](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/evidence/volume-estimate.png).
+-- **Full offline browser SmokeTest passed** against isolated SQLite and stubbed external services. It runs the real Vue/FastAPI/chart/database path. [Result](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/evidence/submission-smoke.json). This is deterministic verification, not live-feed proof.
+-- Earlier actual-session replay ran twice with unchanged database counts/hash. Its volume was Unknown under the earlier implementation. [Historical replay check](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/evidence/replay-check.json).
+-- A new 30-second Yahoo probe on November 16 opened a socket and subscribed but received **no observation**. Receipt remains unverified. [Actual probe output](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/evidence/submission-feed-probe.jsonl).
++An independent oracle uses bundled SQLite SUM/COUNT window frames and integer cross-products; it imports neither production SMA nor indicator code. A fixed authored30-bar series with windows 3/5 crosses at bars 11 down,16 up,22 down,27 up; bar 30 is16/15.4. All expected outputs, timestamps, gaps and signals match with zero tolerance for these integer fixtures. This is an independent calculation, not third-party certification.
+ 
+-A revised approach addressed volume: the initial implementation withheld all live volume because semantics were unverified. Inspection of retained daily counters supported conservative differencing, so [the aggregation code](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/backend/candles.py) now exposes labeled estimates with baseline/reset guards and [regression tests](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/backend/test_candles.py). It does not replace missing evidence with zero. An earlier TLS failure was fixed using the installed certifi trust bundle without disabling certificate verification. [Commands, failures and results](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/docs/verification.md).
++“Incremental” means **recomputing each available receipt prefix**, not a stateful rolling accumulator. All values and signals at every prefix are compared against the reference. Tests cover ties, tiny differences before rounding, duplicates, revisions, late arrivals, missing intervals, incomplete candles and symbol/timeframe isolation. Future corrections are excluded from earlier known-at views. [Reference outputs](docs/evidence/sma-part42-reference.json) · [oracle](backend/sma_reference.py) · [tests](backend/test_sma.py).
+ 
+-## Setup and remaining limitations
++## Accounting checks
+ 
+-[README](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/README.md) documents initialization (`python3 -m backend.recorder init`), configurable database paths, localhost start/stop commands and `python3 docs/smoke_test.py`. Credentials, environments and runtime databases are excluded from Git. Part 4.1 needs no model API key or Yahoo login. [AGENTS.md](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/AGENTS.md) records project conventions; [AI-USE.md](https://github.com/mallorypierz/market_workstation/blob/72953e37d4ad8b4b15a835c285bdff38850b4c0e/AI-USE.md) discloses the coding assistance and the limits of known model history.
++The existing exact weighted-average accounting is retained. In an isolated $1,000 account:
+ 
+-Sparse Yahoo quotes cannot guarantee exchange-complete OHLC or exact minute volume. Some volume remains Unknown. Same-time ordering is locally deterministic; late data can revise ended candles. This short capture is limited to AAPL. The selected recording is over the permitted duration and must be shortened. A fresh regular-session live demonstration would strengthen the live-volume evidence. Later-part indicators, trading and AI/audio features are present but are outside this report's Part 4.1 claims.
++| Event | Cash | Shares | Realized | Unrealized |
++|---|---:|---:|---:|---:|
++|Buy 4 @ $100|$600|4|$0|$0|
++|Mark $110|$600|4|$0|$40|
++|Sell 1 @ $110|$710|3|$10|$30|
++|Mark $95|$710|3|$10|−$15|
++|Close 3 @ $105|$1,025|0|$25|$0|
+ 
+-**Canvas submission:** upload only this `report.md`. Source code and the video are linked in the public repository; do not upload a source ZIP.
++Independent multiple-buy check: buy 2 @ $100.01, then 1 @ $101.01 gives exact average $301.03/3. Sell 1 @ $102.01: cash $800.98,2 shares, realized $5/3, unrealized $10/3. A completed mark $103.125 gives $1,007.23 equity and $7.23 total P&L. Display rounding never feeds back into cost basis. Executable prices round HALF_UP to cents; marks retain available precision.
++
++At each valid valuation, equity = cash + marked position value, and total P&L = realized + unrealized = equity − starting cash. Missing valuation displays unavailable. Tests check atomic rollback, oversell rejection, nonnegative balances, idempotency, unchanged source records and API/browser/SQLite agreement before/after restart. [Expected/observed accounting evidence](docs/evidence/accounting-part42/result.json) · [assumptions and examples](docs/pnl.md) · [tests](backend/test_pnl.py).
++
++## Historical evaluation and causal protections
++
++The recorded Yahoo stream has only2 usable regular-session candles, so its run produces0 trades/$1,000 equity; it is insufficient for meaningful strategy evaluation. A separately identified Yahoo daily dataset contains37 AAPL bars from January6–February28,2025, retrieved November17,2026. The fixed2/3 windows and $1,000 starting cash were selected for explainable verification, not optimized to make a profit. Four bars warm up indicators;33 bars are evaluated from January13. Warm-up trades cannot enter performance.
++
++The historical run has five one-share round trips (10 fills):
++
++| Buy → sell dates (2025) | Buy | Sell | Realized |
++|---|---:|---:|---:|
++|Jan 16 → Jan 17|$237.35|$232.12|−$5.23|
++|Jan 24 → Jan 27|$224.78|$224.02|−$0.76|
++|Jan 28 → Feb 3|$230.85|$229.99|−$0.86|
++|Feb 6 → Feb 10|$231.29|$229.57|−$1.72|
++|Feb 12 → Feb 27|$231.20|$239.41|+$8.21|
++
++Final cash/equity **$999.64**, realized **−$0.36**, unrealized $0, no open positions or pending orders; total return **−0.036%**, sampled maximum drawdown **1.2997%**. Return = (ending equity − initial equity)/initial equity. Drawdown is the largest decline from the running equity peak, including initial cash. [Saved result and trace](docs/evidence/backtest-yahoo-daily.json) · [source/provenance](docs/evidence/aapl-2025-daily.json) · [real-history browser/restart result](docs/evidence/backtest-ui/result.json).
++
++Runs freeze input selection/cutoff and hash, symbol/timeframe/date range, windows, starting cash, policy, assumptions and code/version identity. Receipt runs reveal deliveries/revisions sequentially using known-at filters. They do not precompute decisions from finally revised history. Daily-bar runs lack original receipt/revision history: OHLC becomes available at session close, and orders fill at the next supplied session open. Tests perturb future observations/revisions and verify earlier decisions/fills remain identical. Browser tests rerun a fixed prefix after later receipts exist: earlier decisions/equity stay identical and the pending order cannot acquire a future fill. [Causality tests](backend/test_backtest.py) · [SQLite browser checks](docs/evidence/part42-smoke/part42-sqlite.json).
++
++End-of-data orders remain pending; open holdings are marked at the last usable known completed close, without invented liquidation. Prices/candles can be sparse. Receipt execution can accept stale newly received quotes; there is no realistic liquidity model. Assumptions are zero fees/spread/slippage, full fills, regular-session candle formation, no fabricated missing bars, unadjusted daily prices, rejected splits and no dividend income. The dataset includes a $0.25 dividend, so the reported return is price-only.
++
++## Verification, revised approach and limits
++
++Observed local checks:110 Python correctness tests pass, Vue build passes, and two expanded SmokeTest runs pass with fresh databases. Controlled strategy/backtest evidence is distinct from real Yahoo: its constructed $100 buy/$110 sale yields $1,010 equity,1%return and9.9%drawdown. Actual Chromium checks chart values/crossovers, skipped/pending/filled states, invalid/empty parameters, backend outage and saved results after refresh/restart; direct SQLite comparisons confirm no duplicate fills. The workflow runs Python correctness tests and the build before two full browser smoke invocations on push. **Its remote conclusion for the submitted Part 4.2 SHA is still pending.**
++
++During submission preparation, the resume SmokeTest actually failed: the browser helper read the saved-run selector before its newly created option finished loading. Its subsequent request returned the run list, causing `TypeError: Cannot read properties of undefined (reading 'account')`. Under Prompt19 step8/AGENTS AutoLoop, the test was revised to await the specific POST response and assert the matching selected run ID, rather than reusing a previous “completed” status. No calculation or expected number was changed. [Failure, changed-code explanation and rerun evidence](docs/part-4.2-evidence.md).
++
++[Startup and source-export verification](docs/part-4.2-evidence.md) discloses reused installed Python/Node/Chromium dependencies; no fresh dependency installation or clean checkout of a final submitted SHA is claimed. [README](README.md), [agent rules](AGENTS.md), [AI-use disclosure](AI-USE.md), [current checklist](docs/part-4.2-checklist.md) and [detailed verification log](docs/verification.md) describe reproducibility and outstanding checks.
++
++AAPL is a selected surviving company, not a point-in-time universe including delisted firms: survivorship and selection bias prevent generalizing to the market. One short period, one symbol and five round trips are a small sample with no independent holdout or market-regime validation. Trying many windows/date ranges and reporting the best would overfit; that search was not performed. Costs, gaps, revised historical data and simplified execution can materially change results. Historical profit—even if obtained—would not establish future performance; here the real historical example actually loses $0.36. The synthetic profit proves arithmetic, not an investment edge. This is a local educational simulation, not real brokerage.

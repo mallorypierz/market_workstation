@@ -24,6 +24,10 @@ jobs:
           python -m pip install -r backend/requirements.txt
           npm ci --prefix frontend
           frontend/node_modules/.bin/playwright install --with-deps chromium
+      - name: Run Python correctness tests
+        run: python3 -m unittest discover -s backend -p 'test_*.py' -v
+      - name: Build Vue application
+        run: npm --prefix frontend run build
       - name: Run offline SmokeTest twice with fresh accounts
         env:
           CI: 'true'

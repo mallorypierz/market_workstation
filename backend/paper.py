@@ -75,11 +75,11 @@ def selected_receipts(db, spec):
     return [row for row in rows if start<=utc(row['receipt_time'])<end]
 
 
-def _fill_receipt(db, acct, row):
+def _fill_receipt(db, acct, row, *, source='yahoo'):
     # Exact repeat deliveries and explicitly identified corrections are not new executable quotes.
     first=db.execute('SELECT MIN(receipt_id) FROM deliveries WHERE observation_id=?',(row['observation_id'],)).fetchone()[0]
     if row['receipt_id']!=first or db.execute('SELECT 1 FROM revisions WHERE identified_at_receipt_id=?',(row['receipt_id'],)).fetchone(): return
-    if row['source']!='yahoo': return
+    if row['source']!=source: return
     payload=json.loads(row['decoded_message_json']); cents=price_cents(payload.get('price'))
     if cents is None: return
     pending=db.execute("SELECT * FROM paper_orders WHERE account_id=? AND symbol=? AND status='pending' AND after_receipt<? ORDER BY id",(acct['id'],row['ticker'],row['receipt_id'])).fetchall()
@@ -130,7 +130,11 @@ def process_live(db):
     # Callback can be used before paper accounts have been initialized.
     if not db.execute("SELECT 1 FROM sqlite_master WHERE name='paper_accounts'").fetchone(): return
     db.execute('BEGIN IMMEDIATE')
-    try: _advance_live(db); db.commit()
+    try:
+        _advance_live(db)
+        from backend.strategy import process_locked
+        process_locked(db)
+        db.commit()
     except Exception: db.rollback(); raise
 
 
@@ -157,6 +161,8 @@ def execute(db, *, request_id, action, symbol='AAPL', quantity=None, account_id=
             if not _in_transaction: db.commit()
             return result
         acct=account(db,account_id)
+        if acct['mode'] in ('strategy','backtest') and not _in_transaction:
+            raise ValueError('Strategy/backtest accounts accept only their deterministic run orders')
         if acct['mode'] in ('live','test') and not _in_transaction: _advance_live(db); acct=account(db,account_id)
         held=shares(db,account_id,symbol)
         submitted=now()

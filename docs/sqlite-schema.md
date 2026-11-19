@@ -65,3 +65,19 @@ No new table is required. Existing decisions.result_json now holds roles.analyst
 `automation_controls` stores account, strategy (including SMA windows), symbol, interval, enabled flag, generation and Start baseline. Its scope tuple is unique. `automation_jobs` stores that scope plus candle, snapshot/decision IDs, state/reason, order/fill IDs, creation/expiry times and execution result JSON. `(account_id,strategy,symbol,interval,candle)` is unique and decision_id is unique. UTC candle keys are canonicalized before reservation.
 
 Nullable `decision_id` columns link `paper_orders`, `paper_fills` and `paper_pnl` to the saved review. Orders/fills each have a unique partial index on non-null decision IDs. Manual rows remain null. Schema initialization is idempotent and automatic at startup. The simulator fill transaction includes all these links and the automation job result, so failure rolls back balances, shares, fill and P&L together. Stop/restart cancels pending jobs/orders but preserves decision evidence, completed fills and durable claims. See [policy](paper-automation.md).
+
+
+## Deterministic SMA strategy extension
+
+[Strategy schema and transaction rules](sma-strategy.md) add `sma_runs` and `sma_events` on first strategy API use. `sma_runs.account_id` uniquely references an isolated `paper_accounts` row with mode `strategy`; `sma_events` uniquely identifies run/candle, references the known delivery and optional shared paper order, and freezes decision/account-before facts. Existing fills/P&L retain execution and result history. The strategy cursor, events, orders and shared fills/P&L commit atomically under `paper.process_live`. Stop disables the run and rejects pending orders in a serialized write transaction. No observation table or historical fill is rewritten.
+
+
+## Historical backtest storage
+
+Each ignored `backend/data/backtests/<run-id>.sqlite3` contains its own source snapshot and shared paper ledger, plus `backtest_run(id, metadata, frozen_input, status, result, error)`. Metadata records immutable selection/cutoff/hash, policy/configuration, execution assumptions and code/dependency identifiers. Results retain decision/order/fill/valuation trace and performance. Recorded source SQLite is read-only; no production-account row is used for execution. Historical-bar adapter receipts are labeled as derived availability events, not live Yahoo receipts. [Full semantics/API](backtesting.md).
+
+### Backtest presentation extension (Prompt6)
+
+The existing per-run `backtest_run.result` JSON now includes `chart`: frozen final-known candles/status, Python SMA values/signals and a history-versus-decision label. No shared live-ledger migration. `metadata.run_id` makes exported JSON traceable. Dataset catalog/list/read endpoints are read-only; completed-result GET never advances paper execution. Empty API evaluation persists status `failed` with an explanatory error, without fabricated results. Saved selection in browser localStorage is only an ID; SQLite remains authoritative across restarts. Older results missing `chart` derive it from `frozen_input` on read without writes.
+
+Submission reproducibility: `python3 -m backend.recorder init` creates the observation/delivery/revision schema on a fresh configured database; paper/settings tables initialize when their corresponding services are used. Backtest databases initialize per run under MARKET_BACKTEST_DIR and persist frozen input/metadata/results. The submission checker uses temporary paths and confirms returned results equal stored JSON. Runtime/evidence-copy databases stay ignored; exported JSON/screenshots/video are curated separately. A source export with reused dependencies is not a verified checkout of the final submitted commit.

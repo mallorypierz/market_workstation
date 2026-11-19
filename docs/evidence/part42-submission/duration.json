@@ -1,0 +1,15 @@
+{
+  "duration_seconds": 59,
+  "within_30_60": true,
+  "method": "Chromium HTMLVideoElement duration, loaded metadata and decoded seeks",
+  "checked_seconds": [
+    8,
+    19,
+    27,
+    36,
+    38,
+    42,
+    46,
+    53
+  ]
+}

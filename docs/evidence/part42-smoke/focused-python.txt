@@ -1,0 +1,38 @@
+test_duplicate_late_missing_revision_and_selection_isolation (backend.test_sma.SmaTests.test_duplicate_late_missing_revision_and_selection_isolation) ... /Users/mallorypierz/Library/Python/3.12/lib/python/site-packages/pandas/core/series.py:848: Pandas4Warning: Series.values returning an ndarray that drops timezone information for DatetimeTZDtype is deprecated. In a future version, this will return the underlying DatetimeArray instead. Use 'Series.dt.tz_convert(None).to_numpy()' to get a NumPy array of UTC values, or 'Series.array' to get the ExtensionArray.
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#whatsnew-310-deprecations-values for more details.
+  warnings.warn(
+ok
+test_exact_comparison_and_initial_ties (backend.test_sma.SmaTests.test_exact_comparison_and_initial_ties) ... ok
+test_invalid_windows (backend.test_sma.SmaTests.test_invalid_windows) ... ok
+test_long_independent_sql_reference_and_replay_prefixes (backend.test_sma.SmaTests.test_long_independent_sql_reference_and_replay_prefixes) ... ok
+test_reference_batch_and_each_replay_prefix (backend.test_sma.SmaTests.test_reference_batch_and_each_replay_prefix) ... ok
+test_unfinished_and_incomplete_do_not_signal (backend.test_sma.SmaTests.test_unfinished_and_incomplete_do_not_signal) ... ok
+test_backlog_same_as_incremental_and_no_pyramiding (backend.test_strategy.StrategyTests.test_backlog_same_as_incremental_and_no_pyramiding) ... ok
+test_insufficient_cash_and_fill_rejection (backend.test_strategy.StrategyTests.test_insufficient_cash_and_fill_rejection) ... ok
+test_late_revision_cannot_pyramid_on_new_upward_signal (backend.test_strategy.StrategyTests.test_late_revision_cannot_pyramid_on_new_upward_signal) ... ok
+test_order_and_event_rollback_together (backend.test_strategy.StrategyTests.test_order_and_event_rollback_together) ... ok
+test_stop_cancels_pending_and_is_terminal (backend.test_strategy.StrategyTests.test_stop_cancels_pending_and_is_terminal) ... ok
+test_unfinished_duplicate_retry_restart_revision (backend.test_strategy.StrategyTests.test_unfinished_duplicate_retry_restart_revision) ... ok
+test_up_down_later_fill_and_account_trace (backend.test_strategy.StrategyTests.test_up_down_later_fill_and_account_trace) ... ok
+test_fill_and_pnl_rollback_together (backend.test_pnl.PnlTests.test_fill_and_pnl_rollback_together) ... ok
+test_independent_rounding_equity_and_source_immutability (backend.test_pnl.PnlTests.test_independent_rounding_equity_and_source_immutability) ... ok
+test_reference_dedup_and_process_restart (backend.test_pnl.PnlTests.test_reference_dedup_and_process_restart) ... ok
+test_reference_equity_and_unavailable_totals (backend.test_pnl.PnlTests.test_reference_equity_and_unavailable_totals) ... ok
+test_replay_does_not_use_future_completed_close (backend.test_pnl.PnlTests.test_replay_does_not_use_future_completed_close) ... ok
+test_unfinished_unusable_and_candle_revision (backend.test_pnl.PnlTests.test_unfinished_unusable_and_candle_revision) ... ok
+test_upgrade_backfills_only_fills (backend.test_pnl.PnlTests.test_upgrade_backfills_only_fills) ... ok
+test_weighted_buys_partial_sale_exact_fraction (backend.test_pnl.PnlTests.test_weighted_buys_partial_sale_exact_fraction) ... ok
+test_daily_last_signal_has_no_invented_fill (backend.test_backtest.BacktestTests.test_daily_last_signal_has_no_invented_fill) ... ok
+test_daily_open_execution_and_causality (backend.test_backtest.BacktestTests.test_daily_open_execution_and_causality) ... ok
+test_duplicate_out_of_order_and_repeatability (backend.test_backtest.BacktestTests.test_duplicate_out_of_order_and_repeatability) ... ok
+test_future_changes_preserve_earlier_decisions_and_fills (backend.test_backtest.BacktestTests.test_future_changes_preserve_earlier_decisions_and_fills) ... ok
+test_input_validation_and_empty_selection (backend.test_backtest.BacktestTests.test_input_validation_and_empty_selection) ... ok
+test_known_account_performance_and_isolation (backend.test_backtest.BacktestTests.test_known_account_performance_and_isolation) ... ok
+test_no_next_price_remains_pending_and_end_mark (backend.test_backtest.BacktestTests.test_no_next_price_remains_pending_and_end_mark) ... ok
+test_no_trades_and_inadequate_warmup (backend.test_backtest.BacktestTests.test_no_trades_and_inadequate_warmup) ... ok
+test_warmup_has_no_trades_and_snapshot_freezes (backend.test_backtest.BacktestTests.test_warmup_has_no_trades_and_snapshot_freezes) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 2.242s
+
+OK

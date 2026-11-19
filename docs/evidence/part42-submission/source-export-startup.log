@@ -1,0 +1,11 @@
+INFO:     Started server process [24394]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:58915 (Press CTRL+C to quit)
+INFO:     127.0.0.1:58925 - "GET /api/health HTTP/1.1" 200 OK
+fatal: not a git repository (or any of the parent directories): .git
+INFO:     127.0.0.1:58926 - "POST /api/backtests HTTP/1.1" 201 Created
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24394]

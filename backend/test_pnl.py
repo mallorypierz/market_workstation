@@ -53,6 +53,9 @@ class PnlTests(unittest.TestCase):
         self.db.execute("CREATE TRIGGER fail_pnl BEFORE INSERT ON paper_pnl BEGIN SELECT RAISE(ABORT,'constructed PNL failure'); END")
         with self.assertRaises(sqlite3.IntegrityError):quote(self.db,100,'14:30:05')
         state=paper.snapshot(self.db);self.assertEqual(state['cash_cents'],100000);self.assertEqual(state['fills'],[]);self.assertEqual(state['pnl_history'],[])
+        self.assertEqual(state['orders'][0]['status'],'pending')
+        self.assertEqual(state['positions'],[])
+        self.assertEqual(state['cursor'],0)
         self.db.execute('DROP TRIGGER fail_pnl');process_at(self.db,'14:30:05')
         self.assertEqual(len(pnl.history(self.db,'live')),1)
     def test_upgrade_backfills_only_fills(self):
@@ -68,3 +71,45 @@ class PnlTests(unittest.TestCase):
         three=paper.advance_replay(self.db,'replay-pnl',3);self.assertEqual(three['pnl_history'][-1]['price'],110)
         self.assertEqual(three['pnl_history'][-1]['unrealized'],40)
         self.assertEqual(paper.advance_replay(self.db,'replay-pnl',3)['pnl_history'],three['pnl_history'])
+
+    def test_independent_rounding_equity_and_source_immutability(self):
+        from fractions import Fraction
+        from backend.accounting_reference import build_case,EXPECTED,EQUITY,FIELDS,source_digest
+        state=build_case(self.db,'multiple');rows=state['pnl_history']
+        self.assertEqual([tuple(r[k] for k in FIELDS) for r in rows],EXPECTED['multiple'])
+        self.assertEqual([f['price_cents'] for f in state['fills']],[10001,10101,10201])
+        for row,expected in zip(rows,EQUITY['multiple']):
+            equity=Fraction(row['cash_cents'])+row['quantity']*Fraction(row['price_exact'])
+            self.assertEqual(equity,Fraction(expected))
+            self.assertEqual(Fraction(row['total_exact']),Fraction(row['realized_exact'])+Fraction(row['unrealized_exact']))
+            self.assertEqual(equity-100000,Fraction(row['total_exact']))
+        digest=source_digest(self.db)
+        # Retry is idempotent; rejection and polling must not rewrite source records or P&L.
+        retry=submit(self.db,'sell',1,'14:31:01','round-sell')
+        self.assertEqual(retry['id'],state['orders'][-1]['id'])
+        rejected=submit(self.db,'sell',3,'14:31:02','oversell')
+        self.assertEqual(rejected['status'],'rejected')
+        process_at(self.db,'14:32:00');paper.initialize(self.db)
+        self.assertEqual(pnl.history(self.db,'live'),rows)
+        self.assertEqual(source_digest(self.db),digest)
+        self.assertTrue(all(r[0]>=0 for r in self.db.execute('SELECT cash_cents FROM paper_accounts')))
+        self.assertTrue(all(r[0]>=0 for r in self.db.execute('SELECT quantity FROM paper_positions')))
+
+    def test_reference_equity_and_unavailable_totals(self):
+        from fractions import Fraction
+        from backend.accounting_reference import build_case,EXPECTED,EQUITY,FIELDS
+        for case in ['standard','unavailable']:
+            with self.subTest(case=case),tempfile.TemporaryDirectory() as folder:
+                db=connect(Path(folder)/'audit.sqlite3')
+                rows=build_case(db,case)['pnl_history']
+                self.assertEqual([tuple(r[k] for k in FIELDS) for r in rows],EXPECTED[case])
+                for row,expected in zip(rows,EQUITY[case]):
+                    if expected is None:
+                        self.assertEqual(row['valuation_status'],'unavailable')
+                        self.assertIsNone(row['unrealized']);self.assertIsNone(row['total'])
+                    else:
+                        equity=Fraction(row['cash_cents'])+row['quantity']*Fraction(row['price_exact'])
+                        self.assertEqual(equity,Fraction(expected))
+                        self.assertEqual(equity-100000,Fraction(row['total_exact']))
+                        self.assertEqual(Fraction(row['total_exact']),Fraction(row['realized_exact'])+Fraction(row['unrealized_exact']))
+                db.close()

@@ -1,0 +1,19 @@
+{
+  "note": "Report and AI-use copied verbatim before Part4.2 edit. Original Part4.1 evidence remains in place; hashes identify retained files.",
+  "files": {
+    "report.md": "0c01f84818a9734d873141c93563e1d4d840ec5693d04053c8625f600c7510b1",
+    "AI-USE.md": "42be23384ad7bf3daf3f30888f6a8fc500997735d27bdf457924911d9b219b3e",
+    "docs/part-4.1-evidence.md": "4795d2bcfeb111dc33d528d0656e14c4499538deb4253c55c0f459ba04f2c514",
+    "docs/evidence/live-forming-candle.png": "7510c94fd3ac77031a47ce0ac886eaa0169cd97c3b4d992d2cc2722ef46b4341",
+    "docs/evidence/part-4.1-demo.webm": "74886dd4cea2ce392b664ac0723bf76e4a61ba727a0e5833f9150924da4228dd",
+    "docs/evidence/part-4.1-student-demo.mov": "e30622581ea58a70ad9fbd39dc294d08f9124676bb6060516fe0a0aee6e56379",
+    "docs/evidence/live-daily-candle.png": "cb796fa8980aaf11cc38c38af2fa03e59cf91d34643ab0624a20f7e418edbcda",
+    "docs/evidence/submission-smoke.json": "8b961ac04a1280e0ec2d9402222221d2f3f34f60678b8df707f87b00e3686f6f",
+    "docs/evidence/part-4.1-audit.json": "ecd282a70399a0965e2ca5a7fc33fcd690550ba4bcbee2c5a9874f019640da27",
+    "docs/evidence/upstream-disconnected.png": "0b1ee2222a036d0219017ce4347ebd69e2e06cb6fd06b2309df4f183605e5f29",
+    "docs/evidence/submission-feed-probe.jsonl": "3bb35aa0adbcade60b192242c556331f293cf1f106cf4b59bf3eaee4ffdc339f",
+    "docs/evidence/live-yahoo-candle-trace.json": "c4691f4a518264fe1eee1eaa53490d26b224708c3b0c34ac18767b39816aa500",
+    "docs/evidence/live-yahoo-trace.png": "da20ec5c0fbfd74e1ad1179f542f9957a64818d5e8b6dcfc14075da764623df6",
+    "docs/evidence/replay-check.json": "5804f73f853d4d3667176c28a2f513d78c47a058662347f732db67f4b3647296"
+  }
+}

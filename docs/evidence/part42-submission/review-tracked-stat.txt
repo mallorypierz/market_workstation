@@ -1,0 +1,25 @@
+ .github/workflows/smoke-test.yml              |   4 +
+ .gitignore                                    |   3 +
+ AGENTS.md                                     |  26 +++-
+ AI-USE.md                                     |   6 +
+ README.md                                     |  27 ++++-
+ backend/main.py                               |  78 ++++++++++++
+ backend/paper.py                              |  12 +-
+ backend/smoke_fixture.py                      |  39 ++++++
+ backend/test_pnl.py                           |  45 +++++++
+ backend/test_sma.py                           |  60 ++++++++++
+ docs/design-pipeline.md                       |  22 ++++
+ docs/pnl.md                                   |  50 ++++++++
+ docs/sma.md                                   |  48 +++++++-
+ docs/smoke-test.md                            |  14 ++-
+ docs/smoke_test.py                            |  19 ++-
+ docs/sqlite-schema.md                         |  16 +++
+ docs/verification.md                          | 163 ++++++++++++++++++++++++++
+ frontend/src/App.vue                          |   2 +
+ frontend/src/CandleChart.vue                  |   2 +
+ frontend/src/PaperAccount.vue                 |   1 +
+ frontend/tests/smoke.spec.js                  |  65 ++++++++++
+ handoffs/current.md                           | 120 +++++++++++++++++++
+ prompts/14-automate-workstation-smoke-test.md |   4 +
+ report.md                                     |  95 ++++++++++-----
+ 24 files changed, 881 insertions(+), 40 deletions(-)

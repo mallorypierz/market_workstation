@@ -1,0 +1,228 @@
+{
+  "expected": [
+    [
+      null,
+      null,
+      null
+    ],
+    [
+      11.5,
+      null,
+      null
+    ],
+    [
+      8.5,
+      10,
+      null
+    ],
+    [
+      10,
+      10,
+      null
+    ],
+    [
+      16,
+      13,
+      "up"
+    ],
+    [
+      13,
+      13,
+      null
+    ],
+    [
+      4,
+      9,
+      "down"
+    ]
+  ],
+  "observed": [
+    [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "short": null,
+        "long": null,
+        "signal": null
+      }
+    ],
+    [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "short": null,
+        "long": null,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:31:00Z",
+        "short": 11.5,
+        "long": null,
+        "signal": null
+      }
+    ],
+    [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "short": null,
+        "long": null,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:31:00Z",
+        "short": 11.5,
+        "long": null,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:32:00Z",
+        "short": 8.5,
+        "long": 10,
+        "signal": null
+      }
+    ],
+    [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "short": null,
+        "long": null,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:31:00Z",
+        "short": 11.5,
+        "long": null,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:32:00Z",
+        "short": 8.5,
+        "long": 10,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:33:00Z",
+        "short": 10,
+        "long": 10,
+        "signal": null
+      }
+    ],
+    [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "short": null,
+        "long": null,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:31:00Z",
+        "short": 11.5,
+        "long": null,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:32:00Z",
+        "short": 8.5,
+        "long": 10,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:33:00Z",
+        "short": 10,
+        "long": 10,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:34:00Z",
+        "short": 16,
+        "long": 13,
+        "signal": "up"
+      }
+    ],
+    [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "short": null,
+        "long": null,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:31:00Z",
+        "short": 11.5,
+        "long": null,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:32:00Z",
+        "short": 8.5,
+        "long": 10,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:33:00Z",
+        "short": 10,
+        "long": 10,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:34:00Z",
+        "short": 16,
+        "long": 13,
+        "signal": "up"
+      },
+      {
+        "timestamp": "2026-11-09T14:35:00Z",
+        "short": 13,
+        "long": 13,
+        "signal": null
+      }
+    ],
+    [
+      {
+        "timestamp": "2026-11-09T14:30:00Z",
+        "short": null,
+        "long": null,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:31:00Z",
+        "short": 11.5,
+        "long": null,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:32:00Z",
+        "short": 8.5,
+        "long": 10,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:33:00Z",
+        "short": 10,
+        "long": 10,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:34:00Z",
+        "short": 16,
+        "long": 13,
+        "signal": "up"
+      },
+      {
+        "timestamp": "2026-11-09T14:35:00Z",
+        "short": 13,
+        "long": 13,
+        "signal": null
+      },
+      {
+        "timestamp": "2026-11-09T14:36:00Z",
+        "short": 4,
+        "long": 9,
+        "signal": "down"
+      }
+    ]
+  ],
+  "checks": [
+    "All seven replay prefixes and inspector values match hand reference; two confirmed markers",
+    "Invalid windows rejected without replacing data; valid 3/5 resets replay and removes stale markers"
+  ],
+  "status": "passed"
+}

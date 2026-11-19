@@ -1,4 +1,5 @@
 <script setup>
+import SmaStrategy from './SmaStrategy.vue'
 import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
 import { createChart, CandlestickSeries, HistogramSeries, LineSeries, createSeriesMarkers } from 'lightweight-charts'
 import { chartRows, utcLabel } from './chartAdapter.js'
@@ -372,6 +373,7 @@ onBeforeUnmount(() => {
     <ul aria-label="Confirmed SMA crossovers"><li v-for="row in signals" :key="row.timestamp">{{ row.timestamp }} · SMA {{ row.signal }} · Short {{ displaySma(row.short) }} / Long {{ displaySma(row.long) }}</li></ul>
     <AskChart :freeze-request="freezeRequest" :available="source === 'yahoo' && !!selectedStatus?.complete" />
     <PaperAutomation :view="paperView" :mode="mode" :short="shortWindow" :long="longWindow" />
+    <SmaStrategy :mode="mode" />
     <PaperAccount ref="paperComponent" :view="paperView" :mode="mode" />
     <p class="attribution">TradingView Lightweight Charts™<br>Copyright (с) 2025 TradingView, Inc. <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a></p>
   </section>

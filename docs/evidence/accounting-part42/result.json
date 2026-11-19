@@ -1,0 +1,284 @@
+{
+  "status": "passed",
+  "market_data": "constructed",
+  "provider": "none",
+  "cases": {
+    "standard": {
+      "status": "passed",
+      "before_after_equal": true,
+      "source_unchanged": true,
+      "row_count": 5,
+      "expected": [
+        [
+          60000,
+          4,
+          "10000",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          60000,
+          4,
+          "10000",
+          "0",
+          "4000",
+          "4000"
+        ],
+        [
+          71000,
+          3,
+          "10000",
+          "1000",
+          "3000",
+          "4000"
+        ],
+        [
+          71000,
+          3,
+          "10000",
+          "1000",
+          "-1500",
+          "-500"
+        ],
+        [
+          102500,
+          0,
+          null,
+          "2500",
+          "0",
+          "2500"
+        ]
+      ],
+      "observed": [
+        [
+          60000,
+          4,
+          "10000",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          60000,
+          4,
+          "10000",
+          "0",
+          "4000",
+          "4000"
+        ],
+        [
+          71000,
+          3,
+          "10000",
+          "1000",
+          "3000",
+          "4000"
+        ],
+        [
+          71000,
+          3,
+          "10000",
+          "1000",
+          "-1500",
+          "-500"
+        ],
+        [
+          102500,
+          0,
+          null,
+          "2500",
+          "0",
+          "2500"
+        ]
+      ],
+      "equations": [
+        {
+          "equity_cents": "100000",
+          "expected_equity_cents": "100000"
+        },
+        {
+          "equity_cents": "104000",
+          "expected_equity_cents": "104000"
+        },
+        {
+          "equity_cents": "104000",
+          "expected_equity_cents": "104000"
+        },
+        {
+          "equity_cents": "99500",
+          "expected_equity_cents": "99500"
+        },
+        {
+          "equity_cents": "102500",
+          "expected_equity_cents": "102500"
+        }
+      ]
+    },
+    "multiple": {
+      "status": "passed",
+      "before_after_equal": true,
+      "source_unchanged": true,
+      "row_count": 4,
+      "expected": [
+        [
+          79998,
+          2,
+          "10001",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          69897,
+          3,
+          "30103/3",
+          "0",
+          "200",
+          "200"
+        ],
+        [
+          80098,
+          2,
+          "30103/3",
+          "500/3",
+          "1000/3",
+          "500"
+        ],
+        [
+          80098,
+          2,
+          "30103/3",
+          "500/3",
+          "1669/3",
+          "723"
+        ]
+      ],
+      "observed": [
+        [
+          79998,
+          2,
+          "10001",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          69897,
+          3,
+          "30103/3",
+          "0",
+          "200",
+          "200"
+        ],
+        [
+          80098,
+          2,
+          "30103/3",
+          "500/3",
+          "1000/3",
+          "500"
+        ],
+        [
+          80098,
+          2,
+          "30103/3",
+          "500/3",
+          "1669/3",
+          "723"
+        ]
+      ],
+      "equations": [
+        {
+          "equity_cents": "100000",
+          "expected_equity_cents": "100000"
+        },
+        {
+          "equity_cents": "100200",
+          "expected_equity_cents": "100200"
+        },
+        {
+          "equity_cents": "100500",
+          "expected_equity_cents": "100500"
+        },
+        {
+          "equity_cents": "100723",
+          "expected_equity_cents": "100723"
+        }
+      ]
+    },
+    "unavailable": {
+      "status": "passed",
+      "before_after_equal": true,
+      "source_unchanged": true,
+      "row_count": 3,
+      "expected": [
+        [
+          60000,
+          4,
+          "10000",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          60000,
+          4,
+          "10000",
+          "0",
+          "4000",
+          "4000"
+        ],
+        [
+          60000,
+          4,
+          "10000",
+          "0",
+          null,
+          null
+        ]
+      ],
+      "observed": [
+        [
+          60000,
+          4,
+          "10000",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          60000,
+          4,
+          "10000",
+          "0",
+          "4000",
+          "4000"
+        ],
+        [
+          60000,
+          4,
+          "10000",
+          "0",
+          null,
+          null
+        ]
+      ],
+      "equations": [
+        {
+          "equity_cents": "100000",
+          "expected_equity_cents": "100000"
+        },
+        {
+          "equity_cents": "104000",
+          "expected_equity_cents": "104000"
+        },
+        {
+          "equity_cents": null,
+          "expected_equity_cents": null
+        }
+      ]
+    }
+  },
+  "owned_processes_stopped": true
+}

@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "market_data": "constructed",
+  "provider": "none",
+  "sqlite_fills": 2,
+  "owned_processes_stopped": true
+}

@@ -1,0 +1,28 @@
+{
+  "audit_date": "2026-11-17",
+  "scope": "readiness audit only; no feature implementation",
+  "inspected_head": "360ed24d9f5c66fb5b29d3f7fae8926003320fa3",
+  "smoke": {
+    "run": "20261117T141901-10155",
+    "status": "passed",
+    "provider": "controlled offline",
+    "market_data": "constructed",
+    "cash": 1025,
+    "shares": 0,
+    "fills": 3,
+    "realized": 25,
+    "unrealized": 0,
+    "provider_calls": 23,
+    "owned_processes_stopped": true
+  },
+  "focused_tests": {
+    "command": "python3 -m unittest backend.test_sma backend.test_indicators backend.test_paper backend.test_pnl backend.test_replay -q",
+    "count": 26,
+    "status": "passed"
+  },
+  "limitations": [
+    "Controlled provider and constructed market data; not live-source evidence",
+    "No backtest implementation or Part 4.2 submission claimed",
+    "Remote CI/current instructor access not checked"
+  ]
+}

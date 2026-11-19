@@ -10,3 +10,9 @@ Draft for student review before submission. This records supported session facts
 - **Verification boundaries:** mocked providers and constructed market events are labeled separately from real Yahoo captures, live model responses and student-heard voice. The offline SmokeTest's passing result does not establish live provider availability.
 
 Prompts are preserved in prompts/. See [curated Part4.1 evidence](docs/part-4.1-evidence.md) and [detailed verification](docs/verification.md), including failures and subsequent corrections. Credentials are not included. Student review outstanding: disclose any additional coding agents/editors/models used outside this recorded session and correct this document as needed.
+
+## Part4.2 preparation — November18,2026
+
+Codex implemented and reviewed the deterministic strategy/backtest interface, extended Python/Playwright/SQLite checks, drafted the report and maintained the evidence map. It operated Chromium to record the actual running application with on-screen narration captions; the student did not manually operate this new recording. No synthetic voice or live model API was used. Constructed test prices and the separately identified saved Yahoo history are labeled. The student must review the code, claims and disclosure and be able to explain them.
+
+SMA/accounting/trading/backtest calculations run in deterministic Python without model credentials. Existing optional AI/voice features were preserved but do not establish Part4.2 strategy correctness. The assistant corrected an actually observed browser-test timing race during final preparation; numerical assertions and trading logic were not relaxed. Final commit, public video access and remote CI remain pending until verified. Coding-model identity across all prior turns remains unverified; no fabricated model history is supplied. Original Part4.1 disclosure is preserved at docs/archive/part-4.1/AI-USE.md.

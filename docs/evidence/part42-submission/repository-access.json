@@ -1,0 +1,18 @@
+{
+  "attempts": [
+    {
+      "url": "https://github.com/mallorypierz/market_workstation",
+      "status": "unverified",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>",
+      "authenticated": false
+    },
+    {
+      "url": "https://github.com/mallorypierz/market_workstation",
+      "http_status": 200,
+      "final_url": "https://github.com/mallorypierz/market_workstation",
+      "authenticated": false,
+      "trust": "installed certifi CA bundle; TLS verification enabled",
+      "note": "Repository page only; final Part4.2 files/video access still pending."
+    }
+  ]
+}

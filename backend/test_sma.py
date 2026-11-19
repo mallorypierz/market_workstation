@@ -55,3 +55,63 @@ class SmaTests(unittest.TestCase):
     def test_invalid_windows(self):
         for a,b in [(0,3),(-1,3),(2,2),(3,2),(1.5,3),(True,3),('2',3)]:
             with self.assertRaises(ValueError): sma([],{},a,b)
+
+    def test_long_independent_sql_reference_and_replay_prefixes(self):
+        from backend.sma_reference import LONG_CLOSES, reference
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {'MARKET_DB_PATH':str(Path(folder)/'test.sqlite3')}):
+            db=connect()
+            for i, price in enumerate(LONG_CLOSES):
+                record(db, {'id':'AAPL','time':str(int((START+timedelta(minutes=i)).timestamp()*1000)),
+                            'price':price},stamp(i+1))
+            def selected(n):
+                return replay_view(symbol='AAPL',start=stamp(0),end=stamp(40),step=n)
+            batch=selected(30)
+            expected=reference(batch['candles'],batch['status'],3,5)
+            self.assertEqual(sma(batch['candles'],batch['status'],3,5)['values'],expected)
+            for step in range(31):
+                current=selected(step)
+                self.assertEqual(sma(current['candles'],current['status'],3,5)['values'],expected[:step])
+            self.assertEqual([(i,r['signal']) for i,r in enumerate(expected) if r['signal']],
+                             [(10,'down'),(15,'up'),(21,'down'),(26,'up')])
+            db.close()
+
+    def test_duplicate_late_missing_revision_and_selection_isolation(self):
+        from backend.sma_reference import reference
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {'MARKET_DB_PATH':str(Path(folder)/'test.sqlite3')}):
+            db=connect()
+            def add(minute,price,receipt,symbol='AAPL',**kwargs):
+                return record(db,{'id':symbol,'time':str(int((START+timedelta(minutes=minute)).timestamp()*1000)),
+                                  'price':price},stamp(receipt),**kwargs)
+            first=add(0,13,1);add(2,7,3);add(3,13,4);add(4,19,5)
+            def selected(step,symbol='AAPL',timeframe='1m'):
+                return replay_view(symbol=symbol,start=stamp(0),end=stamp(20),step=step,timeframe=timeframe)
+            before=selected(4)
+            self.assertEqual(len(before['candles']),4)  # minute 1 is absent, not zero-filled
+            incomplete=selected(4,timeframe='5m')
+            self.assertFalse(incomplete['status'][stamp(0)]['complete'])
+            self.assertIsNone(sma(incomplete['candles'],incomplete['status'])['values'][0]['signal'])
+            before_rows=sma(before['candles'],before['status'])['values']
+            self.assertEqual(before_rows[-1]['short'],16)
+            add(4,19,6)  # exact duplicate: no additional candle or SMA sample
+            duplicate=selected(5)
+            self.assertEqual(sma(duplicate['candles'],duplicate['status'])['values'],before_rows)
+            add(1,10,7)  # late source minute fills the earlier gap only when received
+            add(0,20,8,revision_of=first['observation_id'],revision_evidence='constructed correction')
+            self.assertEqual(sma(selected(4)['candles'],selected(4)['status'])['values'],before_rows)
+            for step in range(8):
+                current=selected(step)
+                self.assertEqual(sma(current['candles'],current['status'])['values'],
+                                 reference(current['candles'],current['status']))
+            self.assertEqual(selected(6)['candles'][0]['close'],13)
+            self.assertEqual(selected(7)['candles'][0]['close'],20)
+            # A separate supported symbol cannot borrow AAPL warm-up or crossover side.
+            for i in range(5): add(i,100,i+1,symbol='SAMPLE')
+            other=selected(5,'SAMPLE')
+            self.assertTrue(all(r['signal'] is None for r in sma(other['candles'],other['status'])['values']))
+            self.assertEqual(sma(other['candles'],other['status'])['values'][-1]['short'],100)
+            higher=selected(7,timeframe='5m')
+            self.assertEqual(len(higher['candles']),1)
+            self.assertTrue(higher['status'][stamp(0)]['complete'])
+            self.assertEqual(sma(higher['candles'],higher['status'])['values'][0]['short'],None)
+            self.assertEqual(sma(selected(4)['candles'],selected(4)['status'])['values'],before_rows)
+            db.close()

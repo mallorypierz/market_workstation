@@ -1,0 +1,223 @@
+{
+  "status": "passed",
+  "kind": "clean candidate source export, NOT committed checkout",
+  "dependencies": "existing Python environment and symlinked installed frontend/node_modules; no installation",
+  "commands": [
+    {
+      "command": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -m backend.recorder init",
+      "exit_code": 0,
+      "log": "init.log"
+    },
+    {
+      "command": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -m unittest discover -s backend -p test_*.py",
+      "exit_code": 0,
+      "log": "python-tests.log"
+    },
+    {
+      "command": "npm --prefix frontend run build",
+      "exit_code": 0,
+      "log": "build.log"
+    },
+    {
+      "command": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 docs/smoke_test.py",
+      "exit_code": 0,
+      "log": "smoke.log"
+    }
+  ],
+  "initialized_tables": [
+    "deliveries",
+    "observations",
+    "revisions",
+    "sqlite_sequence"
+  ],
+  "copied_file_count": 277,
+  "source_hashes": {
+    "backend/accounting_reference.py": "80a0397d9d1981da6185630a71a70a104f94e3d11e048d828e24ffc2cb1a20f4",
+    "backend/automation.py": "545033fbbcdeb90c1de0dd8cee203fe473c68ad6797965546fb8f3c8947eadc0",
+    "backend/automation_smoke.py": "4d926bbb8202d2bf7aecbbbd8e15c35a555485d8304cd686107c6b8723d5562b",
+    "backend/backtest.py": "e8e859bae2829b90678f274796b5f4598f16e117f92ab71819dc712befbd4265",
+    "backend/candles.py": "8c29e7da2ab6058a026159153b82104f71e89d938bdd1f3cbe78bde731bbb0d2",
+    "backend/chart_analysis.py": "bb5e7db504cf3bf92397a5aefd271014f57c4cb6dced86170205bd9961380e0f",
+    "backend/chart_check.py": "175f1fee34e8bb26a610ce7709166ab7458bda4747c1f2e1773ba8c573521b16",
+    "backend/chart_smoke.py": "5c7e20fbbfc277c906738809458d666575b6ba0d04e1bf7733918e04df8b54a7",
+    "backend/decision_check.py": "dfcd4578da7ec6148afb33b565e3a052443bab93b7830253c530a26bcd4d4206",
+    "backend/decision_fixture.py": "8a03bf70a03c19b2ef47298f9ba7bc94a0ee823e4b961a962a5c30e72f1ca881",
+    "backend/decision_review.py": "e292028e4569fb66dd3b2f10dbc8b6ddec61ffb966302bf3f7336427db0820f4",
+    "backend/decisions.py": "21d8746460c0d552a1c3061935fb8e286bc50a9a5bfe71ffeeb14749ac28d83e",
+    "backend/feed_probe.py": "20f859549d6a3e67f6d50f26fabf8a0c4d64e7464b7df39f083fae7ca47403fb",
+    "backend/history.py": "f4e50665ea9d2856b3d8c68d9058f4b89ea8e79a0b54c2c17f6ed81ce2b921da",
+    "backend/indicator_store.py": "e9d1fae842827837b84a80077cd3b7ffad4a4abb45f672ea6bdb7a070a98ea1c",
+    "backend/indicators.py": "2b937dd32f1e00f9170dc150d424fe3dca120fb722e30addfe666efc29084b1d",
+    "backend/live.py": "1690168f3f1f9675d3b93b378fc23f79c9c1305605137f620d3e932df6df1796",
+    "backend/main.py": "b52604e78a215f6cb2d1e5eac41ab287f5fa964a08158170088235927ef1b257",
+    "backend/paper.py": "e001793e046b8e57b78945b56e1a0e50330b6f23a4890d251f875351ad0f8aba",
+    "backend/paper_fixture.py": "dfabd245db16489ba18bebaa71c29b18e9e2df8eb1cc77c765d40c08c69eadef",
+    "backend/pnl.py": "5041fd6ca72495cbbb0cc010303185fdd2dad8fe3a12cdd7614145e2ff9ece91",
+    "backend/pnl_fixture.py": "fc4ef1fc883d640ee31fb41a28b400ea3bfa434051fbdfdc2143b04424e6cbb5",
+    "backend/recorder.py": "a29d3a7cc6acd3742e7bf59b37665051c6426f03aa44d53ed2d25ef528e72b90",
+    "backend/replay.py": "0d0c1b316236ceadf6d114abf846b20c02d51077a189cc74114b1711ba9d3b61",
+    "backend/requirements.txt": "f36db355c0d3ac35941dd1112b8c22257086ba5d857b8514ae5f3b6205741de4",
+    "backend/review_check.py": "9212933b603566793351f779fe59a0dc05ee16a4c0d708c4c7609440da5c36f6",
+    "backend/sma.py": "268825a1116ac0389d4f7fd527b7c42a21f024000862fa9ae4c218913bc2c70e",
+    "backend/sma_reference.py": "f22dc20413035932ffb27443475746fb1afb634cb8adcd8d611198b08c22b59b",
+    "backend/smoke_fixture.py": "d15e2e67bcdeedf2c18d4f10d6a220167c0d353e9424b458ff34335d281715f6",
+    "backend/strategy.py": "25ba7ea92756471cde8987324278036728e22267ec9f6a7f715a6c4d22886265",
+    "backend/strategy_fixture.py": "d54dc205529b76d29b552debc4ae837ef368ed6e50e551fac74e3403b34e3239",
+    "backend/test_automation.py": "b61cc2531a1fe4445c16960b15a772dff1188a83a52248e50e728debbc27e43a",
+    "backend/test_backtest.py": "dac80fab104238d5d7a9bffa564063c949965a926d4ae6c9214576afddddb9f4",
+    "backend/test_candles.py": "53f18c568592d46f85ac0d4c9df630e2a5f93d5c20b404ad7f71fc42f6ac8873",
+    "backend/test_chart_analysis.py": "0d1b98f31586dfc7f4cc2f4bcdd5d53ad9404bb03ecec069ad6a6d2100670ead",
+    "backend/test_decision_review.py": "54216069a147c46b2784427ea36223b1976b39ba5224f9e56e0a46a853670d89",
+    "backend/test_decisions.py": "181340944dbf646acffdd92269658360e4d1dfcf4645d0bad5f9fd8b681dd612",
+    "backend/test_history.py": "2cd724223a4147a828f0a98fe8271a55c41836e281760415f93608c5b5c7c8eb",
+    "backend/test_indicators.py": "b7be404c53195b4bb814eac4a859fdc3ce17ab80ac8d445107fffd54e46818d0",
+    "backend/test_live.py": "7ab32d101d07f2de2d48fd1d8d6a68abda9a6c28f1c95882a1c0039b706ae4c0",
+    "backend/test_paper.py": "2d6e9d920e3b6f6c89fe602fbdb708fe1633d52e2635aa2d42526aeac1a9c1b2",
+    "backend/test_pnl.py": "011b71b1a74d71b019deedb2d7c7b28e778c66f32b48f8c1e1321a6719b7d757",
+    "backend/test_recorder.py": "2e3d44101af663079cd4344cc3700664f53cc928d3fd3f19c3191889589728fb",
+    "backend/test_replay.py": "ed8bbdc3ca08a36ae3d5a69a84f64952ff1788873ce0c4cb04ddbe9c8f36e2cf",
+    "backend/test_sma.py": "0c6b9c2b0dd40b56617e06526feba062b3b20fd43be4f354426a2a9ce0ece077",
+    "backend/test_strategy.py": "81231876ff204b9fb25bd4832fed4cdddc1e2f37249f6266a2f5d9d24b2acb20",
+    "backend/test_timeframes.py": "008aad93b0e9be8c7cfede3d6d41cf6c6b612e7fa82bef454ee5ac381fa3e3a7",
+    "backend/test_voice.py": "44018ae0e4a88f0d90794d97de61d35ba0d73e724b44959cd7828afb9e659c0d",
+    "backend/timeframes.py": "205b592672b781be0473e7873009c36e05370521912b3a870ccbb50c38d7c9bb",
+    "backend/voice.py": "c995f18f6617d52c519131efdc34b892c80f330a61609b85171858d6fb97030d",
+    "frontend/src/App.vue": "8dad4aed271fbd81e1b823e30bf0d8772721f840f2363127edf515e61343fbec",
+    "frontend/src/AskChart.vue": "0edb811f4e24d5ec146b6c78dc34385567bb70afa07d37bef783bb0404caa173",
+    "frontend/src/BacktestCharts.vue": "e390597a8f10dcb39376f5bf33d7af271812c351fcc21cc7dbd6e2a70c0e6068",
+    "frontend/src/BacktestPanel.vue": "4c0c886807475b3596af9efcd5b8f00f7ce815ef3f1ade915f89199baed9a8d6",
+    "frontend/src/CandleChart.vue": "1e6c407bb334d365ea986b160eb134c9dbad28c248d6af49cb297773040f8dee",
+    "frontend/src/DecisionVoice.vue": "64cf874a8217976ada0ce13ada9b19775e7965acedc7f96fe2e2be2a056da6c9",
+    "frontend/src/PaperAccount.vue": "7c593f7935fddb90bc3bec7baac1741016d4c89e5d2ce33f62ba5545fb9dec83",
+    "frontend/src/PaperAutomation.vue": "a00615fd3a1cc4bd723cb5ec74141931516076d2bfc77f42ec7cde6ff9ca0fb2",
+    "frontend/src/SmaStrategy.vue": "88d3c88d671b00df866644940343ca8702b6aa32db44e7d16bdcdb9121604883",
+    "frontend/src/chartAdapter.js": "513042e2269d8215c55197c6072a8b32c2689a382cb38543de2f87fca6e49363",
+    "frontend/src/chartAdapter.test.js": "32dd19761f97f60be4cc1b74dee771b36c9874b5991d559347332cdf1bd46fc6",
+    "frontend/src/chartCapture.js": "abf4c1fd9369050b9cc14425c22991af8d1a8093853eef00823d6b86a2156472",
+    "frontend/src/main.js": "50cb9f18b1c7115799ae456f0d0038840278b49ea520b5549d468ec76c248fb9",
+    "frontend/src/voiceConnection.js": "67ef2103dfb546fb38408da671788f1d37928424784e8521ceb437c2429151e1",
+    "frontend/src/voiceConnection.test.js": "970fc09e8e0f65540cd6360903338a31005b905512b12b55e5e0f4dc3acb06fc",
+    "frontend/tests/accounting-check.mjs": "a477e47270fc9488fe16877ba3a839019bb2c859fe7fbfe1b1201410f6b459c5",
+    "frontend/tests/backtest-check.mjs": "a2f73d68ab2c09428568af283fc048ba41e757d718a39e68ddc58ec1740c37c7",
+    "frontend/tests/part42-video-inspect.mjs": "c69052d78a8e19450bb122a35b1ec18299bb35a14104f7e31033de1363080653",
+    "frontend/tests/part42-video.mjs": "6c10b4b3e483d761d3cfd83f2af592ce56a44d8e110cbe663d4c75db1bbfe543",
+    "frontend/tests/sma-check.mjs": "442447cce815dda5663b265af2f54170b2240099828258a3239b428696db3673",
+    "frontend/tests/smoke.spec.js": "19e543a970eb9882545ee26cf5a23b9246ff39185f5d949c68bcfb3747a292ec",
+    "frontend/tests/strategy-check.mjs": "96ab30605d09805c7708d24da3e540e11bd2b78d869d67052e9c195ef8047475"
+  },
+  "startup_equity": 999.64,
+  "sqlite_saved_result_equal": true,
+  "smoke": {
+    "run": "20261118T193457-24532",
+    "status": "passed",
+    "provider": "controlled offline",
+    "market_data": "constructed",
+    "cash": 1025,
+    "shares": 0,
+    "fills": 3,
+    "realized": 25,
+    "unrealized": 0,
+    "provider_calls": 23,
+    "part42": {
+      "status": "passed",
+      "data": "OFFLINE constructed; not historical/live evidence",
+      "strategy_id": "38efe9ec-17dd-46af-8c12-72b06965314a",
+      "backtest_id": "5a13400d-d3d7-4346-840b-e85cda950540",
+      "cash_cents": 101000,
+      "shares": 0,
+      "fills": 2,
+      "realized": 10,
+      "unrealized": 0,
+      "sma_expected": [
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          11.5,
+          null,
+          null
+        ],
+        [
+          8.5,
+          10,
+          null
+        ],
+        [
+          10,
+          10,
+          null
+        ],
+        [
+          16,
+          13,
+          "up"
+        ],
+        [
+          13,
+          13,
+          null
+        ],
+        [
+          4,
+          9,
+          "down"
+        ]
+      ],
+      "sma_sqlite": [
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          11.5,
+          null,
+          null
+        ],
+        [
+          8.5,
+          10.0,
+          null
+        ],
+        [
+          10.0,
+          10.0,
+          null
+        ],
+        [
+          16.0,
+          13.0,
+          "up"
+        ],
+        [
+          13.0,
+          13.0,
+          null
+        ],
+        [
+          4.0,
+          9.0,
+          "down"
+        ]
+      ],
+      "unfinished_receipt": 5,
+      "up_decision_receipt": 6,
+      "fill_receipts": [
+        7,
+        10
+      ],
+      "initial_equity": 1000,
+      "minimum_equity": 901,
+      "ending_equity": 1010,
+      "return": 0.01,
+      "drawdown": 0.099,
+      "prefix_before_after_future_equal": true,
+      "provider_calls": 0,
+      "error_status": 422
+    },
+    "owned_processes_stopped": true
+  },
+  "owned_startup_process_stopped": true
+}

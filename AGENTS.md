@@ -3,7 +3,9 @@
 ## Scope and ownership
 
 - Work inside `/Users/mallorypierz/Documents/market_workstation`, the agreed project root. Inspect relevant files and Git status before editing; preserve existing work and the supplied starter collection/archive.
-- Project: a local Part 4.1 market-data dashboard for the student to inspect live Yahoo Finance candles/volume, source freshness, and stored/replayed observations; the instructor reviews evidence.
+- Project: a local Assignment 4 market workstation, now preparing Part 4.2 (indicators, simulated trading and historical backtesting) on the existing Part 4.1 Yahoo dashboard and persistence foundation; the instructor reviews evidence.
+- Current authorization (2026-11-17): perform the Part 4.2 readiness audit, run existing checks, create docs/part-4.2-checklist.md, and update scope/design/verification/handoff documentation. This audit does not authorize new feature implementation. The sequence in prompts/19-part-4.2-prompt-sequence.md is a plan; execute subsequent steps only when requested. Preserve all previously authorized features below. No installation, dependency-manifest change, commit or push is requested for this audit.
+- Subsequent authorization (2026-11-17): execute the focused Part 4.2 SMA verification step using09a, independent reference calculations, causal/isolation tests and actual browser evidence. Only necessary SMA gaps may be fixed; historical backtest implementation remains a later request.
 - Python owns calculations and backend logic; FastAPI transports requests/results through HTTP and WebSockets; Vue owns input and presentation; SQLite persists decoded observations and receipt/revision history. No deployment is required.
 - Part 4.1 excludes indicators, trading, backtesting, AI features, and audio. The student explicitly authorized the two-SMA extension on 2026-11-15; the student subsequently authorized the shared indicator interface, named SQLite settings and rolling range extension. The student also explicitly authorized local long-only paper execution and account persistence; this is simulation only, with no real broker integration. The student also authorized weighted-average paper P&L history and completed-candle valuations. The student subsequently authorized frozen decision snapshots and proposal-only OpenAI Decisions calls, without executing orders. The student also authorized frozen chart PNG analysis with three named questions, without order execution. The student also authorized separate analyst/reviewer calls with a deterministic Python final gate, without execution. The student also authorized reviewed paper automation, fresh chart capture, Stop fencing and idempotent simulator execution; real brokerage remains excluded. The student also authorized read-only two-way voice discussion of a selected recorded decision via GPT-Live/WebRTC; voice must never submit orders or mutate the ledger. Only these requested additions are in scope. Later-part prompts in the supplied collection are references, not authorization to execute them. CSV practice is not live-streaming evidence.
 - Show the changed files and a concise diff summary for student review before any commit. Do not initialize, commit, push, or delete Git repositories merely because a prompt file suggests it. The current setup task does not request Git changes.
@@ -46,3 +48,29 @@ On a failed check: inspect the failure, make the smallest in-scope correction, a
 ## Paper automation SmokeTest
 
 Run `python3 -m backend.automation_smoke` and follow [the supervised browser steps](docs/paper-automation.md). Use only its disposable test account and controlled provider; stop automation and services afterward.
+
+
+## Deterministic Part 4.2 strategy authorization
+
+On 2026-11-17 the student authorized model-independent SMA crossover execution using existing paper/P&L code, isolated strategy accounts, Start/Stop fencing, receipt-boundary/idempotency tests and browser verification. Policy: one-share buy when flat/affordable on confirmed up; close on down; no pyramiding/shorting/borrowing. Preserve AI-reviewed automation. No real brokerage, new dependency installation, commit/push or historical backtest is authorized by this step. See docs/sma-strategy.md.
+
+
+## Historical backtest authorization
+
+On2026-11-17 the student authorized Part4.2 sequential historical backtesting using the verified crossover/paper accounting, frozen inputs/configuration, isolated accounts, causal tests, persisted results/metrics and a separately identified real historical evaluation. This includes a labeled bar-only adapter when the existing capture is insufficient. Preserve source records and original live/AI workflows. No real brokerage, dependency installation, commit/push or dedicated Vue backtest UI is requested in this step. See docs/backtesting.md.
+
+## Backtest interface authorization and verification
+
+The student subsequently authorized historical backtesting and its FastAPI/Vue interface (Prompt19 steps5–6). Implemented isolated frozen runs, dataset/range controls, Python metrics/indicators and saved-result inspection. Preserve prior authorizations and AI workflow. Run `python3 docs/backtest_ui_check.py` for focused real-browser invalid/empty/pending/outage/restart and SQLite checks; this is separate from the required resume SmokeTest. No installation, manifest change, commit or push authorized by these steps.
+
+## Part4.2 CI extension
+
+On November18,2026 the student authorized Prompt14/Prompt19 step7 offline correctness/browser coverage and push-workflow changes. SmokeTest now includes a second isolated constructed-data strategy/backtest scenario with direct SQLite assertions. CI runs Python correctness tests and a Vue build before the two fresh smoke invocations. Preserve separate real Yahoo evidence. No dependency installation/manifests/commit/push authorized; remote success must be observed for an actual final submitted SHA, never inferred from a local pass.
+
+## Part4.2 submission preparation
+
+Student authorized Prompt19 step8: preserve Part4.1 report/evidence; audit and draft root report.md for Part4.2; maintain disclosure/evidence/docs; verify startup/source export with existing dependencies; record an actual30–60second local demonstration. No Canvas submission, dependency installation or commit/push is authorized by this preparation alone. Use explicit pending SHA/video/remote-CI fields until verified. Present changed files/diff for review before requesting any needed publication authorization. Part4.1 report archive is docs/archive/part-4.1/report.md.
+
+## Part4.2 publication authorization
+
+The student explicitly authorized committing and pushing all Part4.2 changes and updating submission documentation on November18,2026. This authorizes the reviewed implementation/evidence commit, remote CI/access verification and follow-up report/documentation commits. It does not authorize Canvas submission, real brokerage or new local dependency installation. Earlier preparation-only restrictions are superseded for this publication task.

@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "provider": "none",
+  "data": "constructed",
+  "before_after_equal": true,
+  "source_unchanged": true,
+  "production_account_untouched": true,
+  "ending_equity": 1010,
+  "total_return": 0.01,
+  "max_drawdown": 0.099,
+  "owned_processes_stopped": true
+}

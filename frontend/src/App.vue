@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import CandleChart from './CandleChart.vue'
+import BacktestPanel from './BacktestPanel.vue'
 import DecisionVoice from './DecisionVoice.vue'
 const result = ref('Not checked')
 const loading = ref(false)
@@ -23,6 +24,7 @@ async function checkBackend() {
   <main>
     <h1>Market Workstation</h1>
     <CandleChart />
+    <BacktestPanel />
     <DecisionVoice />
     <p>Local connection check</p>
     <button :disabled="loading" @click="checkBackend">Check backend</button>

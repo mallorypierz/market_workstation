@@ -42,3 +42,7 @@ image-model, and two-way voice checks as separate documented observations.
 SmokeTest reports failures without source edits. AutoLoop may apply a scoped
 fix and rerun the failing check, up to five correction cycles.
 ~~~
+
+## Part4.2 extension (authorized November18,2026)
+
+Reuse this runner and the existing push workflow for Prompt19 step7. Add deterministic completed/unfinished SMA, provider-independent strategy, later fills, account/P&L and saved backtest/performance assertions against SQLite. Compare available-data prefixes to prove no future information enters earlier decisions. Keep constructed fixtures separate from real historical/live evidence, preserve the original scenario and two fresh smoke runs, and execute Python correctness tests plus the frontend build in CI. No new dependencies/manifests or push solely to trigger CI. Record observed local results; inspect and link the remote workflow for the final submitted commit only when that commit exists.

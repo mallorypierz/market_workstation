@@ -1,0 +1,78 @@
+ M .github/workflows/smoke-test.yml
+ M .gitignore
+ M AGENTS.md
+ M AI-USE.md
+ M README.md
+ M backend/main.py
+ M backend/paper.py
+ M backend/smoke_fixture.py
+ M backend/test_pnl.py
+ M backend/test_sma.py
+ M docs/design-pipeline.md
+ M docs/pnl.md
+ M docs/sma.md
+ M docs/smoke-test.md
+ M docs/smoke_test.py
+ M docs/sqlite-schema.md
+ M docs/verification.md
+ M frontend/src/App.vue
+ M frontend/src/CandleChart.vue
+ M frontend/src/PaperAccount.vue
+ M frontend/tests/smoke.spec.js
+ M handoffs/current.md
+ M prompts/14-automate-workstation-smoke-test.md
+ M report.md
+?? backend/accounting_reference.py
+?? backend/backtest.py
+?? backend/sma_reference.py
+?? backend/strategy.py
+?? backend/strategy_fixture.py
+?? backend/test_backtest.py
+?? backend/test_strategy.py
+?? docs/accounting_check.py
+?? docs/archive/
+?? docs/backtest_check.py
+?? docs/backtest_ui_check.py
+?? docs/backtesting.md
+?? docs/evidence/aapl-2025-daily.json
+?? docs/evidence/accounting-part42/
+?? docs/evidence/backtest-http-response.json
+?? docs/evidence/backtest-http-result.json
+?? docs/evidence/backtest-recorded-yahoo.json
+?? docs/evidence/backtest-ui/
+?? docs/evidence/backtest-yahoo-daily.json
+?? docs/evidence/part-4.2-audit.json
+?? docs/evidence/part-4.2-demo.webm
+?? docs/evidence/part42-smoke/
+?? docs/evidence/part42-submission/
+?? docs/evidence/sma-part42-browser.json
+?? docs/evidence/sma-part42-chart.png
+?? docs/evidence/sma-part42-page.png
+?? docs/evidence/sma-part42-reference.json
+?? docs/evidence/sma-part42-result.json
+?? docs/evidence/strategy-browser.json
+?? docs/evidence/strategy-filled.png
+?? docs/evidence/strategy-pending.png
+?? docs/evidence/strategy-rejected.png
+?? docs/evidence/strategy-result.json
+?? docs/evidence/strategy-stopped.png
+?? docs/part-4.2-checklist.md
+?? docs/part-4.2-evidence.md
+?? docs/part-4.2-review.md
+?? docs/part-4.2-video.md
+?? docs/part42_checkout_check.py
+?? docs/part42_video.py
+?? docs/sma-strategy.md
+?? docs/sma_check.py
+?? docs/smoke_part42.py
+?? docs/strategy_check.py
+?? frontend/src/BacktestCharts.vue
+?? frontend/src/BacktestPanel.vue
+?? frontend/src/SmaStrategy.vue
+?? frontend/tests/accounting-check.mjs
+?? frontend/tests/backtest-check.mjs
+?? frontend/tests/part42-video-inspect.mjs
+?? frontend/tests/part42-video.mjs
+?? frontend/tests/sma-check.mjs
+?? frontend/tests/strategy-check.mjs
+?? prompts/19-part-4.2-prompt-sequence.md

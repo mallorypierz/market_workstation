@@ -55,3 +55,53 @@ FROM paper_pnl ORDER BY id;
 ```
 
 See [observed verification](verification.md) and [before/after query evidence](evidence/pnl-check.json). This workflow requires browser interaction; the structure-only SmokeTest is not a UI pass.
+
+
+## Part 4.2 accounting reconciliation — November 17, 2026
+
+Reused prompt09d and the existing weighted-average implementation; no accounting algorithm was replaced. Independent expectations are in [accounting_reference.py](../backend/accounting_reference.py). The fixtures exercise the real execution/valuation path; expected values are hand-derived constants, not outputs from the production ledger function.
+
+```sh
+python3 -m unittest backend.test_pnl backend.test_paper -q
+python3 docs/accounting_check.py
+```
+
+The second command creates three disposable databases, uses the installed Chromium, and compares direct SQL rows with API responses and every displayed P&L amount. For each case it stops the backend and starts a fresh process against the same database, repeats the browser checks, and verifies all rows and source-record hashes remain unchanged. The account named `live` exists only in each temporary fixture database; the user's market database is never used. Yahoo is disabled and the model key removed. Owned processes/browser are stopped. Logs and full transient artifacts are under ignored `test-results/accounting/`.
+
+### Five-event reference
+
+All amounts below are dollars; expected and observed agree at each row.
+
+| Event | Cash | Shares | Realized | Unrealized | Total P&L | Equity |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Buy4 at100 | 600 | 4 | 0 | 0 | 0 | 1000 |
+| Completed mark110 | 600 | 4 | 0 | 40 | 40 | 1040 |
+| Sell1 at110 | 710 | 3 | 10 | 30 | 40 | 1040 |
+| Completed mark95 | 710 | 3 | 10 | -15 | -5 | 995 |
+| Close3 at105 | 1025 | 0 | 25 | 0 | 25 | 1025 |
+
+### Independent multiple-buy and rounding example
+
+Observed raw quotes100.005,101.014 and102.005 fill at100.01,101.01 and102.01 respectively. This checks decimal ROUND_HALF_UP at the fill boundary. Buy2, buy1, then sell1. Total acquisition cost is301.03, so average cost is301.03/3 =100.343333… per share. It remains unchanged after the partial sale; display rounding to100.34 never feeds back into accounting.
+
+| Event | Cash | Shares | Exact average cost | Realized | Unrealized | Total P&L | Equity |
+| --- | ---: | ---: | --- | --- | --- | ---: | ---: |
+| Buy2 at100.01 | 799.98 | 2 | 100.01 | 0 | 0 | 0 | 1000 |
+| Buy1 at101.01 | 698.97 | 3 | 301.03/3 | 0 | 2 | 2 | 1002 |
+| Sell1 at102.01 | 800.98 | 2 | 301.03/3 | 5/3 | 10/3 | 5 | 1005 |
+| Completed mark103.125 | 800.98 | 2 | 301.03/3 | 5/3 | 1669/300 | 7.23 | 1007.23 |
+
+At the last row, equity =800.98 +2×103.125 =1007.23. Realized5/3 plus unrealized1669/300 equals7.23. Vue shows1.67 realized,5.56 unrealized and7.23 total. The valuation retains103.125 internally and displays103.13; unlike executable fills, completed-candle marks are not rounded to cents before calculating P&L.
+
+### Assumptions, unavailable values and invariants
+
+This remains a zero-fee, zero-slippage/spread, full-fill, long-only observed-price simulation. Orders fill only on later eligible receipts and recheck cash/shares. No claim is made about exchange liquidity or achievable execution; stale newly received quotes may fill. See [execution rules](paper-account.md). Weighted-average basis is exact fractional cents; SQL/JSON dollar projections are floating point and Vue rounds for display. Exact stored fractions and independent expectations are compared with zero tolerance; browser checks compare the expected two-decimal formatting.
+
+For each valid row the checks independently calculate equity = cash + quantity × mark, total P&L = realized + unrealized, and equity − initial1000 = total P&L. These are verification calculations; this step adds no new equity UI or schema. An invalid latest completed close in the third fixture produces unavailable mark/unrealized/total/equity, while preserving realized P&L and earlier history. Vue must display **Unavailable**, not zero. The last valid price does not automatically expire merely because it is old; source/time labels distinguish availability from freshness.
+
+Tests also check exact event/request retries, rejected oversells, nonnegative cash/positions, and rollback after an injected P&L-insert failure: cash, position, fill, order status and receipt cursor remain at their prior state; retry recovers one fill. Hashes cover all fields of observations, deliveries and revisions before/after account reads, retries/rejections and real backend restart. Source records remain unchanged.
+
+One initial expected-value discrepancy was in the new audit fixture, not production accounting: after the second buy, per-share gain is2/3 dollars across3shares, so total unrealized is2 dollars. The first expected constant mistakenly used2/3 as the total; correcting that independent reference resolved the failure. No production accounting change was needed. A small CSS change keeps currency amounts and Unavailable labels from wrapping mid-value in the P&L table.
+
+
+Final evidence: [summary with exact expected/observed rows](evidence/accounting-part42/result.json); [standard before SQL](evidence/accounting-part42/standard-before-sqlite.json), [after SQL](evidence/accounting-part42/standard-after-sqlite.json), [before API/browser](evidence/accounting-part42/standard-before.json), [after API/browser](evidence/accounting-part42/standard-after.json); [multiple-buy before](evidence/accounting-part42/multiple-before.json), [after](evidence/accounting-part42/multiple-after.json); [unavailable before](evidence/accounting-part42/unavailable-before.json), [after](evidence/accounting-part42/unavailable-after.json). Screenshots: [five-event result](evidence/accounting-part42/standard-after.png), [multiple buys](evidence/accounting-part42/multiple-after.png), [unavailable](evidence/accounting-part42/unavailable-after.png). All three cases passed all before/after comparisons; owned processes stopped.

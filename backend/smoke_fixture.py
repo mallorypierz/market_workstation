@@ -94,3 +94,42 @@ def evidence():
                 'fills':[dict(r) for r in db.execute('SELECT * FROM paper_fills')],
                 'account':paper.snapshot(db,'automation-test') if db.execute("SELECT 1 FROM paper_accounts WHERE id='automation-test'").fetchone() else None}
     finally:db.close()
+
+# Part4.2 uses a second disposable database, after the legacy scenario finishes.
+# Only this explicitly opted-in fixture process can switch; production has no route.
+from pathlib import Path
+from backend import backtest
+_original_catalog=backtest.datasets
+_original_freeze=backtest.freeze_receipts
+
+def fixture_catalog():
+    rows=_original_catalog()
+    return [{**r,'label':'OFFLINE constructed receipt fixture','provenance':'Constructed correctness data; NOT live or historical Yahoo evidence'} for r in rows if r['id']=='recorded']
+
+def fixture_freeze(*args,**kwargs):
+    data=_original_freeze(*args,**kwargs)
+    data['provenance'].update(source='OFFLINE constructed correctness fixture',not_yahoo_evidence=True)
+    return data
+backtest.datasets=fixture_catalog
+backtest.freeze_receipts=fixture_freeze
+
+@app.post('/api/smoke/part42')
+def part42_control(request:dict):
+    target=Path(os.environ['SMOKE_PART42_DB']).resolve()
+    if request.get('activate'):
+        assert target.exists() and target.parent.name.startswith('market-smoke-')
+        os.environ['MARKET_DB_PATH']=str(target)
+    assert Path(os.environ['MARKET_DB_PATH']).resolve()==target
+    db=connect()
+    try:
+        if 'minute' in request:
+            from datetime import timedelta,timezone
+            minute=request['minute'];assert type(minute) is int and 0<=minute<=9
+            source=datetime(2026,11,9,14,30,tzinfo=timezone.utc)+timedelta(minutes=minute)
+            receipt=source+timedelta(minutes=1) if request.get('complete',True) else source+timedelta(seconds=10)
+            record(db,{'id':'AAPL','price':request['price'],'time':str(int(source.timestamp()*1000)),
+                       'test_data':'OFFLINE PART4.2 constructed correctness fixture'},receipt.isoformat())
+            db.execute('UPDATE smoke_control SET stamp=?',(receipt.isoformat(),));db.commit()
+            paper.process_live(db)
+        return {'clock':clock()}
+    finally:db.close()

@@ -120,3 +120,25 @@ Selected saved decision ID → FastAPI read-only SQLite snapshot of proposal/rev
 ## Offline browser SmokeTest
 
 `docs/smoke_test.py` creates fresh temporary market/settings SQLite files → starts `backend.smoke_fixture:app` and real Vite → waits for both → invokes pinned Playwright/Chromium → operates Vue replay/indicator/capture/automation controls → validates provider-bound PNG pixels/identity → checks the production simulator in UI and SQLite → closes browser/process groups and writes ignored evidence. Only source events, logical time and external model/feed boundaries are controlled; calculation/transport/review/execution paths are real. `.github/workflows/smoke-test.yml` invokes the same command twice on push. Details: [SmokeTest](smoke-test.md).
+
+
+## Part 4.2 audit boundary — November 17, 2026
+
+The [readiness checklist](part-4.2-checklist.md) distinguishes existing calculations/accounting from planned strategy/backtest orchestration. Current automatic execution runs through chart-image analyst/reviewer calls and the Python gate. Manual paper actions and replay accounts can operate without a model, but no provider-independent automatic crossover runner or historical performance-run API/UI was found. Proposed flow: receipt-bounded history → completed candles → existing SMA → deterministic strategy → existing paper ledger → persisted run results → Vue. This flow is a plan only; this audit changes no runtime behavior or schema.
+
+
+## Deterministic SMA strategy — implemented November 17, 2026
+
+The earlier audit gap for provider-independent forward strategy execution is now closed. Yahoo recorder → existing `paper.process_live` transaction → each enabled run's receipt cursor → known-at completed candles → exact SMA → buy-one/close/no-action event → shared pending paper order → strictly later eligible receipt → shared fill/P&L → FastAPI strategy state → Vue SmaStrategy. Runs use isolated `strategy-` accounts and immutable settings. Stop serializes with processing and cancels pending orders. The existing AI-reviewed and manual replay paths remain separate. [Rules, schema, limitations and verification commands](sma-strategy.md). Historical backtesting/performance reporting remains unimplemented.
+
+
+Part4.2 accounting verification uses disposable fixtures → existing paper/P&L pipeline → direct SQLite query → FastAPI account JSON → Vue P&L table, then repeats after actual backend restart. [Reconciliation](pnl.md) supplies independent expected amounts/equity identities. No accounting formula or runtime schema changed; the only presentation change keeps monetary cells on one line.
+
+
+## Historical backtest — implemented November 17, 2026
+
+Read-only source snapshot or explicitly labeled daily bars → frozen input/config/hash in isolated run SQLite → sequential receipt or open/close availability → shared exact SMA + choose_action → shared paper execution/P&L → frozen decision/fill/valuation audit → persisted equity/return/drawdown results → CLI/FastAPI. The daily adapter exposes the close only after the session ends and executes earlier orders only at the next supplied open. No pre-period warm-up trades, production account writes or forced liquidation. [Rules and evaluation](backtesting.md). Dedicated Vue backtest controls/results are still pending.
+
+Part4.2 backtest UI: dataset catalog → validated Vue form → strict FastAPI request → frozen isolated Python evaluation → SQLite result → saved-result GET → candle/SMA/marker and equity charts plus frozen decision/order/fill inspection. Refresh/restart reads persisted results. Source captures and live paper account remain separate. See docs/backtesting.md for empty/unavailable states and browser evidence.
+
+Submission evidence boundary: constructed correctness receipts → isolated deterministic strategy/backtest → SQLite/browser assertions is separate from saved real Yahoo daily-bar evaluation and earlier Part4.1 live captures. The59-second recording shows actual saved app results with narration captions, not a fresh live-feed claim. The report documents receipt-prefix causality, next-open historical execution, no parameter optimization, survivorship/selection bias and the small one-symbol sample. See part-4.2-evidence.md for observed checks and pending publication.

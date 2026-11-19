@@ -1,0 +1,23 @@
+{
+  "file": "docs/evidence/part-4.2-demo.webm",
+  "sha256": "164df4194e1cba98db2ff1fc3c3319116314389c3ee2fac9911d000c5df78c06",
+  "bytes": 10067383,
+  "duration": {
+    "duration_seconds": 59,
+    "within_30_60": true,
+    "method": "Chromium HTMLVideoElement duration, loaded metadata and decoded seeks",
+    "checked_seconds": [
+      8,
+      19,
+      27,
+      36,
+      38,
+      42,
+      46,
+      53
+    ]
+  },
+  "editing": "Trailing footage only trimmed with installed Playwright FFmpeg stream copy from60.92to59.00seconds; no result edits",
+  "public_url": null,
+  "instructor_access": "PENDING publication and unauthenticated playback"
+}

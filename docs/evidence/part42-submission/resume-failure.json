@@ -1,0 +1,8 @@
+{
+  "run": "20261118T192959-23996",
+  "status": "failed",
+  "provider": "controlled offline",
+  "market_data": "constructed",
+  "error": "RuntimeError: Browser assertions failed (exit 1); see trace/screenshots/logs",
+  "owned_processes_stopped": true
+}

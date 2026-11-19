@@ -1,0 +1,507 @@
+{
+  "oracle": "SQLite integer window SUM/COUNT; exact cross-product signs",
+  "tolerance": 0,
+  "datasets": [
+    {
+      "closes": [
+        13,
+        10,
+        7,
+        13,
+        19,
+        7,
+        1
+      ],
+      "short": 2,
+      "long": 3,
+      "expected": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:31:00Z",
+          "short": 11.5,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:32:00Z",
+          "short": 8.5,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:33:00Z",
+          "short": 10.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:34:00Z",
+          "short": 16.0,
+          "long": 13.0,
+          "signal": "up"
+        },
+        {
+          "timestamp": "2026-11-09T14:35:00Z",
+          "short": 13.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:36:00Z",
+          "short": 4.0,
+          "long": 9.0,
+          "signal": "down"
+        }
+      ],
+      "observed": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:31:00Z",
+          "short": 11.5,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:32:00Z",
+          "short": 8.5,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:33:00Z",
+          "short": 10.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:34:00Z",
+          "short": 16.0,
+          "long": 13.0,
+          "signal": "up"
+        },
+        {
+          "timestamp": "2026-11-09T14:35:00Z",
+          "short": 13.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:36:00Z",
+          "short": 4.0,
+          "long": 9.0,
+          "signal": "down"
+        }
+      ]
+    },
+    {
+      "closes": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        13,
+        16,
+        19,
+        16,
+        13,
+        10,
+        7,
+        4,
+        7,
+        10,
+        13,
+        16,
+        19,
+        22,
+        19,
+        16,
+        13,
+        10,
+        7,
+        10,
+        13,
+        16,
+        19,
+        16,
+        13
+      ],
+      "short": 3,
+      "long": 5,
+      "expected": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:31:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:32:00Z",
+          "short": 10.0,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:33:00Z",
+          "short": 10.0,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:34:00Z",
+          "short": 10.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:35:00Z",
+          "short": 11.0,
+          "long": 10.6,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:36:00Z",
+          "short": 13.0,
+          "long": 11.8,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:37:00Z",
+          "short": 16.0,
+          "long": 13.6,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:38:00Z",
+          "short": 17.0,
+          "long": 14.8,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:39:00Z",
+          "short": 16.0,
+          "long": 15.4,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:40:00Z",
+          "short": 13.0,
+          "long": 14.8,
+          "signal": "down"
+        },
+        {
+          "timestamp": "2026-11-09T14:41:00Z",
+          "short": 10.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:42:00Z",
+          "short": 7.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:43:00Z",
+          "short": 6.0,
+          "long": 8.2,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:44:00Z",
+          "short": 7.0,
+          "long": 7.6,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:45:00Z",
+          "short": 10.0,
+          "long": 8.2,
+          "signal": "up"
+        },
+        {
+          "timestamp": "2026-11-09T14:46:00Z",
+          "short": 13.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:47:00Z",
+          "short": 16.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:48:00Z",
+          "short": 19.0,
+          "long": 16.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:49:00Z",
+          "short": 20.0,
+          "long": 17.8,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:50:00Z",
+          "short": 19.0,
+          "long": 18.4,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:51:00Z",
+          "short": 16.0,
+          "long": 17.8,
+          "signal": "down"
+        },
+        {
+          "timestamp": "2026-11-09T14:52:00Z",
+          "short": 13.0,
+          "long": 16.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:53:00Z",
+          "short": 10.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:54:00Z",
+          "short": 9.0,
+          "long": 11.2,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:55:00Z",
+          "short": 10.0,
+          "long": 10.6,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:56:00Z",
+          "short": 13.0,
+          "long": 11.2,
+          "signal": "up"
+        },
+        {
+          "timestamp": "2026-11-09T14:57:00Z",
+          "short": 16.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:58:00Z",
+          "short": 17.0,
+          "long": 14.8,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:59:00Z",
+          "short": 16.0,
+          "long": 15.4,
+          "signal": null
+        }
+      ],
+      "observed": [
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:31:00Z",
+          "short": null,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:32:00Z",
+          "short": 10.0,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:33:00Z",
+          "short": 10.0,
+          "long": null,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:34:00Z",
+          "short": 10.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:35:00Z",
+          "short": 11.0,
+          "long": 10.6,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:36:00Z",
+          "short": 13.0,
+          "long": 11.8,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:37:00Z",
+          "short": 16.0,
+          "long": 13.6,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:38:00Z",
+          "short": 17.0,
+          "long": 14.8,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:39:00Z",
+          "short": 16.0,
+          "long": 15.4,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:40:00Z",
+          "short": 13.0,
+          "long": 14.8,
+          "signal": "down"
+        },
+        {
+          "timestamp": "2026-11-09T14:41:00Z",
+          "short": 10.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:42:00Z",
+          "short": 7.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:43:00Z",
+          "short": 6.0,
+          "long": 8.2,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:44:00Z",
+          "short": 7.0,
+          "long": 7.6,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:45:00Z",
+          "short": 10.0,
+          "long": 8.2,
+          "signal": "up"
+        },
+        {
+          "timestamp": "2026-11-09T14:46:00Z",
+          "short": 13.0,
+          "long": 10.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:47:00Z",
+          "short": 16.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:48:00Z",
+          "short": 19.0,
+          "long": 16.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:49:00Z",
+          "short": 20.0,
+          "long": 17.8,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:50:00Z",
+          "short": 19.0,
+          "long": 18.4,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:51:00Z",
+          "short": 16.0,
+          "long": 17.8,
+          "signal": "down"
+        },
+        {
+          "timestamp": "2026-11-09T14:52:00Z",
+          "short": 13.0,
+          "long": 16.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:53:00Z",
+          "short": 10.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:54:00Z",
+          "short": 9.0,
+          "long": 11.2,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:55:00Z",
+          "short": 10.0,
+          "long": 10.6,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:56:00Z",
+          "short": 13.0,
+          "long": 11.2,
+          "signal": "up"
+        },
+        {
+          "timestamp": "2026-11-09T14:57:00Z",
+          "short": 16.0,
+          "long": 13.0,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:58:00Z",
+          "short": 17.0,
+          "long": 14.8,
+          "signal": null
+        },
+        {
+          "timestamp": "2026-11-09T14:59:00Z",
+          "short": 16.0,
+          "long": 15.4,
+          "signal": null
+        }
+      ]
+    }
+  ]
+}

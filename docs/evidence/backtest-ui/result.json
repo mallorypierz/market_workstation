@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "data": "real saved Yahoo daily bars; disposable empty receipt database",
+  "provider": "none",
+  "before_after_equal": true,
+  "source_unchanged": true,
+  "cash_cents": 99964,
+  "fills": 10,
+  "return_value": -0.00036,
+  "max_drawdown": 0.012997242668082604,
+  "dataset_sha256": "f58525cca0b3a52d34b8dbecfc28605085261bca7f126f4baf2afdda400f065f",
+  "run_id": "12833096-a6f5-43c9-9ea1-5df4271b6d13",
+  "owned_processes_stopped": true
+}

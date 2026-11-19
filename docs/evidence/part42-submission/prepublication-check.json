@@ -1,0 +1,9 @@
+{
+  "archive_report_matches_prior_HEAD": true,
+  "retained_manifest_hashes_match": true,
+  "new_report_doc_local_links_checked": 85,
+  "missing_links": [],
+  "text_files_scanned_for_common_secret_patterns": 249,
+  "secret_pattern_files": [],
+  "limitations": "Heuristic pattern scan, not a guarantee; video sampled visually, no credential screens shown."
+}

@@ -335,3 +335,81 @@ def update_indicator(identity: int, request: dict = Body(default={})):
     try:return update_window(identity, request.get('settings', {}))
     except ValueError as error:raise HTTPException(422,str(error)) from None
     except sqlite3.Error:raise HTTPException(503,'Indicator settings storage unavailable') from None
+
+
+# Independent deterministic strategy; separate accounts and no provider dependency.
+from backend import strategy
+
+@contextmanager
+def strategy_database():
+    with paper_database() as db:
+        strategy.initialize(db)
+        yield db
+
+@app.post('/api/strategy/start')
+def strategy_start(request: dict = Body(default={})):
+    with strategy_database() as db: return strategy.start(db,request)
+
+@app.get('/api/strategy')
+def strategy_runs():
+    with strategy_database() as db:
+        return [dict(r) for r in db.execute('SELECT * FROM sma_runs ORDER BY created_at DESC')]
+
+@app.get('/api/strategy/{identity}')
+def strategy_state(identity: str):
+    with strategy_database() as db:
+        paper.process_live(db)
+        return strategy.state(db,identity)
+
+@app.post('/api/strategy/{identity}/stop')
+def strategy_stop(identity: str):
+    with strategy_database() as db: return strategy.stop(db,identity)
+
+# Historical backtests use their own frozen databases; never the production paper account.
+from backend import backtest
+
+from pydantic import StrictInt, Field
+
+class BacktestRequest(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    run_id: str = Field(pattern=r'^[A-Za-z0-9-]{1,64}$')
+    dataset: Literal['recorded','aapl-2025-daily'] = 'recorded'
+    symbol: Literal['AAPL'] = 'AAPL'
+    timeframe: Literal['1m','5m','15m','1h','1d'] = '1m'
+    start: str
+    end: str
+    warmup_start: str | None = None
+    short: StrictInt = Field(default=2,gt=0)
+    long: StrictInt = Field(default=3,gt=0)
+    initial_cash_cents: StrictInt = Field(default=100000,gt=0,le=10**12)
+    snapshot_cutoff: StrictInt | None = Field(default=None,ge=0)
+
+@app.get('/api/backtest-datasets')
+def backtest_datasets():
+    try:return backtest.datasets()
+    except (OSError,sqlite3.Error,ValueError):raise HTTPException(503,'Historical dataset catalog unavailable') from None
+
+@app.get('/api/backtests')
+def backtest_runs():
+    try:return backtest.list_runs()
+    except (OSError,sqlite3.Error,ValueError):raise HTTPException(503,'Saved backtests unavailable') from None
+
+@app.post('/api/backtests', status_code=201)
+def create_backtest(request: BacktestRequest):
+    request=request.model_dump(exclude_none=True)
+    try:
+        dataset=request.get('dataset','recorded')
+        bars=None
+        if dataset=='aapl-2025-daily':
+            import json
+            bars=json.loads((backtest.ROOT/'docs/evidence/aapl-2025-daily.json').read_text())
+        elif dataset!='recorded':raise ValueError('Unknown historical dataset')
+        return backtest.run(request['run_id'],request,bars=bars,reject_empty=True)
+    except (ValueError,KeyError,TypeError) as error:raise HTTPException(422,str(error)) from None
+    except (OSError,sqlite3.Error):raise HTTPException(503,'Backtest storage unavailable') from None
+
+@app.get('/api/backtests/{identity}')
+def saved_backtest(identity: str):
+    try:return backtest.read(identity)
+    except ValueError as error:raise HTTPException(404,str(error)) from None
+    except (OSError,sqlite3.Error):raise HTTPException(503,'Backtest storage unavailable') from None

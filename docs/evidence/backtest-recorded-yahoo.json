@@ -1,0 +1,1606 @@
+{
+  "run_id": "recorded-yahoo-evaluation-02",
+  "metadata": {
+    "assumptions": {
+      "actions": "price return only; no dividends credited; reject bar datasets containing splits",
+      "bar_execution": "next supplied session open only; OHLC available only at session close; no original receipt/revision history",
+      "fees": 0,
+      "fill": "full; positive price rounded HALF_UP to cents",
+      "metrics": "initial equity plus each evaluation receipt/bar close; max drawdown from running peak; no annualization",
+      "missing": "no fabricated bars; windows span supplied completed candles",
+      "receipt_execution": "first later eligible receipt; duplicates/corrections not executable; stale/off-session quotes may fill",
+      "sizing": "one share when flat; close on down; no borrowing/shorting/pyramiding",
+      "slippage": 0,
+      "spread": 0,
+      "valuation": "last positive known completed close, even if older than fill; unavailable if none; no forced liquidation"
+    },
+    "config": {
+      "end": "2026-11-17T00:00:00Z",
+      "initial_cash_cents": 100000,
+      "long": 3,
+      "policy": "sma-one-share-v1",
+      "short": 2,
+      "size": 1,
+      "snapshot_cutoff": null,
+      "start": "2026-11-12T14:30:00Z",
+      "symbol": "AAPL",
+      "timeframe": "1m",
+      "warmup_start": "2026-11-12T14:22:00Z"
+    },
+    "created_at": "2026-11-17T21:24:41.104732Z",
+    "dataset_sha256": "b7d018087a63aaafac5e97e6aa9fd51aeeb16fc46d8afe8eddbcd6cb7e6de29a",
+    "kind": "recorded_yahoo_receipts",
+    "provenance": {
+      "adjustments": "as received; no adjustment or corporate-action model",
+      "frozen_at": "2026-11-17T21:24:41.103893Z",
+      "original_receipt_history": true,
+      "receipt_cutoff": 223,
+      "source": "saved Yahoo decoded deliveries",
+      "source_file": "market.sqlite3"
+    },
+    "request": {
+      "bars_hash": null,
+      "config": {
+        "end": "2026-11-17T00:00:00Z",
+        "initial_cash_cents": 100000,
+        "long": 3,
+        "policy": "sma-one-share-v1",
+        "short": 2,
+        "size": 1,
+        "snapshot_cutoff": null,
+        "start": "2026-11-12T14:30:00Z",
+        "symbol": "AAPL",
+        "timeframe": "1m",
+        "warmup_start": "2026-11-12T14:22:00Z"
+      },
+      "source": "/Users/mallorypierz/Documents/market_workstation/backend/data/market.sqlite3"
+    },
+    "version": {
+      "git_head": "360ed24d9f5c66fb5b29d3f7fae8926003320fa3",
+      "note": "source hashes identify uncommitted changes; HEAD alone may not",
+      "packages": {
+        "exchange-calendars": "4.13.2",
+        "yfinance": "1.8.0"
+      },
+      "python": "3.12.5",
+      "source_sha256": {
+        "backtest.py": "66aac9dfa734346b9710b52e152e008c46977e3dc6f911ec9d8dce794cee86c6",
+        "candles.py": "8c29e7da2ab6058a026159153b82104f71e89d938bdd1f3cbe78bde731bbb0d2",
+        "indicators.py": "2b937dd32f1e00f9170dc150d424fe3dca120fb722e30addfe666efc29084b1d",
+        "paper.py": "e001793e046b8e57b78945b56e1a0e50330b6f23a4890d251f875351ad0f8aba",
+        "pnl.py": "5041fd6ca72495cbbb0cc010303185fdd2dad8fe3a12cdd7614145e2ff9ece91",
+        "recorder.py": "a29d3a7cc6acd3742e7bf59b37665051c6426f03aa44d53ed2d25ef528e72b90",
+        "sma.py": "268825a1116ac0389d4f7fd527b7c42a21f024000862fa9ae4c218913bc2c70e",
+        "strategy.py": "25ba7ea92756471cde8987324278036728e22267ec9f6a7f715a6c4d22886265",
+        "timeframes.py": "205b592672b781be0473e7873009c36e05370521912b3a870ccbb50c38d7c9bb"
+      },
+      "sqlite": "3.45.3"
+    }
+  },
+  "status": "completed",
+  "result": {
+    "account": {
+      "cash": 1000.0,
+      "cash_cents": 100000,
+      "created_at": "2026-11-12T14:30:00Z",
+      "cursor": 223,
+      "fills": [],
+      "id": "backtest",
+      "mode": "backtest",
+      "orders": [],
+      "pnl_current": {
+        "price": null,
+        "price_source": null,
+        "price_time": null,
+        "realized": 0,
+        "total": 0,
+        "unrealized": 0,
+        "valuation_status": "closed"
+      },
+      "pnl_history": [],
+      "positions": [],
+      "replay_step": 0,
+      "spec_json": null,
+      "starting_cash_cents": 100000
+    },
+    "decisions": [
+      {
+        "action": "none",
+        "candle_close": 358.41,
+        "cash_before": 100000,
+        "decision_time": "2026-11-12T14:31:01.121487Z",
+        "fill": null,
+        "long": null,
+        "order": null,
+        "order_id": null,
+        "reason": "SMA warm-up",
+        "receipt_id": 196,
+        "shares_before": 0,
+        "short": null,
+        "signal": null,
+        "timestamp": "2026-11-12T14:30:00Z"
+      },
+      {
+        "action": "none",
+        "candle_close": 356.24,
+        "cash_before": 100000,
+        "decision_time": "2026-11-16T23:34:33.872644Z",
+        "fill": null,
+        "long": null,
+        "order": null,
+        "order_id": null,
+        "reason": "SMA warm-up",
+        "receipt_id": 200,
+        "shares_before": 0,
+        "short": 356.37,
+        "signal": null,
+        "timestamp": "2026-11-12T14:31:00Z"
+      }
+    ],
+    "ending_equity": 1000.0,
+    "equity_curve": [
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "initial",
+        "mark": null,
+        "receipt_id": null,
+        "shares": 0,
+        "time": "2026-11-12T14:30:00Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 100,
+        "shares": 0,
+        "time": "2026-11-12T14:30:01.750518Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 101,
+        "shares": 0,
+        "time": "2026-11-12T14:30:02.057993Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 102,
+        "shares": 0,
+        "time": "2026-11-12T14:30:02.103154Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 103,
+        "shares": 0,
+        "time": "2026-11-12T14:30:02.385798Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 104,
+        "shares": 0,
+        "time": "2026-11-12T14:30:02.477363Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 105,
+        "shares": 0,
+        "time": "2026-11-12T14:30:03.594208Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 106,
+        "shares": 0,
+        "time": "2026-11-12T14:30:03.888983Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 107,
+        "shares": 0,
+        "time": "2026-11-12T14:30:04.391387Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 108,
+        "shares": 0,
+        "time": "2026-11-12T14:30:04.545613Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 109,
+        "shares": 0,
+        "time": "2026-11-12T14:30:04.592204Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 110,
+        "shares": 0,
+        "time": "2026-11-12T14:30:05.335479Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 111,
+        "shares": 0,
+        "time": "2026-11-12T14:30:05.349129Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 112,
+        "shares": 0,
+        "time": "2026-11-12T14:30:05.479809Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 113,
+        "shares": 0,
+        "time": "2026-11-12T14:30:06.256392Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 114,
+        "shares": 0,
+        "time": "2026-11-12T14:30:06.478910Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 115,
+        "shares": 0,
+        "time": "2026-11-12T14:30:06.499054Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 116,
+        "shares": 0,
+        "time": "2026-11-12T14:30:07.383968Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 117,
+        "shares": 0,
+        "time": "2026-11-12T14:30:07.559655Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 118,
+        "shares": 0,
+        "time": "2026-11-12T14:30:07.589062Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 119,
+        "shares": 0,
+        "time": "2026-11-12T14:30:07.597933Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 120,
+        "shares": 0,
+        "time": "2026-11-12T14:30:08.527822Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 121,
+        "shares": 0,
+        "time": "2026-11-12T14:30:08.550159Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 122,
+        "shares": 0,
+        "time": "2026-11-12T14:30:08.568180Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 123,
+        "shares": 0,
+        "time": "2026-11-12T14:30:08.630221Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 124,
+        "shares": 0,
+        "time": "2026-11-12T14:30:08.714644Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 125,
+        "shares": 0,
+        "time": "2026-11-12T14:30:08.742205Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 126,
+        "shares": 0,
+        "time": "2026-11-12T14:30:08.815638Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 127,
+        "shares": 0,
+        "time": "2026-11-12T14:30:08.916613Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 128,
+        "shares": 0,
+        "time": "2026-11-12T14:30:08.961793Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 129,
+        "shares": 0,
+        "time": "2026-11-12T14:30:08.997407Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 130,
+        "shares": 0,
+        "time": "2026-11-12T14:30:09.022882Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 131,
+        "shares": 0,
+        "time": "2026-11-12T14:30:09.093029Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 132,
+        "shares": 0,
+        "time": "2026-11-12T14:30:09.141388Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 133,
+        "shares": 0,
+        "time": "2026-11-12T14:30:09.237855Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 134,
+        "shares": 0,
+        "time": "2026-11-12T14:30:09.347494Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 135,
+        "shares": 0,
+        "time": "2026-11-12T14:30:10.457000Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 136,
+        "shares": 0,
+        "time": "2026-11-12T14:30:10.495045Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 137,
+        "shares": 0,
+        "time": "2026-11-12T14:30:10.539389Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 138,
+        "shares": 0,
+        "time": "2026-11-12T14:30:10.708236Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 139,
+        "shares": 0,
+        "time": "2026-11-12T14:30:11.376405Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 140,
+        "shares": 0,
+        "time": "2026-11-12T14:30:12.399713Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 141,
+        "shares": 0,
+        "time": "2026-11-12T14:30:12.434505Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 142,
+        "shares": 0,
+        "time": "2026-11-12T14:30:13.343762Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 143,
+        "shares": 0,
+        "time": "2026-11-12T14:30:13.455236Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 144,
+        "shares": 0,
+        "time": "2026-11-12T14:30:13.463175Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 145,
+        "shares": 0,
+        "time": "2026-11-12T14:30:14.352671Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 146,
+        "shares": 0,
+        "time": "2026-11-12T14:30:14.505871Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 147,
+        "shares": 0,
+        "time": "2026-11-12T14:30:14.524855Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 148,
+        "shares": 0,
+        "time": "2026-11-12T14:30:15.575744Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 149,
+        "shares": 0,
+        "time": "2026-11-12T14:30:15.869658Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 150,
+        "shares": 0,
+        "time": "2026-11-12T14:30:16.393676Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 151,
+        "shares": 0,
+        "time": "2026-11-12T14:30:16.394977Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 152,
+        "shares": 0,
+        "time": "2026-11-12T14:30:17.316237Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 153,
+        "shares": 0,
+        "time": "2026-11-12T14:30:17.453461Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 154,
+        "shares": 0,
+        "time": "2026-11-12T14:30:18.545258Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 155,
+        "shares": 0,
+        "time": "2026-11-12T14:30:19.467294Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 156,
+        "shares": 0,
+        "time": "2026-11-12T14:30:19.517808Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 157,
+        "shares": 0,
+        "time": "2026-11-12T14:30:20.386562Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 158,
+        "shares": 0,
+        "time": "2026-11-12T14:30:20.644791Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 159,
+        "shares": 0,
+        "time": "2026-11-12T14:30:21.367048Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 160,
+        "shares": 0,
+        "time": "2026-11-12T14:30:21.378115Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 161,
+        "shares": 0,
+        "time": "2026-11-12T14:30:22.435337Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 162,
+        "shares": 0,
+        "time": "2026-11-12T14:30:23.255067Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 163,
+        "shares": 0,
+        "time": "2026-11-12T14:30:24.275953Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 164,
+        "shares": 0,
+        "time": "2026-11-12T14:30:25.198972Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 165,
+        "shares": 0,
+        "time": "2026-11-12T14:30:26.434971Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 166,
+        "shares": 0,
+        "time": "2026-11-12T14:30:27.228330Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 167,
+        "shares": 0,
+        "time": "2026-11-12T14:30:27.354147Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 168,
+        "shares": 0,
+        "time": "2026-11-12T14:30:28.272898Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 169,
+        "shares": 0,
+        "time": "2026-11-12T14:30:29.353328Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 170,
+        "shares": 0,
+        "time": "2026-11-12T14:30:29.355180Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 171,
+        "shares": 0,
+        "time": "2026-11-12T14:30:30.159281Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 172,
+        "shares": 0,
+        "time": "2026-11-12T14:30:30.561979Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 173,
+        "shares": 0,
+        "time": "2026-11-12T14:30:31.187809Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 174,
+        "shares": 0,
+        "time": "2026-11-12T14:30:31.499978Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 175,
+        "shares": 0,
+        "time": "2026-11-12T14:30:31.550423Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 176,
+        "shares": 0,
+        "time": "2026-11-12T14:30:31.553609Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 177,
+        "shares": 0,
+        "time": "2026-11-12T14:30:32.266626Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 178,
+        "shares": 0,
+        "time": "2026-11-12T14:30:32.438483Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 179,
+        "shares": 0,
+        "time": "2026-11-12T14:30:32.510843Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 180,
+        "shares": 0,
+        "time": "2026-11-12T14:30:33.324408Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 181,
+        "shares": 0,
+        "time": "2026-11-12T14:30:33.404770Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 182,
+        "shares": 0,
+        "time": "2026-11-12T14:30:34.914983Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 183,
+        "shares": 0,
+        "time": "2026-11-12T14:30:35.193945Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 184,
+        "shares": 0,
+        "time": "2026-11-12T14:30:35.455660Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 185,
+        "shares": 0,
+        "time": "2026-11-12T14:30:35.489759Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 186,
+        "shares": 0,
+        "time": "2026-11-12T14:30:35.630274Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 187,
+        "shares": 0,
+        "time": "2026-11-12T14:30:36.326854Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 188,
+        "shares": 0,
+        "time": "2026-11-12T14:30:36.431464Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 189,
+        "shares": 0,
+        "time": "2026-11-12T14:30:37.194873Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 190,
+        "shares": 0,
+        "time": "2026-11-12T14:30:37.335207Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 191,
+        "shares": 0,
+        "time": "2026-11-12T14:30:38.211318Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 192,
+        "shares": 0,
+        "time": "2026-11-12T14:30:38.492065Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 193,
+        "shares": 0,
+        "time": "2026-11-12T14:30:39.465617Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 194,
+        "shares": 0,
+        "time": "2026-11-12T14:30:40.330425Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": null,
+        "receipt_id": 195,
+        "shares": 0,
+        "time": "2026-11-12T14:30:41.133544Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 358.41,
+          "high": 358.84,
+          "low": 357.79,
+          "open": 357.9,
+          "timestamp": "2026-11-12T14:30:00Z",
+          "volume": null
+        },
+        "receipt_id": 196,
+        "shares": 0,
+        "time": "2026-11-12T14:31:01.121487Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.815,
+          "high": 358.84,
+          "low": 356.815,
+          "open": 357.9,
+          "timestamp": "2026-11-12T14:30:00Z",
+          "volume": null
+        },
+        "receipt_id": 197,
+        "shares": 0,
+        "time": "2026-11-12T14:31:02.489195Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.5,
+          "high": 358.84,
+          "low": 356.5,
+          "open": 357.9,
+          "timestamp": "2026-11-12T14:30:00Z",
+          "volume": null
+        },
+        "receipt_id": 198,
+        "shares": 0,
+        "time": "2026-11-12T14:31:09.131498Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.5,
+          "high": 358.84,
+          "low": 356.5,
+          "open": 357.9,
+          "timestamp": "2026-11-12T14:30:00Z",
+          "volume": null
+        },
+        "receipt_id": 199,
+        "shares": 0,
+        "time": "2026-11-12T14:31:10.259674Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 200,
+        "shares": 0,
+        "time": "2026-11-16T23:34:33.872644Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 201,
+        "shares": 0,
+        "time": "2026-11-16T23:34:43.880726Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 202,
+        "shares": 0,
+        "time": "2026-11-16T23:35:56.975436Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 203,
+        "shares": 0,
+        "time": "2026-11-16T23:36:12.028962Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 204,
+        "shares": 0,
+        "time": "2026-11-16T23:36:13.926359Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 205,
+        "shares": 0,
+        "time": "2026-11-16T23:36:17.969772Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 206,
+        "shares": 0,
+        "time": "2026-11-16T23:38:50.030251Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 207,
+        "shares": 0,
+        "time": "2026-11-16T23:39:33.010789Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 208,
+        "shares": 0,
+        "time": "2026-11-16T23:39:44.033840Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 209,
+        "shares": 0,
+        "time": "2026-11-16T23:40:25.056579Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 210,
+        "shares": 0,
+        "time": "2026-11-16T23:41:12.160492Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 211,
+        "shares": 0,
+        "time": "2026-11-16T23:42:44.121065Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 212,
+        "shares": 0,
+        "time": "2026-11-16T23:43:01.185146Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 213,
+        "shares": 0,
+        "time": "2026-11-16T23:43:24.155974Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 214,
+        "shares": 0,
+        "time": "2026-11-16T23:43:44.184830Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 215,
+        "shares": 0,
+        "time": "2026-11-16T23:43:46.179417Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 216,
+        "shares": 0,
+        "time": "2026-11-16T23:44:00.174529Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 217,
+        "shares": 0,
+        "time": "2026-11-16T23:44:05.218749Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 218,
+        "shares": 0,
+        "time": "2026-11-16T23:44:07.357137Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 219,
+        "shares": 0,
+        "time": "2026-11-16T23:44:18.393673Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 220,
+        "shares": 0,
+        "time": "2026-11-16T23:44:46.281489Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 221,
+        "shares": 0,
+        "time": "2026-11-16T23:45:32.260086Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 222,
+        "shares": 0,
+        "time": "2026-11-16T23:48:59.310445Z"
+      },
+      {
+        "cash_cents": 100000,
+        "equity": 1000.0,
+        "equity_exact_cents": "100000",
+        "kind": "completed-close valuation",
+        "mark": {
+          "close": 356.24,
+          "high": 356.24,
+          "low": 356.24,
+          "open": 356.24,
+          "timestamp": "2026-11-12T14:31:00Z",
+          "volume": 52920
+        },
+        "receipt_id": 223,
+        "shares": 0,
+        "time": "2026-11-16T23:49:15.495563Z"
+      }
+    ],
+    "max_drawdown": 0.0,
+    "max_drawdown_exact": "0",
+    "open_positions": [],
+    "pending_orders": [],
+    "sample": {
+      "evaluation_completed_candles": 2,
+      "fills": 0,
+      "valuation_steps": 124,
+      "warmup_completed_candles": 0
+    },
+    "total_return": 0.0,
+    "total_return_exact": "0",
+    "warnings": [
+      "SMA warm-up incomplete for some decisions"
+    ]
+  },
+  "error": null
+}

@@ -1,10 +1,12 @@
 # Market Workstation
 
+Part 4.2 planning: [ordered prompts for indicators, simulated trading, backtesting and submission](prompts/19-part-4.2-prompt-sequence.md). The readiness audit is complete; see the [Part 4.2 checklist](docs/part-4.2-checklist.md) for verified foundations, gaps and acceptance checks. Focused SMA verification is also complete: [reference calculations, replay tests and browser evidence](docs/sma.md). The [deterministic forward SMA strategy](docs/sma-strategy.md) is now implemented; the [historical backtest backend](docs/backtesting.md) is now implemented; the Vue backtest interface now supports validated controls and saved-result inspection.
+
 ## Project overview and goals
 
-A local market-data dashboard for the student's Assignment 4, Part 4.1. The student will use it to follow live Yahoo Finance prices and volume, understand source freshness and feed failures, and retrieve/replay persisted observations. The instructor will review the working application and its evidence.
+A local workstation for Assignment 4, now preparing Part 4.2: indicators, simulated trading and historical backtesting. The existing Part 4.1 foundation follows Yahoo Finance prices and volume, displays source freshness and feed failures, and retrieves/replays persisted observations. The instructor reviews the working application and its evidence.
 
-Goals: updating candlesticks with aligned volume; visible source, source/receipt times, age and feed state; WebSocket delivery; SQLite records preserving identity, revisions and completion; deterministic duplicate/out-of-order handling; replay for development when live data is unavailable. CSV loading is ungraded practice. Indicators, trading, backtesting, AI, and audio are outside this setup/Part 4.1 scope.
+Goals: updating candlesticks with aligned volume; visible source, source/receipt times, age and feed state; WebSocket delivery; SQLite records preserving identity, revisions and completion; deterministic duplicate/out-of-order handling; replay for development when live data is unavailable. CSV loading is ungraded practice. Part 4.1 excludes indicators, trading, backtesting, AI and audio from its deliverable. Previously authorized extensions already provide two SMAs, paper accounting and AI-reviewed automation/voice. The current Part 4.2 audit preserves those features; a provider-independent forward crossover runner is implemented, and historical backtest calculations/results are now implemented through Python/FastAPI; the Vue backtest interface now supports validated controls and saved-result inspection. All trading remains simulated and local; no brokerage or deployment is in scope.
 
 ## Agreed root and stack
 
@@ -368,3 +370,24 @@ November16 publication verification: [GitHub Actions run43795770082](https://git
 
 
 Yahoo AAPL volume now uses observed differences of day_volume, labeled **estimated**. Missing baselines, resets and ambiguous updates remain Unknown. See [volume investigation](docs/feed-investigation.md) for the recorded 52,920-share comparison and limitations.
+
+
+## Deterministic SMA strategy (Part 4.2)
+
+In **SMA strategy · simulated only · no AI**, set windows/timeframe and start a separate $1,000 AAPL run. Upward crossover buys one share when flat/affordable; downward crossover closes it. Orders wait for later eligible receipts; the panel links reasons, orders, fills and account/P&L. No model key is required. **Stop SMA run** cancels pending orders and permanently stops that run. Closing the page does not stop it; enabled runs recover after backend restart. Existing AI automation remains separate.
+
+[Execution assumptions, API/schema and focused browser check](docs/sma-strategy.md). Run `python3 docs/strategy_check.py` against disposable fixtures with no credentials. This forward strategy is not a historical backtest.
+
+
+Part4.2 accounting verification: `python3 docs/accounting_check.py` compares the five-event example, multiple-buy rounding/partial-sale example and unavailable valuation through SQLite/API/Chromium before and after real backend restarts. See [exact expected results and assumptions](docs/pnl.md). It uses disposable databases and no credentials.
+
+
+## Historical backtesting (Part 4.2)
+
+[Backtest commands, API, frozen-input schema and results](docs/backtesting.md) document recorded-receipt evaluation and a separately labeled Yahoo daily-bar dataset. Runs persist in isolated ignored databases, use the shared crossover/paper/P&L code and return decisions, trades, equity, return and drawdown. `python3 -m unittest backend.test_backtest -v` and `python3 docs/backtest_check.py` verify causality and persistent HTTP results. No model key is needed. The37-bar AAPL example ends at$999.64 with10fills; it is a limited price-only simulation, not future-performance evidence. The Vue Historical backtest panel now provides dataset/range/window/cash controls, saved result charts, decision/order/fill inspection and explicit empty/backend errors. See the startup and API instructions in docs/backtesting.md. Run `python3 docs/backtest_ui_check.py` for isolated browser/restart/SQLite verification.
+
+Part4.2 CI coverage now extends the same `python3 docs/smoke_test.py` command: completed/unfinished crossover decisions, later execution, SQLite P&L, causal prefix comparisons and saved performance display on explicitly constructed data. The push workflow runs backend correctness tests and the frontend build, followed by two fresh full smoke runs. [Exact assertions and evidence](docs/smoke-test.md). An uncommitted workflow change and local pass are not evidence of remote CI success.
+
+## Part4.2 submission preparation
+
+[Current report draft](report.md), [audited checklist](docs/part-4.2-checklist.md), [curated evidence](docs/part-4.2-evidence.md) and [59-second recording/script](docs/part-4.2-video.md) distinguish local checks from pending public access/remote CI. The original [Part4.1 report](docs/archive/part-4.1/report.md) is preserved verbatim. The root report now describes Part4.2; submit only that file after its final identifiers/access checks are complete. `python3 docs/part42_checkout_check.py` checks a clean source export with reused dependencies; `python3 docs/part42_video.py` records the actual local UI with disposable accounts. Neither installs software, commits/pushes or uploads to Canvas.
